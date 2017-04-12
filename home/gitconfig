@@ -1,0 +1,45 @@
+[user]
+  email = taylor1791@users.noreply.github.com
+  name = Taylor Everding
+	signingkey = 9DB278E9
+[push]
+  default = simple
+[credential]
+	helper = cache
+[color]
+	ui = true
+[alias]
+  la = "!git config -l | grep alias | cut -c 7-"
+  done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+  s = status -s
+  ll = log --oneline --decorate --all --graph --abbrev-commit
+  lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ld = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ldr = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  lf = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  fl = log -u
+  g = grep --break --heading --line-number
+	pushall = push --recurse-submodules=on-demand
+  stash-unapply = !git stash show -p | git apply -R
+  remove-stale-tags = "!f() { git fetch --prune ${1-origin} +refs/tags/*:refs/tags/*; }; f"
+  help="!git log --graph --oneline --decorate $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
+[core]
+	autocrlf = input
+	editor = vim
+	# This makes it faster on NFS and the like
+	preloadindex = true
+  excludesfile = /Users/teverding/.gitignore
+[diff]
+	tool = vimdiff
+[merge]
+	tool = diffconflicts
+[github]
+	user = Taylor1791
+[difftool]
+	prompt = false
+[mergetool "diffconflicts"]
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
+[help]
+	autocorrect = 20
