@@ -6,6 +6,8 @@ matrix:
   - {os: osx, sudo: required, osx_image: xcode8.3}
 
 script:
-- docker build . -t dotfiles
-- docker run dotfiles /bin/bash -c 'bash -x /root/.dotfiles/setup.sh && bash -x .bash_profile'
+- cd /root
+- mv taylor1791/dofiles .dotfiles
+- bash -x ./.dotfiles/setup.sh
+- bash -x .bash_profile
 
