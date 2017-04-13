@@ -48,7 +48,7 @@ function main() {
 # $1 is the binary name and $2 is the package name
 function install_app() {
   BIN="$1"
-  PKG="$2"
+  PKG="${2:-}"
 
   if [[ -z "$PKG" ]]; then
     PKG="$BIN"
