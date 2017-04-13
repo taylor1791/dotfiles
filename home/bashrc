@@ -6,10 +6,29 @@ alias ls="ls -G"
 
 # Load nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" 
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load direnv
 eval "$(direnv hook bash)"
+
+# Download the updates
+cd $HOME/.dotfiles
+{ git fetch & disown; } 2>/dev/null
+
+function warn() {
+  tput bold
+  tput setaf 1
+  echo "$@"
+  tput sgr0
+}
+
+if [[ "$(git status -sz)" != "" ]]; then
+  warn "There are committed changed to dotfiles"
+fi
+
+if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
+  warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
+fi
 
 # Tests for true color support
 function truecolor() {
@@ -27,5 +46,4 @@ function truecolor() {
     printf "\n";
   }'
 }
-
 
