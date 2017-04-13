@@ -39,7 +39,7 @@ function main() {
   clean_links "$full_file"
   link "$DIR/xdg/nvim" "$full_file"
   if [[ "$result" == "true" ]]; then
-    nvim -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
+    HOME=/dev/null nvim -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
 
   # FIXME Install software: direnv
