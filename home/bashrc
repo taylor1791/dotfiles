@@ -3,6 +3,13 @@ export PS1="\u@\h:\w\\$ "
 
 # Better defaults
 alias ls="ls -G"
+alias la="ls -AlF"
+alias ll="ls -AlF"
+
+# Correct tpye-os
+alias l="ls"
+alias sl="ls"
+alias g="git"
 
 # Load nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
