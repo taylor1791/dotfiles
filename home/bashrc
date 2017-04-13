@@ -23,7 +23,7 @@ function warn() {
 }
 
 if [[ "$(git status -sz)" != "" ]]; then
-  warn "There are committed changed to dotfiles"
+  warn "There are uncommitted changed to dotfiles"
 fi
 
 if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
