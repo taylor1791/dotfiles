@@ -2,10 +2,6 @@ language: c
 
 sudo: required
 
-os:
-  - linux
-  - osx
-
 matrix:
   include:
   - {os: linux, dist: trusty}
