@@ -12,5 +12,4 @@ before_install:
   - docker run -it ubuntu bash
 
 script:
-- setup.sh
-- source $HOME/.bash_profile
+- docker run -it ubuntu 'setup.sh && source .bash_profile'
