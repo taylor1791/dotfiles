@@ -1,14 +1,13 @@
 language: c
 
-sudo: required
-
 matrix:
   include:
-  - {os: linux, dist: trusty}
-  - {os: osx, osx_image: xcode8.3}
+  - {os: linux, sudo: required, dist: trusty}
+  - {os: osx, sudo: required, osx_image: xcode8.3}
 
 before_install:
   - docker pull ubuntu:16.04
 
 script:
-- docker run ubuntu 'setup.sh && source .bash_profile'
+- docker run ubuntu 'setup.sh'
+
