@@ -10,5 +10,5 @@ before_install:
 
 script:
 - docker build . -t dotfiles
-- docker run dotfiles './.dotfiles/setup.sh && source .bash_profile'
+- docker run dotfiles 'bash -v ./.dotfiles/setup.sh && source .bash_profile'
 
