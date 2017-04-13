@@ -18,24 +18,24 @@ function main() {
   install jq
 
   # Install home config
-  for file in `ls $DIR/home`; do
-    full_file="$HOME/.$file"
-
+  cd "$DIR/home"
+  for file in `find . -type f -depth 1`; do
+    full_file="$HOME/.$(basename $file)"
     clean_links "$full_file" "$file"
+    link "$DIR/home/$file" "$full_file"
+  done
 
-    # Add the link
-    if [ ! -e "$full_file" ]; then
-      echo "Adding link for $file...";
-      ln -s "$DIR/home/$file" "$full_file" 
-    fi
+  # Install directory configs
+  for file in `find . -type f -mindepth 2 | cut -b 3-`; do
+    mkdir -p $(dirname $file)
+    link "$DIR/home/$file" "$HOME/.$file"
   done
 
   # Configure neovim
   full_file="$HOME/.config/nvim"
   clean_links "$full_file"
-  if [ ! -e "$full_file" ]; then
-    echo "Adding link for nvim...";
-    ln -s "$DIR/xdg/nvim" "$full_file"
+  link "$DIR/xdg/nvim" "$full_file"
+  if [[ "$result" == "true" ]]; then
     nvim -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
 
@@ -62,6 +62,16 @@ function clean_links() {
   if [[ -e "$1" && ! -h "$1" ]]; then
     echo "Backing up $2..."
     mv "$1" "$1.$(date +%s)"
+  fi
+}
+
+function link() {
+  if [ ! -e "$2" ]; then
+    echo "Linking $2...";
+    ln -s "$1" "$2"
+    result="true"
+  else
+    result="false"
   fi
 }
 
