@@ -19,14 +19,14 @@ function main() {
 
   # Install home config
   cd "$DIR/home"
-  for file in `find . -type f -depth 1`; do
+  for file in `find . -depth 1 -type f`; do
     full_file="$HOME/.$(basename $file)"
     clean_links "$full_file" "$file"
     link "$DIR/home/$file" "$full_file"
   done
 
   # Install directory configs
-  for file in `find . -type f -mindepth 2 | cut -b 3-`; do
+  for file in `find . -mindepth 2 -type f | cut -b 3-`; do
     mkdir -p $(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
