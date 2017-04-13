@@ -15,7 +15,7 @@ function main() {
   source $PLATFORM_COMMANDS
 
   # Install essential tools
-  install jq
+  install_app jq
 
   # Install home config
   cd "$DIR/home"
@@ -39,8 +39,21 @@ function main() {
     nvim -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
 
-  # FIXME Install software: neovim, nvim, direnv
-  # FIXME Warn on outdated stuff
+  install_app nvim neovim
+
+  # FIXME Install software: direnv
+}
+
+# $1 is the binary name and $2 is the package name
+function install_app() {
+  BIN="$1"
+  PKG="$2"
+
+  if [[ -z "$PKG" ]]; then
+    PKG="$BIN"
+  fi
+
+  install "$BIN" "$PKG"
 }
 
 function die() {

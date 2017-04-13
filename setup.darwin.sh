@@ -10,7 +10,7 @@ fi
 
 install() {
   if ! type "$1" > /dev/null; then
-    echo "Installing $1..."
-    brew install "$@"
+    echo "Installing $2..."
+    brew install "$2"
   fi
 }
