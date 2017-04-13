@@ -6,7 +6,7 @@ matrix:
   - {os: osx, sudo: required, osx_image: xcode8.3}
 
 script:
-- cd /root
+- cd $HOME
 - mv taylor1791/dotfiles .dotfiles
 - bash -x ./.dotfiles/setup.sh
 - bash -x .bash_profile
