@@ -18,3 +18,5 @@ install() {
 setup_neovim() {
   brew tap neovim/neovim
 }
+
+setup_neovim
