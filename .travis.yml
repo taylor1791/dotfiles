@@ -7,7 +7,7 @@ matrix:
 
 script:
 - cd /root
-- mv taylor1791/dofiles .dotfiles
+- mv taylor1791/dotfiles .dotfiles
 - bash -x ./.dotfiles/setup.sh
 - bash -x .bash_profile
 
