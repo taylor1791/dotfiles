@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 install() {
-  if ! type "$1" 2>&1 /dev/null; then
+  if ! type "$1" > /dev/null 2>&1; then
     echo "Installing $2..."
     sudo apt-get install -y "$2"
   fi
