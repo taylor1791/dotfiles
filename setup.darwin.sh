@@ -9,12 +9,12 @@ if ! type "brew" 2>&1 /dev/null; then
 fi
 
 install() {
-  brew --version
-
   if ! type "$1" 2>&1 /dev/null; then
     echo "Installing $2..."
     brew install "$2"
   fi
 }
 
-brew update
+setup_neovim() {
+  brew tap neovim/neovim
+}
