@@ -34,7 +34,7 @@ function main() {
   install_app nvim neovim
 
   # Configure neovim
-  mkdir "$HOME/.config"
+  mkdir -p "$HOME/.config"
   full_file="$HOME/.config/nvim"
   clean_links "$full_file"
   link "$DIR/xdg/nvim" "$full_file"
