@@ -9,5 +9,6 @@ before_install:
   - docker pull ubuntu:16.04
 
 script:
-- docker run ubuntu 'setup.sh'
+- docker build . -t dotfiles
+- docker run dotfiles './.dotfiles/setup.sh'
 
