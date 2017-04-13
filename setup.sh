@@ -31,6 +31,8 @@ function main() {
     link "$DIR/home/$file" "$HOME/.$file"
   done
 
+  install_app nvim neovim
+
   # Configure neovim
   mkdir "$HOME/.config"
   full_file="$HOME/.config/nvim"
@@ -39,8 +41,6 @@ function main() {
   if [[ "$result" == "true" ]]; then
     nvim -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
-
-  install_app nvim neovim
 
   # FIXME Install software: direnv
 }
