@@ -11,8 +11,8 @@ install() {
 
 setup_neovim() {
   sudo apt-get update
-  sudo apt-get install software-properties-common
-  sudo apt-get install python-software-properties
+  sudo apt-get install -y software-properties-common
+  sudo apt-get install -y python-software-properties
   sudo add-apt-repository -y ppa:neovim-ppa/stable
   sudo apt-get update
 }
