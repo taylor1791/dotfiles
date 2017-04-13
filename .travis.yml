@@ -9,7 +9,6 @@ matrix:
 
 before_install:
   - docker pull ubuntu:16.04
-  - docker run -it ubuntu bash
 
 script:
-- docker run -it ubuntu 'setup.sh && source .bash_profile'
+- docker run ubuntu 'setup.sh && source .bash_profile'
