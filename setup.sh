@@ -32,6 +32,7 @@ function main() {
   done
 
   # Configure neovim
+  mkdir "$HOME/.config"
   full_file="$HOME/.config/nvim"
   clean_links "$full_file"
   link "$DIR/xdg/nvim" "$full_file"
