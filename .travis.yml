@@ -7,5 +7,5 @@ matrix:
 
 script:
 - docker build . -t dotfiles
-- docker run dotfiles 'bash -v ./.dotfiles/setup.sh && source .bash_profile'
+- docker run dotfiles /bin/bash -c 'bash -x /root/.dotfiles/setup.sh && bash -x .bash_profile'
 
