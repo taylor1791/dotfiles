@@ -42,7 +42,8 @@ function main() {
     nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
 
-  # FIXME Install software: direnv
+  # FIXME direnv
+  # FIXME ag
 }
 
 # $1 is the binary name and $2 is the package name
