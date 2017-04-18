@@ -37,6 +37,24 @@ if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
   warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
 fi
 
+# Changes to the directory with the specified name, unless passed an integer.
+# Integers navigate to the nth-parent defaulting to 1.
+function up() {
+  dir=""
+  if [ -z "$1" ]; then
+    dir=..
+  elif [[ $1 =~ ^[0-9]+$ ]]; then
+    x=0
+    while [ $x -lt ${1:-1} ]; do
+        dir=${dir}../
+        x=$(($x+1))
+    done
+  else
+    dir=${PWD%/$1/*}/$1
+  fi
+  cd "$dir";
+}
+
 # Tests for true color support
 function truecolor() {
   awk 'BEGIN{
