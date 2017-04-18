@@ -8,6 +8,6 @@ matrix:
 script:
 - cd $HOME
 - mv build/taylor1791/dotfiles .dotfiles
-- bash -x ./.dotfiles/setup.sh
-- bash -x .bash_profile
+- bash -xe ./.dotfiles/setup.sh
+- bash -xe .bash_profile
 
