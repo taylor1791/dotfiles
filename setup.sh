@@ -44,6 +44,7 @@ function main() {
 
   # FIXME direnv
   # FIXME ag
+  # FIXME nvm
 }
 
 # $1 is the binary name and $2 is the package name
