@@ -13,7 +13,7 @@ alias g="git"
 
 # Load nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+source "$NVM_DIR/nvm.sh"
 
 # Load direnv
 eval "$(direnv hook bash)"
