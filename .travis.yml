@@ -5,9 +5,6 @@ matrix:
   - {os: linux, sudo: required, dist: trusty}
   - {os: osx, sudo: required, osx_image: xcode8.3}
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull ubuntu:16.04; docker run -it ubuntu:16.04 bash; fi
-
 script:
 - cd $HOME
 - mv build/taylor1791/dotfiles .dotfiles
