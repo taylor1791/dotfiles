@@ -2,6 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# OS Specific test setup
+. bin/test.$TRAVIS_OS_NAME.sh
+
 cd $HOME
 mv build/taylor1791/dotfiles .dotfiles
 bash -xe ./.dotfiles/setup.sh
