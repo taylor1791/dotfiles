@@ -38,6 +38,8 @@ if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
 fi
 popd
 
+alias emoji="curl -N https://emoji.codes/family 2>/dev/null | grep -e ':.*:' | shuf | head -1 | grep -o ':.*:'"
+
 # Changes to the directory with the specified name, unless passed an integer.
 # Integers navigate to the nth-parent defaulting to 1.
 function up() {
