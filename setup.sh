@@ -22,6 +22,7 @@ function main() {
   install_app silversearcher-ag
   install_app nvim neovim
   install_app git
+  install_app direnv
 
   # Manually installs
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
@@ -49,7 +50,6 @@ function main() {
     link "$DIR/home/$file" "$HOME/.$file"
   done
 
-  # FIXME direnv
 }
 
 # $1 is the binary name and $2 is the package name
