@@ -18,6 +18,9 @@ source "$NVM_DIR/nvm.sh"
 # Load direnv
 eval "$(direnv hook bash)"
 
+# Enhance PATH
+export PATH="$HOME/.bin:$PATH"
+
 # Download the updates
 pushd $HOME/.dotfiles
 { git fetch & disown; } 2>/dev/null
