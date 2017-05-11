@@ -14,8 +14,20 @@ function main() {
   fi
   source $PLATFORM_COMMANDS
 
-  # Install essential tools
+  # Install Tools
+  # Many of this will change files like .bashrc, so we install them before
+  # coping over all the configuration files
   install_app jq
+  install_app nvim neovim
+
+  # Configure neovim
+  mkdir -p "$HOME/.config"
+  full_file="$HOME/.config/nvim"
+  clean_links "$full_file"
+  link "$DIR/xdg/nvim" "$full_file"
+  if [[ "$result" == "true" ]]; then
+    nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
+  fi
 
   # Install home config
   cd "$DIR/home"
@@ -30,17 +42,6 @@ function main() {
     mkdir -p $HOME/.$(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
-
-  install_app nvim neovim
-
-  # Configure neovim
-  mkdir -p "$HOME/.config"
-  full_file="$HOME/.config/nvim"
-  clean_links "$full_file"
-  link "$DIR/xdg/nvim" "$full_file"
-  if [[ "$result" == "true" ]]; then
-    nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
-  fi
 
   # FIXME direnv
   # FIXME ag
