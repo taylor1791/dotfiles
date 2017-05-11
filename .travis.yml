@@ -7,5 +7,5 @@ matrix:
 
 script:
 - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then; bash -x bin/test.sh; fi'
-- 'if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then; docker run -v `pwd`:/root -w /root -e "TRAVIS_OS_NAME=$TRAVIS_OS_NAME" ubuntu:16.04 bash -x /root/bin/test.sh; fi'
+- 'if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then; docker run -v `pwd`/build/taylor1791/dotfiles:/root/build/taylor1791/dotfiles -w /root -e "TRAVIS_OS_NAME=$TRAVIS_OS_NAME" ubuntu:16.04 bash -x /root/bin/test.sh; fi'
 
