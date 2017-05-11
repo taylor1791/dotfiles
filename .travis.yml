@@ -6,6 +6,6 @@ matrix:
   - {os: osx, sudo: required, osx_image: xcode8.3}
 
 script:
-- '[[ "$TRAVIS_OS_NAME" == "osx" ]] && bash -x bin/test.sh'
-- '[[ "$TRAVIS_OS_NAME" == "linux" ]] && docker run -v `pwd`:/root -w /root -e "TRAVIS_OS_NAME=$TRAVIS_OS_NAME" ubuntu:16.04 bash -x /root/bin/test.sh'
+- 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then; bash -x bin/test.sh; fi'
+- 'if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then; docker run -v `pwd`:/root -w /root -e "TRAVIS_OS_NAME=$TRAVIS_OS_NAME" ubuntu:16.04 bash -x /root/bin/test.sh; fi'
 
