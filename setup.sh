@@ -19,6 +19,7 @@ function main() {
   # coping over all the configuration files
   install_app curl
   install_app jq
+  install_app silversearcher-ag
   install_app nvim neovim
 
   # Manually installs
@@ -48,7 +49,6 @@ function main() {
   done
 
   # FIXME direnv
-  # FIXME ag
 }
 
 # $1 is the binary name and $2 is the package name

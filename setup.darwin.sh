@@ -9,9 +9,15 @@ if ! type "brew" > /dev/null 2>&1; then
 fi
 
 install() {
+  NAME="$2"
+
+  if [[ "$NAME" == "silversearcher-ag" ]]; then
+    NAME="the_silver_searcher"
+  fi
+
   if ! type "$1" > /dev/null 2>&1; then
-    echo "Installing $2..."
-    brew install "$2"
+    echo "Installing $NAME..."
+    brew install "$NAME"
   fi
 }
 
