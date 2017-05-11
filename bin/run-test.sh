@@ -10,7 +10,7 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   cd /
   DIR="build/taylor1791/dotfiles"
   docker run \
-    -v /root/$DIR:/root/$DIR \
+    -v /$HOME/$DIR:/root/$DIR \
     -w /root/$DIR \
     -e "TRAVIS_OS_NAME=$TRAVIS_OS_NAME" \
     ubuntu:16.04 \
