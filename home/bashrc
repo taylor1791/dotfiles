@@ -19,7 +19,7 @@ source "$NVM_DIR/nvm.sh"
 eval "$(direnv hook bash)"
 
 # Download the updates
-cd $HOME/.dotfiles
+pushd $HOME/.dotfiles
 { git fetch & disown; } 2>/dev/null
 
 function warn() {
@@ -36,6 +36,7 @@ fi
 if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
   warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
 fi
+popd
 
 # Changes to the directory with the specified name, unless passed an integer.
 # Integers navigate to the nth-parent defaulting to 1.
