@@ -1,5 +1,3 @@
-set -eo pipefail
-
 # A minimilist prompt
 export PS1="\u@\h:\w\\$ "
 
@@ -39,8 +37,6 @@ if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
   warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
 fi
 popd
-
-alias emoji="curl -N https://emoji.codes/family 2>/dev/null | grep -e ':.*:' | shuf | head -1 | grep -o ':.*:'"
 
 # Changes to the directory with the specified name, unless passed an integer.
 # Integers navigate to the nth-parent defaulting to 1.

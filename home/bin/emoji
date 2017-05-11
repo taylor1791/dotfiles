@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+set -euo pipefail
+
+curl -N https://emoji.codes/family 2>/dev/null | grep -e ':.*:' | shuf | head -1 | grep -o ':.*:'
+
