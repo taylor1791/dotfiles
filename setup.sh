@@ -27,7 +27,7 @@ function main() {
 
   # Install directory configs
   for file in `find . -type f -mindepth 2 | cut -b 3-`; do
-    mkdir -p $(dirname $file)
+    mkdir -p $HOME/$(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
 
