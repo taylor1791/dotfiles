@@ -22,6 +22,7 @@
   stash-unapply = !git stash show -p | git apply -R
   remove-stale-tags = "!f() { git fetch --prune ${1-origin} +refs/tags/*:refs/tags/*; }; f"
   help="!git log --graph --oneline --decorate $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
+  pushme="!git push origin $(git rev-parse --symbolic-full-name --abbrev-ref HEAD):feature/$(git log --pretty=format:'%s' | head -1 | sed 's/ /-/g' | tr A-Z a-z)"
 [core]
   autocrlf = input
   editor = vim
