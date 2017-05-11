@@ -1,4 +1,4 @@
-set -euo pipefail
+set -eo pipefail
 
 # A minimilist prompt
 export PS1="\u@\h:\w\\$ "
