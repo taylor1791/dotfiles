@@ -6,7 +6,7 @@ IFS=$'\n\t'
 . bin/test.$TRAVIS_OS_NAME.sh
 
 cd $HOME
-mv build/taylor1791/dotfiles .dotfiles
+cp -R build/taylor1791/dotfiles .dotfiles
 bash -xe ./.dotfiles/setup.sh
 bash -xe .bash_profile
 
