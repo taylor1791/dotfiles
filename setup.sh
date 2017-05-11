@@ -21,6 +21,7 @@ function main() {
   install_app jq
   install_app silversearcher-ag
   install_app nvim neovim
+  install_app git
 
   # Manually installs
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
