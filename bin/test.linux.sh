@@ -2,4 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+apt-get update
+apt-get install sudo
 
