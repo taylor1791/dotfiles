@@ -17,6 +17,7 @@ function main() {
   # Install Tools
   # Many of this will change files like .bashrc, so we install them before
   # coping over all the configuration files
+  install_app curl
   install_app jq
   install_app nvim neovim
 
