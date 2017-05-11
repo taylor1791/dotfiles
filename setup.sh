@@ -20,6 +20,9 @@ function main() {
   install_app jq
   install_app nvim neovim
 
+  # Manually installs
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
   # Configure neovim
   mkdir -p "$HOME/.config"
   full_file="$HOME/.config/nvim"
@@ -45,7 +48,6 @@ function main() {
 
   # FIXME direnv
   # FIXME ag
-  # FIXME nvm
 }
 
 # $1 is the binary name and $2 is the package name
