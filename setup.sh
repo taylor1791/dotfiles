@@ -14,24 +14,10 @@ function main() {
   fi
   source $PLATFORM_COMMANDS
 
-  # Install Tools
-  # Many of this will change files like .bashrc, so we install them before
-  # coping over all the configuration files
-  install_app curl
-  install_app jq
-  install_app ag silversearcher-ag
-  install_app nvim neovim
-  install_app git
-  install_app direnv
-
-  # Manually installs
+  # Manual config installs
   [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
-  manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
 
-  # Install crons
-  install_cron "0 12 */1 * * wipe-modules $HOME 32"
-
-  # Configure neovim
+  # Configure xdgs
   mkdir -p "$HOME/.config"
   full_file="$HOME/.config/nvim"
   clean_links "$full_file"
@@ -53,6 +39,22 @@ function main() {
     mkdir -p $HOME/.$(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
+
+  # Manual installs that require
+  manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
+
+  # Install Tools
+  # Many of this will change files like .bashrc, so we install them before
+  # coping over all the configuration files
+  install_app curl
+  install_app jq
+  install_app ag silversearcher-ag
+  install_app nvim neovim
+  install_app git
+  install_app direnv
+
+  # Install crons
+  install_cron "0 12 */1 * * wipe-modules $HOME 32"
 }
 
 # $1 in the command and $2 will be evaled if it does not exist
