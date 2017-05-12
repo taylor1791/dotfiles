@@ -26,6 +26,10 @@ function main() {
 
   # Manually installs
   [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
+  manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
+
+  # Install crons
+  install_cron "0 12 */1 * * wipe-modules $HOME 32"
 
   # Configure neovim
   mkdir -p "$HOME/.config"
@@ -69,6 +73,13 @@ function install_app() {
   fi
 
   install "$BIN" "$PKG"
+}
+
+function install_cron() {
+  if ! crontab -l | grep -oq "$1"; then
+    echo "Installing cron: $1"
+    crontab -l | { cat; echo "$1"; } | crontab -
+  fi
 }
 
 function die() {
