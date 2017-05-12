@@ -33,6 +33,7 @@ I don't know what I am doing
 * http://thoughtbot.github.io/rcm/rcm.7.html
 * https://github.com/thoughtbot/dotfiles/blob/master/psqlrc
 * https://github.com/derekprior/dotfiles/blob/master/aliases.local
+* https://github.com/rothgar/awesome-tmux
 
 ## Do I like these?
 * Monoid: http://larsenwork.com/monoid/
