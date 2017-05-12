@@ -25,7 +25,7 @@ function main() {
   install_app direnv
 
   # Manually installs
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
 
   # Configure neovim
   mkdir -p "$HOME/.config"
@@ -49,7 +49,14 @@ function main() {
     mkdir -p $HOME/.$(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
+}
 
+# $1 in the command and $2 will be evaled if it does not exist
+function manual_install() {
+  if ! type "$1" > /dev/null 2>&1; then
+    echo "Installing $1..."
+    eval "$2"
+  fi
 }
 
 # $1 is the binary name and $2 is the package name
