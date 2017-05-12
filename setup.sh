@@ -14,6 +14,10 @@ function main() {
   fi
   source $PLATFORM_COMMANDS
 
+  # Install really essentail things
+  install_app curl
+  install_app git
+
   # Manual config installs
   [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
 
@@ -44,13 +48,9 @@ function main() {
   manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
 
   # Install Tools
-  # Many of this will change files like .bashrc, so we install them before
-  # coping over all the configuration files
-  install_app curl
   install_app jq
   install_app ag silversearcher-ag
   install_app nvim neovim
-  install_app git
   install_app direnv
 
   # Install crons
