@@ -21,15 +21,6 @@ function main() {
   # Manual config installs
   [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
 
-  # Configure xdgs
-  mkdir -p "$HOME/.config"
-  full_file="$HOME/.config/nvim"
-  clean_links "$full_file"
-  link "$DIR/xdg/nvim" "$full_file"
-  if [[ "$result" == "true" ]]; then
-    nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
-  fi
-
   # Install home config
   cd "$DIR/home"
   for file in `find . -type f -maxdepth 1`; do
@@ -55,6 +46,15 @@ function main() {
 
   # Install crons
   install_cron "0 12 */1 * * wipe-modules $HOME 32"
+
+  # Configure nvim
+  mkdir -p "$HOME/.config"
+  full_file="$HOME/.config/nvim"
+  clean_links "$full_file"
+  link "$DIR/xdg/nvim" "$full_file"
+  if [[ "$result" == "true" ]]; then
+    nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
+  fi
 }
 
 # $1 in the command and $2 will be evaled if it does not exist
