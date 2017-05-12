@@ -19,7 +19,7 @@ function main() {
   # coping over all the configuration files
   install_app curl
   install_app jq
-  install_app silversearcher-ag
+  install_app ag silversearcher-ag
   install_app nvim neovim
   install_app git
   install_app direnv
