@@ -1,4 +1,4 @@
-# My dotfiles
+# My dotfiles [![Build Status](https://secure.travis-ci.org/taylor1791/dotfiles.png?branch=master&style=flat-square)](https://travis-ci.org/taylor1791/dotfiles)
 
 I don't know what I am doing
 
