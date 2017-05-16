@@ -45,7 +45,7 @@ function main() {
   install_app direnv
 
   # Install crons
-  install_cron "0 12 */1 * * wipe-modules $HOME 32"
+  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
 
   # Configure nvim
   mkdir -p "$HOME/.config"
