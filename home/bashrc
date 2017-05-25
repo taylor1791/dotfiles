@@ -22,7 +22,7 @@ eval "$(direnv hook bash)"
 export PATH="$HOME/.bin:$PATH"
 
 # Download the updates
-pushd $HOME/.dotfiles
+pushd $HOME/.dotfiles > /dev/null
 { git fetch & disown; } 2>/dev/null
 
 function warn() {
@@ -39,7 +39,7 @@ fi
 if [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
   warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
 fi
-popd
+popd > /dev/null
 
 # Changes to the directory with the specified name, unless passed an integer.
 # Integers navigate to the nth-parent defaulting to 1.
