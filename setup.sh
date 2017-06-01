@@ -45,9 +45,6 @@ function main() {
   install_app direnv
   install_app tmux
 
-  # Install crons
-  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
-
   # Configure nvim
   mkdir -p "$HOME/.config"
   full_file="$HOME/.config/nvim"
@@ -56,6 +53,9 @@ function main() {
   if [[ "$result" == "true" ]]; then
     nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
   fi
+
+  # Install crons
+  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
 }
 
 # $1 in the command and $2 will be evaled if it does not exist
