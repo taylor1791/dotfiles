@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 
   " Coding
   Plug 'w0rp/ale' " Asynchronous Lint Engine
+  let g:ale_maximum_file_size = '500000'
 
   " PureScript
   Plug 'raichoo/purescript-vim' " Syntax Highlighting
