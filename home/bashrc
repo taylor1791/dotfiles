@@ -26,10 +26,10 @@ pushd $HOME/.dotfiles > /dev/null
 { git fetch & disown; } 2>/dev/null
 
 function warn() {
-  tput bold
-  tput setaf 1
+  tput -T ${TERM:-dumb} bold
+  tput -T ${TERM:-dumb} setaf 1
   echo "$@"
-  tput sgr0
+  tput -T ${TERM:-dumb} sgr0
 }
 
 if [[ "$(git status -sz)" != "" ]]; then
