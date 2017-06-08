@@ -1,3 +1,5 @@
+LOCAL_BASHRC="$HOME/.bashrc.local"
+
 # A minimilist prompt
 export PS1="\u@\h:\w\\$ "
 
@@ -20,6 +22,8 @@ eval "$(direnv hook bash)"
 
 # Enhance PATH
 export PATH="$HOME/.bin:$PATH"
+
+[[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
 # Download the updates
 pushd $HOME/.dotfiles > /dev/null
