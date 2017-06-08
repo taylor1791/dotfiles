@@ -1,11 +1,11 @@
 Host 127.0.0.1
+    # Don't error on unsupported hosts
+    IgnoreUnknown UseKeychain
+
     # Store phasephrase in macOX keychain https://developer.apple.com/library/content/technotes/tn2449/_index.html
     UseKeychain yes
 
 Host *
-    # Don't error on unsupported hosts
-    IgnoreUnknown UseKeychain
-
     # Forward the authentication agent to the remote machine
     ForwardAgent yes
 
