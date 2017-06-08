@@ -43,6 +43,7 @@ function main() {
   install_app ag silversearcher-ag
   install_app nvim neovim
   install_app direnv
+  install_app tmux
 
   # Install crons
   install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
