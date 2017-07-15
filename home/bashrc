@@ -13,6 +13,9 @@ alias l="ls"
 alias sl="ls"
 alias g="git"
 
+alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
+alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
+
 # Load nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"
