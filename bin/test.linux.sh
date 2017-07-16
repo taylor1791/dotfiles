@@ -3,5 +3,5 @@ set -euo pipefail
 IFS=$'\n\t'
 
 apt-get update
-apt-get install sudo
+apt-get install -y sudo man-db
 

@@ -44,6 +44,7 @@ function main() {
   install_app nvim neovim
   install_app direnv
   install_app tmux
+  install_app "/usr/local/etc/profile.d/z.sh" z
 
   # Configure nvim
   mkdir -p "$HOME/.config"
@@ -68,14 +69,18 @@ function manual_install() {
 
 # $1 is the binary name and $2 is the package name
 function install_app() {
-  BIN="$1"
+  CHECK="$1"
   PKG="${2:-}"
 
   if [[ -z "$PKG" ]]; then
-    PKG="$BIN"
+    PKG="$CHECK"
   fi
 
-  install "$BIN" "$PKG"
+  if [[ $CHECK == /* ]]; then
+    [[ ! -f "$CHECK" ]] && install "$PKG"
+  elif ! type "$1" > /dev/null 2>&1; then
+    install "$PKG"
+  fi
 }
 
 function install_cron() {

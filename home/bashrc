@@ -26,6 +26,7 @@ eval "$(direnv hook bash)"
 # Enhance PATH
 export PATH="$HOME/.bin:$PATH"
 
+source /usr/local/etc/profile.d/z.sh
 [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
 # Download the updates
