@@ -9,16 +9,14 @@ if ! type "brew" > /dev/null 2>&1; then
 fi
 
 install() {
-  NAME="$2"
+  NAME="$1"
 
   if [[ "$NAME" == "silversearcher-ag" ]]; then
     NAME="the_silver_searcher"
   fi
 
-  if ! type "$1" > /dev/null 2>&1; then
-    echo "Installing $NAME..."
-    brew install "$NAME"
-  fi
+  echo "Installing $NAME..."
+  brew install "$NAME"
 }
 
 setup_neovim() {

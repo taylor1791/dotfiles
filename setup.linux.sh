@@ -2,10 +2,30 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+install_z() {
+  git clone https://github.com/rupa/z.git --depth 1
+  pushd z
+  chmod +x z.sh
+
+  sudo mkdir -p /usr/local/etc/profile.d
+  sudo cp z.sh /usr/local/etc/profile.d/
+
+  sudo mkdir -p /usr/local/share/man/man1/
+  sudo cp z.1 /usr/local/share/man/man1/
+  sudo mandb --quiet
+  popd
+  rm -rf z
+}
+
 install() {
-  if ! type "$1" > /dev/null 2>&1; then
-    echo "Installing $2..."
-    sudo apt-get install -y "$2"
+  NAME="$1"
+
+  echo "Installing $NAME..."
+
+  if [[ "$NAME" == "z" ]]; then
+    install_z
+  else
+    sudo apt-get install -y "$NAME"
   fi
 }
 
