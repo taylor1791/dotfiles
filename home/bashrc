@@ -13,6 +13,7 @@ alias l="ls"
 alias sl="ls"
 alias g="git"
 
+alias t="tmux attach -t"
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
 
