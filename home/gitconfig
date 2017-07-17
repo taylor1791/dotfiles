@@ -28,7 +28,7 @@
   editor = vim
   # This makes it faster on NFS and the like
   preloadindex = true
-  excludesfile = /Users/teverding/.gitignore
+  excludesfile = ~/.gitignore
 [diff]
   tool = vimdiff
 [github]

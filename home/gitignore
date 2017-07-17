@@ -1,6 +1,5 @@
-node_modules
-.stack-work
 *.un~
 *.swp
 *.swo
 .DS_Store
+.vimrc
