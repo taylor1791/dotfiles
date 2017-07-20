@@ -138,9 +138,9 @@ set directory=~/.config/nvim/.swap
 " set clipboard=unnamed
 set clipboard+=unnamedplus
 
-" Let Esc leave terminal
 if has("nvim")
-  :tnoremap <Esc> <C-\><C-n>
+  :tnoremap <Esc> <C-\><C-n> " Let Esc leave terminal
+  autocmd TermOpen * setlocal nonumber norelativenumber " Turn off line numbers in terminal
 endif
 
 " REPL Like things
