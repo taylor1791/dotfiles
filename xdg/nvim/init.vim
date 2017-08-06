@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
   " Themes
-  Plug 'trevordmiller/nova-vim'
+  Plug '~/.config/nvim/my-vim'
 
   " Usability
   Plug 'editorconfig/editorconfig-vim' " Change config based on project
@@ -66,14 +66,14 @@ filetype plugin indent on
 
 set nocompatible
 set modelines=0
+set background=dark
 
 set t_Co=256
-colorscheme nova
+colorscheme ThemerNightSky
 "Adjust signscolumn and wombat
 hi! link SignColumn LineNr
 
 " Use pleasant but very visible search hilighting
-hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
 hi! link Visual Search
 
 hi clear Conceal " Use same color behind concealed unicode characters
