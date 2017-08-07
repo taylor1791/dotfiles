@@ -102,7 +102,8 @@ set ruler
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 set laststatus=2
-set relativenumber
+set relativenumber " Use relative line numbers
+set number         " Except for the current line
 set undofile
 
 set mouse=a
