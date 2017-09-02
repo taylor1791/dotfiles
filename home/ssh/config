@@ -1,5 +1,8 @@
 # Don't error on unsupported hosts
 IgnoreUnknown UseKeychain
+IgnoreUnknown Include
+
+Include config.local
 
 Host 127.0.0.1
     # Store phasephrase in macOX keychain https://developer.apple.com/library/content/technotes/tn2449/_index.html
