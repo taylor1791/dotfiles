@@ -1,6 +1,5 @@
 # Don't error on unsupported hosts
-IgnoreUnknown UseKeychain
-IgnoreUnknown Include
+IgnoreUnknown UseKeychain,Include
 
 Include config.local
 
