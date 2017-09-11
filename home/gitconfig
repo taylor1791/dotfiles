@@ -4,6 +4,7 @@
   signingkey = 9DB278E9
 [push]
   default = simple
+  followTags = true
 [credential]
   helper = cache
 [color]
