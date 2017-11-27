@@ -55,8 +55,28 @@ call plug#begin('~/.vim/plugged')
   " Plug '~/my-prototype-plugin'
 call plug#end()
 
+" This is my fancy autocomplete written by the psychollama
+function! s:check_back_space() abort
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
+endfunction
 
+function! s:tab_completion(shifting) abort
+  if pumvisible()
+    if a:shifting
+      return "\<C-p>"
+    endif
 
+    return "\<C-n>"
+  elseif s:check_back_space()
+    return "\<TAB>"
+  else
+    return "\<C-n>"
+  endif
+endfunction
+
+inoremap <silent><expr><TAB> <SID>tab_completion(0)
+inoremap <silent><expr><S-TAB> <SID>tab_completion(1)
 
 
 
