@@ -17,7 +17,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'raichoo/purescript-vim' " Syntax Highlighting
 
   " Fun
-  Plug 'mmisono/viminesweeper', { 'on': 'MineSweeper'}
+  Plug 'mmisono/viminesweeper', { 'on': 'MineSweeper' }
 
   " Plug 'tpope/vim-fugitive'
   " Plug 'int3/vim-extradite'
