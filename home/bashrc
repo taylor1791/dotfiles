@@ -91,4 +91,3 @@ function truecolor() {
     printf "\n";
   }'
 }
-
