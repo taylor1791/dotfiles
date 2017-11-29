@@ -13,8 +13,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale' " Asynchronous Lint Engine
   let g:ale_maximum_file_size = '500000'
 
-  " PureScript
-  Plug 'raichoo/purescript-vim' " Syntax Highlighting
+  " Languages
+  Plug 'raichoo/purescript-vim' " PureScript Syntax Highlighting
+  Plug 'rust-lang/rust.vim' " Rust Syntax Highlighting
 
   " Fun
   Plug 'mmisono/viminesweeper', { 'on': 'MineSweeper' }
