@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 set -euo pipefail
 
-curl -N https://emoji.codes/family 2>/dev/null | grep -e ':.*:' | shuf | head -1 | grep -o ':.*:'
+DATA="$(curl -N https://www.emojicopy.com/assets/js/vendor/emoji.json 2> /dev/null)"
+EMOJI="$(echo "$DATA" | jq 'keys | .[]' | shuf | head -1)"
+
+echo "$DATA" | jq -r ".$EMOJI.shortname"
 
