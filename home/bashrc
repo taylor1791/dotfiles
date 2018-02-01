@@ -46,7 +46,7 @@ function warn() {
   fi
 }
 
-if [[ "$(git status -sz)" != "" ]]; then
+if [[ "$(git status -s)" != "" ]]; then
   warn "There are uncommitted changed to dotfiles"
 fi
 
