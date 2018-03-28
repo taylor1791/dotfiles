@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   let g:ale_maximum_file_size = '500000'
 
   " Languages
+  Plug 'PsychoLlama/further.vim' " Better file resolution for js
   Plug 'raichoo/purescript-vim' " PureScript Syntax Highlighting
   Plug 'rust-lang/rust.vim' " Rust Syntax Highlighting
 
