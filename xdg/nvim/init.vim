@@ -107,6 +107,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=4
 set expandtab
+set nojoinspaces
 
 set fileencoding=utf8
 set scrolloff=7
