@@ -90,6 +90,7 @@ set nocompatible
 set modelines=0
 set background=dark
 
+set termguicolors
 set t_Co=256
 colorscheme ThemerNightSky
 "Adjust signscolumn and wombat
