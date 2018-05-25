@@ -18,9 +18,3 @@ install() {
   echo "Installing $NAME..."
   brew install "$NAME"
 }
-
-setup_neovim() {
-  brew tap neovim/neovim
-}
-
-setup_neovim
