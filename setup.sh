@@ -41,19 +41,13 @@ function main() {
   # Install Tools
   install_app jq
   install_app ag silversearcher-ag
-  install_app nvim neovim
+  install_app vim
   install_app direnv
   install_app tmux
   install_app "/usr/local/etc/profile.d/z.sh" z
 
-  # Configure nvim
-  mkdir -p "$HOME/.config"
-  full_file="$HOME/.config/nvim"
-  clean_links "$full_file"
-  link "$DIR/xdg/nvim" "$full_file"
-  if [[ "$result" == "true" ]]; then
-    nvim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
-  fi
+  # Configure vim
+  vim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
 
   # Install crons
   install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
