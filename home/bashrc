@@ -31,10 +31,6 @@ export PATH="$HOME/.bin:$PATH"
 source /usr/local/etc/profile.d/z.sh
 [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
-# Download the updates
-pushd $HOME/.dotfiles > /dev/null
-{ git fetch & disown; } 2>/dev/null
-
 function warn() {
   if [[ -n "$TERM" && "$TERM" != "dumb" && "$TERM" != "unknown" && -n "$(which tput)" ]]; then
     tput bold
@@ -46,16 +42,23 @@ function warn() {
   fi
 }
 
-if [[ "$(git status -s)" != "" ]]; then
-  warn "There are uncommitted changed to dotfiles"
-fi
+# In non-interactive shells $PS1 is not set
+if [[ $- == *i* ]]; then
+  # Download the updates
+  pushd $HOME/.dotfiles > /dev/null
+  { git fetch & disown; } 2>/dev/null
 
-if [[ "$(git name-rev --name-only HEAD)" != "master" ]]; then
-  warn "Dotfiles are in development mode"
-elif [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
-  warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
+  if [[ "$(git status -s)" != "" ]]; then
+    warn "There are uncommitted changed to dotfiles"
+  fi
+
+  if [[ "$(git name-rev --name-only HEAD)" != "master" ]]; then
+    warn "Dotfiles are in development mode"
+  elif [[ "$(git rev-parse origin/master)" != "$(git rev-parse master)" ]]; then
+    warn "Updates available for dots. Run pushd ~/.dotfiles; git pull; popd"
+  fi
+  popd > /dev/null
 fi
-popd > /dev/null
 
 # Changes to the directory with the specified name, unless passed an integer.
 # Integers navigate to the nth-parent defaulting to 1.
