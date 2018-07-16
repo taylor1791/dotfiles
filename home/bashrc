@@ -44,8 +44,8 @@ function warn() {
   fi
 }
 
-# In non-interactive shells $PS1 is not set
-if [[ $- == *i* ]]; then
+# Dotfiles framework warnings
+if [[ $- == *i* ]]; then # In non-interactive shells $PS1 is not set
   # Download the updates
   pushd $HOME/.dotfiles > /dev/null
   { git fetch & disown; } 2>/dev/null
