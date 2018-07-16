@@ -4,6 +4,9 @@ LOCAL_BASHRC="$HOME/.bashrc.local"
 export PS1="\u@\h:\w\\$ "
 export HISTSIZE="10000"
 
+# Enhance PATH
+export PATH="$HOME/.bin:$PATH"
+
 # Better defaults
 alias ls="ls -G"
 alias la="ls -AlF"
@@ -24,9 +27,6 @@ source "$NVM_DIR/nvm.sh"
 
 # Load direnv
 eval "$(direnv hook bash)"
-
-# Enhance PATH
-export PATH="$HOME/.bin:$PATH"
 
 source /usr/local/etc/profile.d/z.sh
 [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
