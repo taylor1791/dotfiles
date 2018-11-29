@@ -57,6 +57,9 @@ call plug#begin('~/.vim/plugged')
   " Plug '~/my-prototype-plugin'
 call plug#end()
 
+" Markdown specific settings
+autocmd BufRead,BufNewFile *.md,*.txt setlocal nocindent
+
 " This is my fancy autocomplete written by the psychollama
 function! s:check_back_space() abort
   let l:col = col('.') - 1
