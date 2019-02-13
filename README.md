@@ -3,6 +3,7 @@
 I don't know what I am doing
 
 ## Scrape these
+* https://github.com/liuchengxu/space-vim
 * https://github.com/paulirish/dotfiles
 * https://github.com/thoughtbot/dotfiles
 * https://github.com/m/dotfiles
