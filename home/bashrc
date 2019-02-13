@@ -23,9 +23,8 @@ alias t="tmux attach -t"
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
 
-# Load nvm - node version manager
-export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"
+# Load node version manager
+eval `fnm env`
 
 # Load direnv
 eval "$(direnv hook bash)"

@@ -18,9 +18,6 @@ function main() {
   install_app curl
   install_app git
 
-  # Manual config installs
-  [[ ! -d ~/.nvm ]] && manual_install "nvm" 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash'
-
   # Install home config
   cd "$DIR/home"
   for file in `find . -type f -maxdepth 1`; do
@@ -44,6 +41,7 @@ function main() {
   install_app vim
   install_app direnv
   install_app tmux
+  install_app fnm
   install_app "/usr/local/etc/profile.d/z.sh" z
 
   # Configure vim

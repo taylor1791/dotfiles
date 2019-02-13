@@ -11,7 +11,12 @@ fi
 install() {
   NAME="$1"
 
-  if [[ "$NAME" == "silversearcher-ag" ]]; then
+  if [[ "$NAME" == "fnm" ]]; then
+    curl -L -O https://github.com/Schniz/fnm/releases/download/v1.2.1/fnm-macos.zip
+    unzip -j fnm-macos.zip -d ~/.bin/
+    chmod +x ~/.bin/fnm
+    rm fnm-macos.zip
+  elif [[ "$NAME" == "silversearcher-ag" ]]; then
     NAME="the_silver_searcher"
   fi
 
