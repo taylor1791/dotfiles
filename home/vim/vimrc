@@ -162,8 +162,8 @@ set undodir=~/.vim/.undo
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.swap
 
-" This makes OSX clipboard work as expected
-" set clipboard=unnamed
+" OSX clipboard & X11 clipboard
+set clipboard=unnamed
 set clipboard+=unnamedplus
 
 " REPL Like things
