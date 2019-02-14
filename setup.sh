@@ -45,6 +45,14 @@ function main() {
   install_app fnm
   install_app "/usr/local/etc/profile.d/z.sh" z
 
+  # Install fonts
+  for f in `find fonts/ -name '*.ttf'`; do
+    if [[ ! -f "$FONT_DIRECTORY/$(basename $f)" ]]; then
+      echo Installing $(basename "$f")
+      cp "$f" "$FONT_DIRECTORY"
+    fi
+  done
+
   # Configure vim
   mkdir -p ~/.vim/.{undo,backup,swap}
   vim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
