@@ -19,7 +19,7 @@ function main() {
   install_app git
 
   # Install home config
-  cd "$DIR/home"
+  pushd "$DIR/home" > /dev/null
   for file in `find . -type f -maxdepth 1`; do
     full_file="$HOME/.$(basename $file)"
     clean_links "$full_file" "$file"
@@ -31,6 +31,7 @@ function main() {
     mkdir -p $HOME/.$(dirname $file)
     link "$DIR/home/$file" "$HOME/.$file"
   done
+  popd > /dev/null
 
   # Manual installs that require
   manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
