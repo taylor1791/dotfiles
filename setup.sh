@@ -70,7 +70,7 @@ function install_app() {
   fi
 
   if [[ $CHECK == /* ]]; then
-    [[ ! -f "$CHECK" ]] && install "$PKG"
+    [[ ! -f "$CHECK" ]] && install "$PKG" || true
   elif ! type "$1" > /dev/null 2>&1; then
     install "$PKG"
   fi
