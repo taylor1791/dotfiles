@@ -45,6 +45,7 @@ function main() {
   install_app "/usr/local/etc/profile.d/z.sh" z
 
   # Configure vim
+  mkdir -p ~/.vim/.{undo,backup,swap}
   vim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
 
   # Install crons
