@@ -59,7 +59,7 @@ function main() {
   vim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
 
   # Install crons
-  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME 32"
+  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME/src 32"
 }
 
 # $1 in the command and $2 will be evaled if it does not exist
