@@ -37,6 +37,7 @@ function main() {
   manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
 
   # Install Tools
+  install_app shuf coreutils
   install_app jq
   install_app ag silversearcher-ag
   install_app vim
