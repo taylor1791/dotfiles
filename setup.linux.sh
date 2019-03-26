@@ -31,6 +31,10 @@ install() {
     unzip -j fnm-linux.zip -d ~/.bin/
     chmod +x ~/.bin/fnm
     rm fnm-linux.zip
+  elif [[ "$NAME" == "ripgrep" ]]; then
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+    sudo dpkg -i ripgrep_0.10.0_amd64.deb
+    rm -rf ripgrep_0.10.0_amd64.deb
   else
     sudo apt-get install -y "$NAME"
   fi

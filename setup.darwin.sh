@@ -22,8 +22,6 @@ install() {
     rm fnm-macos.zip
   elif [[ "$NAME" == "oathtool" ]]; then
     brew install oath-toolkit
-  elif [[ "$NAME" == "silversearcher-ag" ]]; then
-    brew install the_silver_searcher
   else
     brew install "$NAME"
   fi
