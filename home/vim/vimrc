@@ -136,6 +136,7 @@ set lazyredraw
 set viminfo^=%
 
 syntax on
+set synmaxcol=256
 
 set wildignore+=*/tmp/*,*.sp,*.swp,*.zip,*node_modules*
 highlight TrailingSpace guibg=red ctermbg=red
