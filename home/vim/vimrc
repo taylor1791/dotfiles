@@ -1,6 +1,4 @@
 call plug#begin('~/.vim/plugged')
-  " Themes
-  Plug '~/.vim/my-vim'
 
   " Usability
   Plug 'editorconfig/editorconfig-vim' " Change config based on project
@@ -95,14 +93,7 @@ set background=dark
 
 set termguicolors
 set t_Co=256
-colorscheme ThemerNightSky
-"Adjust signscolumn and wombat
-hi! link SignColumn LineNr
-
-" Use pleasant but very visible search hilighting
-hi! link Visual Search
-
-hi clear Conceal " Use same color behind concealed unicode characters
+colorscheme RustDocDark
 
 set title
 set nowrap
