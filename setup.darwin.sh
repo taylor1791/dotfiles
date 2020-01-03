@@ -55,4 +55,3 @@ install_cask iterm2 "/Applications/iTerm.app"
 install_cask virtualbox "/Applications/VirtualBox.app"
 install_cask vagrant "/opt/vagrant/bin/vagrant"
 install_cask docker "/Applications/Docker.app"
-install_chrome_beta
