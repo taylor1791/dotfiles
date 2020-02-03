@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'troydm/zoomwintab.vim' " Maxmize a buffer
   Plug 'MarcWeber/vim-addon-local-vimrc' " local vimrc
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Load nerd tree whn
+  Plug 'PsychoLlama/alternaut.vim' " test and source swapping
 
   " Coding
   Plug 'w0rp/ale' " Asynchronous Lint Engine
@@ -54,6 +55,20 @@ call plug#begin('~/.vim/plugged')
   " " Unmanaged plugin (manually installed and updated)
   " Plug '~/my-prototype-plugin'
 call plug#end()
+
+" General Config
+let mapleader = " "
+
+" Plugin Config
+
+" PsychoLlama/alternaut.vim
+call alternaut#RegisterLanguage('javascript', {
+  \   'directory_naming_conventions': ['__tests__', 'tests'],
+  \   'file_naming_conventions': ['{name}.test.{ext}', '{name}.spec.{ext}'],
+  \   'file_extensions': ['js', 'jsx'],
+  \ })
+nnoremap <silent><leader>t :call alternaut#Toggle()<cr>
+
 
 " Markdown specific settings
 autocmd BufRead,BufNewFile *.md,*.txt setlocal nocindent
@@ -198,8 +213,6 @@ nnoremap ; :
 " Treat long lines as break lines
 nnoremap j gj
 nnoremap k gk
-
-let mapleader = " "
 
 " Source the vimrc file after saving it
 augroup sourcing
