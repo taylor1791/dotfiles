@@ -8,6 +8,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Load nerd tree whn
   Plug 'PsychoLlama/alternaut.vim' " test and source swapping
 
+  " Fuzzy Finder
+  Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+  Plug 'lotabout/skim.vim'
+
   " Coding
   Plug 'w0rp/ale' " Asynchronous Lint Engine
   let g:ale_maximum_file_size = '500000'
@@ -69,6 +73,8 @@ call alternaut#RegisterLanguage('javascript', {
   \ })
 nnoremap <silent><leader>t :call alternaut#Toggle()<cr>
 
+" Fuzzy Finder
+nnoremap <leader>f <esc>:Files!<cr>
 
 " Markdown specific settings
 autocmd BufRead,BufNewFile *.md,*.txt setlocal nocindent
