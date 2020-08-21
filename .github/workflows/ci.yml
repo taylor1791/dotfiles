@@ -1,0 +1,23 @@
+name: CI Suite
+
+on: [push, pull_request]
+
+jobs:
+  test_ubuntu:
+    name: Ubuntu
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+    - name: ./bin/test.sh
+      run: bash -x ./bin/test.sh
+  test_macos:
+    name: MacOS
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+    - name: ./bin/test.sh
+      run: bash -x ./bin/test.sh
