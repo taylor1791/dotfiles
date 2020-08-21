@@ -2,7 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-FONT_DIRECTORY="$HOME/.fonts"
 
 install_z() {
   git clone https://github.com/rupa/z.git --depth 1

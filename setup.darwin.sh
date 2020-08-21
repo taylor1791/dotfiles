@@ -2,8 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-FONT_DIRECTORY="$HOME/Library/fonts"
-
 if ! type "brew" > /dev/null 2>&1; then
   echo "Installing the homebrew package manager..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
