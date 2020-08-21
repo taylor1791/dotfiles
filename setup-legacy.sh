@@ -35,7 +35,6 @@ function main() {
 
   # Install Tools
   install_app shuf coreutils
-  install_app jq
   install_app ripgrep
   install_app vim
   install_app direnv
