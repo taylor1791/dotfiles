@@ -33,9 +33,6 @@ function main() {
   done
   popd > /dev/null
 
-  # Manual installs that require
-  manual_install "wipe-modules" 'curl -L https://raw.githubusercontent.com/bntzio/wipe-modules/master/wipe-modules.sh -o ~/.bin/wipe-modules && chmod +x ~/.bin/wipe-modules'
-
   # Install Tools
   install_app shuf coreutils
   install_app jq
@@ -58,9 +55,6 @@ function main() {
   # Configure vim
   mkdir -p ~/.vim/.{undo,backup,swap}
   vim -u /dev/null -c 'PlugUpgrade' -c 'PlugInstall' -c 'qa'
-
-  # Install crons
-  install_cron "0 12 */1 * * $HOME/.bin/wipe-modules $HOME/src 32"
 }
 
 # $1 in the command and $2 will be evaled if it does not exist
