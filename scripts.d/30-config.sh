@@ -19,15 +19,21 @@ function clean_links() {
   fi
 }
 
+ROOT="$(pwd)"
+pushd home > /dev/null
+
 # Files
 for file in `find . -type f -maxdepth 1`; do
-  full_file="~/.$(basename $file)"
+  file="$(basename $file)"
+  full_file="${HOME}/.$(basename $file)"
   clean_links "$full_file" "$file"
-  link "./home/$file" "$full_file"
+  link "${ROOT}/home/$file" "$full_file"
 done
 
 # Directories
 for file in `find . -type f -mindepth 2 | cut -b 3-`; do
   mkdir -p $HOME/.$(dirname $file)
-  link "./home/$file" "$HOME/.$file"
+  link "${ROOT}/home/$file" "$HOME/.$file"
 done
+
+popd > /dev/null
