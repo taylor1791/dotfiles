@@ -20,7 +20,6 @@ function main() {
   install_app shuf coreutils
   install_app ripgrep
   install_app vim
-  install_app direnv
   install_app fnm
   install_app oathtool oathtool
   install_app "/usr/local/etc/profile.d/z.sh" z
