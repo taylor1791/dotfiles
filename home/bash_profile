@@ -1,3 +1,12 @@
+# Initialize the default nix profile
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+  . ~/.nix-profile/etc/profile.d/nix.sh;
+
+  if [ -e /etc/ssl/certs/ca-certificates.crt ]; then
+    export NIX_SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+  fi
+fi
+
 if [[ -f $HOME/.bashrc && $- == *i* ]]; then
    source $HOME/.bashrc
 fi
