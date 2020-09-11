@@ -31,7 +31,9 @@ eval `fnm env`
 # Load direnv
 eval "$(direnv hook bash)"
 
-source /usr/local/etc/profile.d/z.sh
+# Load "z"
+eval "$(zoxide init bash)"
+
 [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
 function warn() {

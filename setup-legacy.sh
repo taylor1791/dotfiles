@@ -22,7 +22,6 @@ function main() {
   install_app vim
   install_app fnm
   install_app oathtool oathtool
-  install_app "/usr/local/etc/profile.d/z.sh" z
 
   # Configure vim
   mkdir -p ~/.vim/.{undo,backup,swap}
