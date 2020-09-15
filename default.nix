@@ -1,7 +1,7 @@
 with (import <nixpkgs> {});
 
 {
-  inherit jq tmux zoxide;
+  inherit gnupg jq htop ripgrep tmux vim zoxide;
   inherit direnv lorri;
 
   tfswitch = import ./pkgs/tfswitch/default.nix {
