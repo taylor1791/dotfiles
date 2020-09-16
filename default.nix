@@ -1,8 +1,17 @@
 with (import <nixpkgs> {});
 
 {
-  inherit gnupg jq htop ripgrep tmux vim wget zoxide;
+  # Environment Management
   inherit direnv lorri;
+
+  # Development Tools
+  inherit gnupg jq ripgrep tmux vim wget zoxide;
+
+  # Investigation Tools
+  inherit htop
+
+  # "Primary-machine" tools
+  inherit (oath-toolkit);
 
   tfswitch = import ./pkgs/tfswitch/default.nix {
     inherit buildGoPackage fetchFromGitHub;
