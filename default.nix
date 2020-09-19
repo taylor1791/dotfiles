@@ -8,7 +8,7 @@ with (import <nixpkgs> {});
   inherit gnupg jq ripgrep tmux vim wget zoxide;
 
   # Investigation Tools
-  inherit htop traceroute
+  inherit htop tcptraceroute traceroute
 
   # "Primary-machine" tools
   inherit (oath-toolkit);
