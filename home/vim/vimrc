@@ -66,12 +66,14 @@ let mapleader = " "
 " Plugin Config
 
 " PsychoLlama/alternaut.vim
-call alternaut#RegisterLanguage('javascript', {
+let alternaut#conventions = {}
+let alternaut#conventions['javascript'] = {
   \   'directory_naming_conventions': ['__tests__', 'tests'],
   \   'file_naming_conventions': ['{name}.test.{ext}', '{name}.spec.{ext}'],
   \   'file_extensions': ['js', 'jsx'],
-  \ })
-nnoremap <silent><leader>t :call alternaut#Toggle()<cr>
+  \ }
+
+nmap <leader>t <Plug>(alternaut-toggle)
 
 " Fuzzy Finder
 nnoremap <leader>f <esc>:Files!<cr>
