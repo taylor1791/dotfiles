@@ -1,6 +1,15 @@
-call plug#begin('~/.vim/plugged')
+filetype plugin indent on
 
+let g:purview_config_note_dir = $HOME . "/Desktop/zettles"
+let g:purview_config_git_remote = "ssh://root@git.idagalaxy.com:2222/taylor1791/zettle.git"
+
+source ~/.vim/purview.vim
+nnoremap <leader>s <esc>:source %<cr>
+nnoremap <leader>v <esc>:vsplit ~/.vim/vimrc
+
+call plug#begin('~/.vim/plugged')
   " Usability
+  Plug 'machakann/vim-swap' " Do not autocomplete files in gitignore
   Plug 'editorconfig/editorconfig-vim' " Change config based on project
   Plug 'vim-scripts/gitignore' " Do not autocomplete files in gitignore
   Plug 'troydm/zoomwintab.vim' " Maxmize a buffer
@@ -12,18 +21,54 @@ call plug#begin('~/.vim/plugged')
   Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
   Plug 'lotabout/skim.vim'
 
-  " Coding
+  " Someday I will read hex colors the way I read english. Until then...
+  Plug 'chrisbra/Colorizer'
+  let g:colorizer_auto_filetype='css,html,js'
+  let g:colorizer_auto_color = 1
+
+  " Interactive Coding
   Plug 'w0rp/ale' " Asynchronous Lint Engine
   let g:ale_maximum_file_size = '500000'
+
+  " LSP 
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'rls',
+      \ 'cmd': {server_info->['rls']},
+      \ 'whitelist': ['rust'],
+      \ })
+  nnoremap <silent><leader>i :LspHover<cr>
+
+  "Plug 'SirVer/ultisnips'
+  "let g:UltiSnipsEditSplit="vertical"
+  "let g:UltiSnipsExpandTrigger="<c-j>"
+
+
+  " let g:UltiSnipsJumpForwardTrigger=""
+  " let g:UltiSnipsJumpBackwardTrigger=""
+
+  " Plug 'zxqfl/tabnine-vim'
+  " let g:ycm_key_list_select_completion = ["<c-n>"]
+  " let g:ycm_key_list_previous_completion = ["<c-p>"]
 
   " Languages
   Plug 'PsychoLlama/further.vim' " Better file resolution for js
   Plug 'raichoo/purescript-vim' " PureScript Syntax Highlighting
   Plug 'rust-lang/rust.vim' " Rust Syntax Highlighting
+  " Plug 'lervag/vimtex' " See :help vimtex
+  Plug 'jvirtanen/vim-hcl'
+
+
+  " English is a language right?
+  Plug 'reedes/vim-wordy'
+  Plug 'reedes/vim-pencil'
 
   " Fun
   Plug 'mmisono/viminesweeper', { 'on': 'MineSweeper' }
 
+  " IDE
+  " Plug 'rhysd/git-messenger.vim' " Didn't seem to work in vim 8
   " Plug 'tpope/vim-fugitive'
   " Plug 'int3/vim-extradite'
   " Plug 'Raimondi/delimitMate'
@@ -79,33 +124,16 @@ nmap <leader>t <Plug>(alternaut-toggle)
 nnoremap <leader>f <esc>:Files!<cr>
 
 " Markdown specific settings
-autocmd BufRead,BufNewFile *.md,*.txt setlocal nocindent
+autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal nocindent
+autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal nosmartindent
+autocmd BufRead,BufNewFile *.md,*.txt setlocal textwidth=80
+autocmd FileType *.md,*.txt call pencil#init({'wrap': 'hard', 'autoformat': 1})
 
-" This is my fancy autocomplete written by the psychollama
-function! s:check_back_space() abort
-  let l:col = col('.') - 1
-  return !l:col || getline('.')[l:col - 1]  =~? '\s'
-endfunction
-
-function! s:tab_completion(shifting) abort
-  if pumvisible()
-    if a:shifting
-      return "\<C-p>"
-    endif
-
-    return "\<C-n>"
-  elseif s:check_back_space()
-    return "\<TAB>"
-  else
-    return "\<C-n>"
-  endif
-endfunction
-
-inoremap <silent><expr><TAB> <SID>tab_completion(0)
-inoremap <silent><expr><S-TAB> <SID>tab_completion(1)
-
-
-
+autocmd BufRead,BufNewFile *.tf set filetype=terraform
+autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
+autocmd BufRead,BufNewFile *.tfstate set filetype=json
+autocmd BufRead,BufNewFile *.tfstate.backup set filetype=json
+silent! autocmd! filetypedetect BufRead,BufNewFile *.tf
 
 filetype off
 filetype plugin indent on
@@ -193,7 +221,7 @@ let g:syntastic_haskell_hdevtools_args = '-g -Wall -g -fno-code'
 " function! Pointfree()
 "   call setline('.', split(system('pointfree '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
 " endfunction
-" 
+"
 " function! Pointful()
 "   call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
 " endfunction
@@ -242,4 +270,7 @@ augroup last_edit
        \   exe "normal! g`\"" |
        \ endif
 augroup END
+
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
 

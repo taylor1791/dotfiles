@@ -2,11 +2,14 @@
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh;
 
-  if [ -e /etc/ssl/certs/ca-certificates.crt ]; then
-    export NIX_SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+  if [ -e /etc/ssl/cert.pem ]; then
+    export NIX_SSL_CERT_FILE="/etc/ssl/cert.pem"
   fi
 fi
 
 if [[ -f $HOME/.bashrc && $- == *i* ]]; then
    source $HOME/.bashrc
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+PATH=/Users/teverding/.hv_bin:${PATH}

@@ -13,15 +13,18 @@ function main() {
   source $PLATFORM_COMMANDS
 
   # Install really essentail things
+  # sc-im skim
   install_app curl
   install_app git
 
   # Install Tools
+  # fatrace strace
   install_app shuf coreutils
   install_app ripgrep
   install_app vim
   install_app fnm
   install_app oathtool oathtool
+
 
   # Configure vim
   mkdir -p ~/.vim/.{undo,backup,swap}

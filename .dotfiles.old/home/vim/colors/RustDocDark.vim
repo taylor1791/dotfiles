@@ -61,6 +61,51 @@ exec "hi TODO guibg=".s:alert3." guifg=".s:shade5
 exec "hi Underline guifg=".s:alert2
 exec "hi TrailingSpace guibg=".s:alert1." guifg=".s:shade5
 
+"""""""""""""""""
+" Unused Groups "
+"""""""""""""""""
+"exec "hi ColorColumn guibg=".s:shade1
+"exec "hi Conceal guifg=".s:shade2
+"exec "hi Cursor guifg=".s:shade0
+"exec "hi CursorColumn guibg=".s:shade1
+"exec "hi CursorLine guibg=".s:shade1." cterm=none"
+"exec "hi Directory guifg=".s:accent5
+"exec "hi DiffAdd guifg=".s:accent3." guibg=".s:shade1
+"exec "hi DiffChange guifg=".s:accent2." guibg=".s:shade1
+"exec "hi DiffDelete guifg=".s:accent0." guibg=".s:shade1
+"exec "hi DiffText guifg=".s:accent2." guibg=".s:shade2
+"exec "hi ErrorMsg guifg=".s:shade7." guibg=".s:accent0
+"exec "hi VertSplit guifg=".s:shade0." guibg=".s:shade3
+"exec "hi Folded guifg=".s:shade4." guibg=".s:shade1
+"exec "hi FoldColumn guifg=".s:shade4." guibg=".s:shade1
+"exec "hi SignColumn guibg=".s:shade0
+"exec "hi IncSearch guifg=".s:shade0." guibg=".s:accent2
+"exec "hi LineNr guifg=".s:shade2." guibg=".s:shade0
+"exec "hi CursorLineNr guifg=".s:shade3." guibg=".s:shade1
+"exec "hi MatchParen guibg=".s:shade2
+"exec "hi MoreMsg guifg=".s:shade0." guibg=".s:accent4
+"exec "hi NonText guifg=".s:shade2." guibg=".s:shade0
+"exec "hi Pmenu guifg=".s:shade6." guibg=".s:shade1
+"exec "hi PmenuSel guifg=".s:accent4." guibg=".s:shade1
+"exec "hi PmenuSbar guifg=".s:accent3." guibg=".s:shade1
+"exec "hi PmenuThumb guifg=".s:accent0." guibg=".s:shade2
+"exec "hi Question guifg=".s:shade7." guibg=".s:shade1
+"exec "hi Search guifg=".s:shade0." guibg=".s:accent2
+"exec "hi SpecialKey guifg=".s:accent7." guibg=".s:shade0
+"exec "hi SpellBad guifg=".s:accent0
+"exec "hi SpellCap guifg=".s:accent2
+"exec "hi SpellLocal guifg=".s:accent4
+"exec "hi SpellRare guifg=".s:accent1
+"exec "hi StatusLine guifg=".s:shade4." guibg=".s:shade1." gui=none cterm=none"
+"exec "hi TabLine guifg=".s:shade5." guibg=".s:shade1
+"exec "hi TabLineFill guibg=".s:shade1
+"exec "hi TabLineSel guifg=".s:shade6." guibg=".s:shade0
+"exec "hi Title guifg=".s:accent5
+"exec "hi Visual guibg=".s:shade1
+"exec "hi VisualNOS guifg=".s:accent0." guibg=".s:shade1
+"exec "hi WarningMsg guifg=".s:accent0
+"exec "hi WildMenu guifg=".s:accent4." guibg=".s:shade1
+
 """"""""""""
 " Clean up "
 """"""""""""

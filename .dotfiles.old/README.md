@@ -3,6 +3,10 @@
 I don't know what I am doing
  * asciinemia
 
+* Crons
+ - nix-env --delete-generations 14d; nix-store --gc;
+ - docker gc
+
 ## Scrape these
 * https://github.com/liuchengxu/space-vim
 * https://github.com/paulirish/dotfiles
@@ -43,3 +47,6 @@ I don't know what I am doing
 * Operator: http://www.typography.com/fonts/operator/styles/
 * Hasklig: https://github.com/i-tu/Hasklig
 * Equity: http://practicaltypography.com/equity.html<Paste>
+
+https://github.com/machakann/vim-swap
+https://github.com/AndrewRadev/splitjoin.vim

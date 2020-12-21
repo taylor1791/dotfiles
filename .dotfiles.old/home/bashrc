@@ -9,7 +9,7 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 # Enhance PATH
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/bin:$PATH"
 
 # Better defaults
 alias ls="ls -G"
@@ -24,9 +24,6 @@ alias g="git"
 alias t="tmux attach -t"
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
-
-# Load node version manager
-eval `fnm env`
 
 # Load direnv
 eval "$(direnv hook bash)"
@@ -51,7 +48,7 @@ function warn() {
 if [[ $- == *i* ]]; then # In non-interactive shells $PS1 is not set
   # Download the updates
   pushd $HOME/.dotfiles > /dev/null
-  { git fetch & disown; } 2>/dev/null
+  # { git fetch & disown; } 2>/dev/null
 
   if [[ "$(git status -s)" != "" ]]; then
     warn "There are uncommitted changed to dotfiles"
@@ -98,4 +95,14 @@ function truecolor() {
     }
     printf "\n";
   }'
+}
+
+function lines() {
+  local start="${1}"
+  local total="${2}"
+  local file="${3}"
+  local end="$((${start} + ${total} - 1))"
+  local quit="$((${end} + 1))"
+
+  sed -n "${start},${end}p;${quit}q" "${file}"
 }

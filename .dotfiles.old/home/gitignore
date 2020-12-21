@@ -1,0 +1,9 @@
+# MacOS metadata
+.DS_Store
+
+# Editor config
+.vimrc
+
+# Runtime configuration
+.envrc
+.env
