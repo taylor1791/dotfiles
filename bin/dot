@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+DOTFILES_DIR="${HOME}/.dotfiles"
+function dot() {
+  git --work-tree="${HOME}" --git-dir="${DOTFILES_DIR}" "${@}"
+}
+
+function set_show_untracked_files() {
+  dot config --local status.showUntrackedFiles no
+}
+
+# Install dotfiles
+if [[ ! -d "${HOME}/.dotfiles" ]]; then
+  set -e
+
+  # Use the current branch when running in github actions.
+  if [[ "${GITHUB_ACTIONS}" == "true" ]]; then
+    # Just moving/copying an existing .git will not have the same effect. clone
+    # --bare has the effect of staging all the missing files.
+    git clone --bare .git --quiet "${DOTFILES_DIR}"
+  else
+    # Use a git url to avoid needing an ssh key.
+    git clone --bare git://github.com/taylor1791/dotfiles --quiet "${DOTFILES_DIR}"
+  fi
+  set_show_untracked_files
+
+  # Attempt to checkout dotfiles. Most likely it will fail becuase of
+  # "conflicting" dotfiles. Try storing them away and trying again.
+  if ! dot checkout 2> /dev/null; then
+    # Create a "safe" place for old files to go.
+    BACKUP_DIR="${HOME}/dotfile-conflicts.$(date +%s)"
+    mkdir "${BACKUP_DIR}"
+
+    # When conflicts exist git will say something like this (note the tabs).
+    # ```
+    # error: The following untracked working tree files would be overwritten by checkout:
+    # 	.dotfiles.old/setup-legacy.sh
+	# 	.dotfiles.old/setup.sh
+    # Please move or remove them before you switch branches.
+    # Aborting
+    # ```
+    dot checkout 2>&1 | awk '/^[[:space:]]+./ { print $1 }' | while read -r file; do
+      # Ensure we have a directory in which to place the files.
+      declare dir="$(dirname ${file})"
+      if [[ "${dir}" != "" ]]; then
+        mkdir -p "${BACKUP_DIR}/${dir}"
+      fi
+
+      mv "${HOME}/${file}" "${BACKUP_DIR}/${file}"
+    done
+
+    # Attempt again after our clean-up.
+    if ! dot checkout; then
+      echo ""
+      echo "Failed to checkout dotfiles. Run this, work it out, and push a fix:"
+      echo ""
+      echo "        git --work-tree="${HOME}" --git-dir="${DOTFILES_DIR}" checkout"
+      echo ""
+      exit 1
+    fi
+
+    echo "Conflicting dotfiles moved to ${BACKUP_DIR}"
+    set +e
+  fi
+
+  # Change origin to one that is push/pull able.
+  dot remote remove origin
+  dot remote add origin git@github.com:taylor1791/dotfiles.git
+
+  echo 'Installation successful! You may now `dot` 😎.'
+  exit 0
+fi
+
+set_show_untracked_files
+dot "${@}"
