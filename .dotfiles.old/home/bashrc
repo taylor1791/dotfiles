@@ -1,5 +1,3 @@
-[[ $- != *i* ]] && return
-
 LOCAL_BASHRC="$HOME/.bashrc.local"
 
 # A minimilist prompt
