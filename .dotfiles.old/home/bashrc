@@ -6,9 +6,6 @@ export HISTSIZE="10000"
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# Enhance PATH
-export PATH="$HOME/.bin:$HOME/bin:$PATH"
-
 # Better defaults
 alias ls="ls -G"
 alias la="ls -AlF"
