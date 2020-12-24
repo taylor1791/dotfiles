@@ -9,6 +9,7 @@ function status() {
   # A fake associative array for our bash 3 "friends."
   declare -a files=(
     "setup/nix.sh:setup/nix.sh"
+    "setup/nix-profile.sh:default.nix"
   )
 
   declare file
