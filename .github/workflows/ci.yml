@@ -28,3 +28,31 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
+
+  dotfiles_test:
+    name: "Script: dotfiles"
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 8
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+
+    - name: Install dotfiles
+      run: cat bin/dot | bash -x
+
+    - name: Add ~/bin to path
+      run: echo "${HOME}/bin" >> "${GITHUB_PATH}"
+
+    - name: Run updates
+      run: dotfiles autorun
+
+    - name: Verify reset
+      run: dotfiles reset
+
+    - name: Verify idempotence
+      run: dotfiles autorun
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]

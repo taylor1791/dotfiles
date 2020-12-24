@@ -13,3 +13,6 @@ fi
 # protocol and fail the transfer. By exiting in non-interactive shells, this
 # cannot happen.
 [[ $- != *i* ]] && return
+
+# Inform the user of required manual tasks.
+dotfiles status
