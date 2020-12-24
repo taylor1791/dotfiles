@@ -28,17 +28,6 @@ eval "$(zoxide init bash)"
 
 [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
-function warn() {
-  if [[ -n "$TERM" && "$TERM" != "dumb" && "$TERM" != "unknown" && -n "$(which tput)" ]]; then
-    tput bold
-    tput setaf 1
-    echo "$@"
-    tput sgr0
-  else
-    echo "$@"
-  fi
-}
-
 # Dotfiles framework warnings
 if [[ $- == *i* ]]; then # In non-interactive shells $PS1 is not set
   # Download the updates
