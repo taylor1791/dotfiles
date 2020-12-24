@@ -1,0 +1,30 @@
+[user]
+  email = taylor1791@users.noreply.github.com
+  name = Taylor Everding
+
+[alias]
+  ap = add --patch
+  ca = commit --amend
+  cm = commit --message
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase --interactive
+  s = status
+
+  # Lost something (e.g. stash) and don't remember the hash? This can help
+  helpme="!git log --graph --oneline --decorate $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
+  pushall = push --recurse-submodules=on-demand
+
+[core]
+  # Use line endings as they are in the repository.
+  autocrlf = input
+  editor = vim
+
+[difftool]
+  prompt = false
+
+[help]
+  autocorrect = 20
+
+[pull]
+  rebase = true
