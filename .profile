@@ -9,3 +9,9 @@
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && [ "$-" != "${-#*i}" ]; then
   source "$HOME/.bashrc"
 fi
+
+# To support different platforms uniformly, all platforms must use the same
+# package manager. I choose you, Nix!
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+  . ~/.nix-profile/etc/profile.d/nix.sh;
+fi
