@@ -16,3 +16,4 @@ Usage
 These dotfiles come with a few things.
 
  * **bin/dot** - Manages your dotfiles. It wraps `git`.
+ * **bin/truecolor** - Manually verifies terminal true color support.
