@@ -14,5 +14,10 @@ fi
 # cannot happen.
 [[ $- != *i* ]] && return
 
+# Easier: `open`. Harder: `xdg-open`.
+if ! command -v open > /dev/null; then
+  alias open="xdg-open"
+fi
+
 # Inform the user of required manual tasks.
 dotfiles status
