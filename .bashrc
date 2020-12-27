@@ -14,6 +14,10 @@ fi
 # cannot happen.
 [[ $- != *i* ]] && return
 
+# Many applications delegate to this when editing a file. Bash command line
+# editing is one example.
+export EDITOR=vim
+
 # Easier: `open`. Harder: `xdg-open`.
 if ! command -v open > /dev/null; then
   alias open="xdg-open"

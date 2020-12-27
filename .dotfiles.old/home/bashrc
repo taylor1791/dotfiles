@@ -3,8 +3,6 @@ LOCAL_BASHRC="$HOME/.bashrc.local"
 # A minimilist prompt
 export PS1="\u@\h:\w\\$ "
 export HISTSIZE="10000"
-export VISUAL=vim
-export EDITOR=$VISUAL
 
 # Better defaults
 alias ls="ls -G"
