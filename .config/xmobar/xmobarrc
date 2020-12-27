@@ -1,16 +1,6 @@
--- Black   #282C34
--- White   #ABB2BF
--- L Red   #E06C75
--- D Red   #BE5046
--- Green   #98C379
--- L Yel   #E5C07b
--- D Yel   #D19A66
--- Blue    #61AFEF
--- Magenta #C678DD
--- Cyan    #56B6C2
--- G Grey  #4B5263
--- C Grey  #5C6370
-
+-- All colors come from the OneDark theme. Values for --low, --normal, and
+-- --high use light red, light yellow, and white depeninding on threshold
+-- semantics.
 Config {
     font = "xft:mononoki-11:bold"
     bgColor = "#282C34",

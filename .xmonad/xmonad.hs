@@ -24,12 +24,16 @@ toggleKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- The configuration for xmonad. Normally I would write the type signature, but
 -- the signature encodes all of the layouts. Neat, I think....
-xmonadConfig = defaultConfig {
+xmonadConfig = def {
     -- The default, xterm, is about as good as cmd.exe.
     terminal = "alacritty",
 
     -- Sometimes, with borderWidth < 2, I would lose the focused window.
-    borderWidth = 2
+    borderWidth = 2,
+
+    -- OneDark Theme
+    focusedBorderColor = "#C678DD", -- Magenta
+    normalBorderColor  = "#4B5263"  -- Gutter Grey
   } `removeKeys` [
     (mod1Mask, xK_p) -- Remove dmenu for rofi
   ] `additionalKeys` [

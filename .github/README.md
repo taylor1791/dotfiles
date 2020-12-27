@@ -20,3 +20,9 @@ These dotfiles come with a few things.
  * **bin/dotfiles** - Manages updates to dotfiles.
  * **bin/truecolor** - Manually verifies terminal true color support.
  * **bin/warn** - Echos it arguments in color to stderr
+
+Theming
+-------
+Where possible, applications implement the
+[OneDark](https://github.com/joshdick/onedark.vim) theme. This includes:
+XMonad, and XMobar.
