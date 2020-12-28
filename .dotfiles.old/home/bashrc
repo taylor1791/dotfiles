@@ -18,9 +18,6 @@ alias t="tmux attach -t"
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
 
-# Load direnv
-eval "$(direnv hook bash)"
-
 # Load "z"
 eval "$(zoxide init bash)"
 

@@ -23,5 +23,10 @@ if ! command -v open > /dev/null; then
   alias open="xdg-open"
 fi
 
+# Turn on direnv to autoconfigure development environments.
+if command -v direnv > /dev/null; then
+  eval "$(direnv hook bash)"
+fi
+
 # Inform the user of required manual tasks.
 dotfiles status
