@@ -9,7 +9,6 @@ with (import <nixpkgs> {});
 
   # Investigation Tools
   inherit htop tcptraceroute;
-  # traceroute
 
   # Desktop Tools
   inherit alacritty;
