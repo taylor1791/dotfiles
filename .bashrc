@@ -28,5 +28,23 @@ if command -v direnv > /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
+# Changes to the nth-parent directory, defaulting to 1.
+function up() {
+  declare dir=""
+
+  if [[ -z "${1}" ]]; then
+    dir=".."
+  elif [[ "${1}" =~ ^[0-9]+$ ]]; then
+    declare i=0
+
+    while [[ "${i}" -lt ${1:-1} ]]; do
+      dir+="../"
+      i="$(($i+1))"
+    done
+  fi
+
+  cd "${dir}"
+}
+
 # Inform the user of required manual tasks.
 dotfiles status
