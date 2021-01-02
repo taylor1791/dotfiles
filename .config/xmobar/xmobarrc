@@ -51,7 +51,7 @@ Config {
 
       Run Battery [
        "--template", "Batt: <left>%",
-        "--ppad", "2",
+        "--ppad", "3",
         "--Low", "25",
         "--High", "75",
         "--low", "#E06C75",
