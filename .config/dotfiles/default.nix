@@ -10,6 +10,9 @@ with (import <nixpkgs> {});
   # Investigation Tools
   inherit htop tcptraceroute;
 
+  # Personal Tools
+  inherit oathToolkit rage;
+
   # Desktop Tools
   inherit alacritty;
 } // (if !pkgs.stdenv.isDarwin then {

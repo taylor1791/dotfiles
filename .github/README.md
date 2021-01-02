@@ -19,6 +19,7 @@ These dotfiles come with a few things.
  * **bin/daily** - Manages reoccuring and trickle tasks.
  * **bin/dot** - Manages your dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
+ * **bin/totp** - Encrypted TOTP authenticator.
  * **bin/truecolor** - Manually verifies terminal true color support.
  * **bin/warn** - Echos it arguments in color to stderr
 
