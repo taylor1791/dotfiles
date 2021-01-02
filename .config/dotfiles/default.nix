@@ -11,7 +11,7 @@ with (import <nixpkgs> {});
   inherit htop tcptraceroute;
 
   # Personal Tools
-  inherit oathToolkit rage;
+  inherit oathToolkit rage unzip;
 
   # Desktop Tools
   inherit alacritty;
