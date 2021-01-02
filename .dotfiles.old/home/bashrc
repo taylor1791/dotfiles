@@ -1,20 +1,5 @@
 LOCAL_BASHRC="$HOME/.bashrc.local"
 
-# A minimilist prompt
-export PS1="\u@\h:\w\\$ "
-export HISTSIZE="10000"
-
-# Better defaults
-alias ls="ls -G"
-alias la="ls -AlF"
-alias ll="ls -AlF"
-
-# Correct tpye-os
-alias l="ls"
-alias sl="ls"
-alias g="git"
-
-alias t="tmux attach -t"
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
 
@@ -37,13 +22,3 @@ if [[ $- == *i* ]]; then # In non-interactive shells $PS1 is not set
   fi
   popd > /dev/null
 fi
-
-function lines() {
-  local start="${1}"
-  local total="${2}"
-  local file="${3}"
-  local end="$((${start} + ${total} - 1))"
-  local quit="$((${end} + 1))"
-
-  sed -n "${start},${end}p;${quit}q" "${file}"
-}
