@@ -38,5 +38,5 @@ xmonadConfig = def {
     (mod1Mask, xK_p) -- Remove dmenu for rofi
   ] `additionalKeys` [
     -- Run laucher
-    ((mod1Mask, xK_p), spawn "rofi -show drun -display-drun 'Run'")
+    ((mod1Mask, xK_p), spawn "rofi -show drun -display-drun 'Run: '")
   ] 
