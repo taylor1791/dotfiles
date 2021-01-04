@@ -1,1 +1,2 @@
+rofi.terminal: alacritty
 rofi.theme: ./theme.rasi
