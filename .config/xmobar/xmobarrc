@@ -2,7 +2,7 @@
 -- --high use light red, light yellow, and white depeninding on threshold
 -- semantics.
 Config {
-    font = "xft:mononoki-11:bold"
+    font = "xft:mononoki-13:bold"
     bgColor = "#282C34",
     fgColor = "#ABB2BF",
 
