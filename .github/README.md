@@ -27,4 +27,4 @@ Theming
 -------
 Where possible, applications implement the
 [OneDark](https://github.com/joshdick/onedark.vim) theme. This includes:
-Alacritty, XMonad, and XMobar.
+Alacritty, rofi, XMonad, and XMobar.
