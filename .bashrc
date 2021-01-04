@@ -28,6 +28,11 @@ if command -v direnv > /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
+# Turn on "z" for fast navigation.
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
 # Changes to the nth-parent directory, defaulting to 1.
 function up() {
   declare dir=""
