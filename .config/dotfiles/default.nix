@@ -14,7 +14,7 @@ with (import <nixpkgs> {});
   inherit oathToolkit rage unzip;
 
   # Desktop Tools
-  inherit alacritty;
+  inherit alacritty zathura;
 } // (if !pkgs.stdenv.isDarwin then {
   # The following packages do not support darwin.
 
