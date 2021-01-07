@@ -15,3 +15,10 @@ fi
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh;
 fi
+
+# Platform specific configuration — an inevitable reality.
+PLATFORM="$(uname | tr '[A-Z]' '[a-z]')"
+PLATFORM_PROFILE="${HOME}/.config/dotfiles/bash/profile.${PLATFORM}"
+if [[ -e "${PLATFORM_PROFILE}" ]]; then
+  . "${PLATFORM_PROFILE}"
+fi
