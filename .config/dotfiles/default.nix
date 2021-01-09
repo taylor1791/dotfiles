@@ -21,6 +21,9 @@ with (import <nixpkgs> {});
   # Investigation Tools
   inherit traceroute;
 
+  # Personal Tools
+  inherit sshfs;
+
   # Desktop Tools
   inherit firefox;
 } else {
