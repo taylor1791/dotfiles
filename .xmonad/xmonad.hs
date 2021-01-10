@@ -38,5 +38,8 @@ xmonadConfig = def {
     (mod1Mask, xK_p) -- Remove dmenu for rofi
   ] `additionalKeys` [
     -- Run laucher
-    ((mod1Mask, xK_p), spawn "rofi -show drun -display-drun 'Run: '")
+    ((mod1Mask, xK_p), spawn "rofi -show drun -display-drun 'Run: '"),
+
+    -- Emoji picker
+    ((controlMask .|. mod1Mask, xK_space), spawn "rofi -show emoji")
   ] 
