@@ -18,7 +18,7 @@ These dotfiles come with a few things.
  * **bin/bopen** - `xdg-open`s lists and trickles.
  * **bin/colors** - Displays terminal colors combinations.
  * **bin/daily** - Opens daily tasks.
- * **bin/dot** - Manages your dotfiles. It wraps `git`.
+ * **bin/dot** - Manages dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
  * **bin/totp** - Encrypted TOTP authenticator.
  * **bin/truecolor** - Manually verifies terminal true color support.
