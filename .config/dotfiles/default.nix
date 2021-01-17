@@ -10,7 +10,7 @@ in
   inherit direnv lorri;
 
   # Development Tools
-  inherit gnupg jq ripgrep sc-im skim tree vim watch watchexec wget zoxide;
+  inherit gnupg jq ripgrep neovim sc-im skim tree watch watchexec wget zoxide;
 
   # Language Tools
   inherit hadolint;             # Docker

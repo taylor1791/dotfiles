@@ -16,7 +16,12 @@ fi
 
 # Many applications delegate to this when editing a file. Bash command line
 # editing is one example.
-export EDITOR=vim
+export EDITOR=nvim
+
+# Support the committed innovators.
+if command -v nvim > /dev/null; then
+  alias vim=nvim
+fi
 
 # Easier: `open`. Harder: `xdg-open`.
 if ! command -v open > /dev/null; then
