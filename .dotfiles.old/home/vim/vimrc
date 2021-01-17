@@ -161,7 +161,6 @@ set whichwrap+=<,>,h,l
 set laststatus=2
 set relativenumber " Use relative line numbers
 set number         " Except for the current line
-set undofile
 
 set mouse=a
 set ignorecase
@@ -173,7 +172,6 @@ set hlsearch
 set magic
 
 set lazyredraw
-set viminfo^=%
 
 syntax on
 set synmaxcol=256
@@ -184,13 +182,6 @@ match TrailingSpace /\s\+$/
 
 set smartindent
 set cindent
-
-" Extra file location
-set backup
-set backupcopy=yes
-set undodir=~/.vim/.undo
-set backupdir=~/.vim/.backup
-set directory=~/.vim/.swap
 
 " OSX clipboard & X11 clipboard
 set clipboard=unnamed
