@@ -1,2 +1,3 @@
+rofi.modi: calc,drun,emoji
 rofi.terminal: alacritty
 rofi.theme: ./theme.rasi
