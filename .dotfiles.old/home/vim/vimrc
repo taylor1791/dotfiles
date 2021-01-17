@@ -40,14 +40,6 @@ call plug#begin('~/.vim/plugged')
       \ })
   nnoremap <silent><leader>i :LspHover<cr>
 
-  "Plug 'SirVer/ultisnips'
-  "let g:UltiSnipsEditSplit="vertical"
-  "let g:UltiSnipsExpandTrigger="<c-j>"
-
-
-  " let g:UltiSnipsJumpForwardTrigger=""
-  " let g:UltiSnipsJumpBackwardTrigger=""
-
   " Plug 'zxqfl/tabnine-vim'
   " let g:ycm_key_list_select_completion = ["<c-n>"]
   " let g:ycm_key_list_previous_completion = ["<c-p>"]
@@ -85,9 +77,6 @@ call plug#begin('~/.vim/plugged')
   " Plug 'bitc/vim-hdevtools'
 
   " " Plugged Reference
-  " " Group dependencies, vim-snippets depends on ultisnips
-  " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-  "
   " " On-demand loading
   " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }

@@ -1,0 +1,25 @@
+snippet bash_options "Parse space-seperated arguments"
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -${1:e}|--${2:extension})
+      ${3:EXTENSION=\$2}
+      shift
+      shift
+    ;;
+
+    *)
+      POSITIONAL+=("\$1")
+      shift
+    ;;
+  esac
+done
+set -- "${POSITIONAL[@]}"
+endsnippet
+
+snippet start_bash "Simple way to start your bash script"
+#!/usr/bin/env ${1:bash}
+set -e
+
+cd "$(dirname "\$0")"
+endsnippet

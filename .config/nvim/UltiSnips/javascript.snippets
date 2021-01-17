@@ -1,0 +1,18 @@
+snippet describe "Create a describe block"
+describe('$1', () => {
+  it('$2', () => {
+    $3
+  });
+});
+endsnippet
+
+snippet ait "Creates an async it block"
+it('$1', async () => {
+  $2
+});
+endsnippet
+
+snippet it "Creates an it block"
+it('$1', () => {$2});
+endsnippet
+
