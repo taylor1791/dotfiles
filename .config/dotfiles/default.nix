@@ -26,6 +26,9 @@ in
   # Personal Tools
   inherit oathToolkit rage unzip;
 
+  # Command Line Apps
+  inherit ranger;
+
   # Desktop Tools
   inherit alacritty zathura;
 } // (if !pkgs.stdenv.isDarwin then {
