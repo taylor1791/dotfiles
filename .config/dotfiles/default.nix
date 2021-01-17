@@ -23,13 +23,13 @@ in
   # Investigation Tools
   inherit htop tcptraceroute;
 
-  # Personal Tools
+  # Command Line Tools
   inherit oathToolkit rage unzip;
 
   # Command Line Apps
   inherit ranger;
 
-  # Desktop Tools
+  # Desktop Apps
   inherit alacritty zathura;
 } // (if !pkgs.stdenv.isDarwin then {
   # The following packages do not support darwin.
@@ -40,7 +40,7 @@ in
   # Personal Tools
   inherit sshfs;
 
-  # Desktop Tools
+  # Desktop Apps
   inherit firefox;
 } else {
 })
