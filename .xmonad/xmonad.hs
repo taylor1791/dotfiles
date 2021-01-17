@@ -35,10 +35,14 @@ xmonadConfig = def {
     focusedBorderColor = "#C678DD", -- Magenta
     normalBorderColor  = "#4B5263"  -- Gutter Grey
   } `removeKeys` [
-    (mod1Mask, xK_p) -- Remove dmenu for rofi
+      (mod1Mask, xK_p) -- Remove dmenu for rofi
+    , (shiftMask .|. mod1Mask, xK_p) -- Remove dmrun for rofi-calc
   ] `additionalKeys` [
     -- Run laucher
     ((mod1Mask, xK_p), spawn "rofi -show drun -display-drun 'Run: '"),
+
+    -- Calculator
+    ((shiftMask .|. mod1Mask, xK_p), spawn "rofi -show calc -display-calc 'QCalc: '"),
 
     -- Emoji picker
     ((controlMask .|. mod1Mask, xK_space), spawn "rofi -show emoji")
