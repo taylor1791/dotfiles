@@ -101,15 +101,7 @@ set nocompatible
 set modelines=0
 set background=dark
 
-set smarttab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=4
-set expandtab
-
 set fileencoding=utf8
-set autoindent
-set smartindent
 set showmode
 set showcmd
 set hidden
@@ -123,9 +115,6 @@ set laststatus=2
 set wildignore+=*/tmp/*,*.sp,*.swp,*.zip,*node_modules*
 highlight TrailingSpace guibg=red ctermbg=red
 match TrailingSpace /\s\+$/
-
-set smartindent
-set cindent
 
 " REPL Like things
 function! REPLSend(lines)
