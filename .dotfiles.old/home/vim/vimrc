@@ -17,10 +17,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Load nerd tree whn
   Plug 'PsychoLlama/alternaut.vim' " test and source swapping
 
-  " Fuzzy Finder
-  Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-  Plug 'lotabout/skim.vim'
-
   " Someday I will read hex colors the way I read english. Until then...
   Plug 'chrisbra/Colorizer'
   let g:colorizer_auto_filetype='css,html,js'
@@ -108,9 +104,6 @@ let alternaut#conventions['javascript'] = {
   \ }
 
 nmap <leader>t <Plug>(alternaut-toggle)
-
-" Fuzzy Finder
-nnoremap <leader>f <esc>:Files!<cr>
 
 " Markdown specific settings
 autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal nocindent
