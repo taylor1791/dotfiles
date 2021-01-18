@@ -6,6 +6,7 @@
   ap = add --patch
   ca = commit --amend
   cm = commit --message
+  ds = diff --staged
   ra = rebase --abort
   rc = rebase --continue
   ri = rebase --interactive
