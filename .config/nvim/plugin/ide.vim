@@ -12,3 +12,7 @@ let alternaut#conventions['javascript'] = {
   \   'file_extensions': ['js', 'jsx'],
   \ }
 nmap <leader>t <Plug>(alternaut-toggle)
+
+" Linting engines
+Plug 'w0rp/ale'
+let g:ale_fix_on_save = v:true

@@ -21,10 +21,6 @@ call plug#begin('~/.vim/plugged')
   let g:colorizer_auto_filetype='css,html,js'
   let g:colorizer_auto_color = 1
 
-  " Interactive Coding
-  Plug 'w0rp/ale' " Asynchronous Lint Engine
-  let g:ale_maximum_file_size = '500000'
-
   " LSP 
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
