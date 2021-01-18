@@ -120,18 +120,12 @@ set ttyfast
 set whichwrap+=<,>,h,l
 set laststatus=2
 
-set mouse=a
-
 set wildignore+=*/tmp/*,*.sp,*.swp,*.zip,*node_modules*
 highlight TrailingSpace guibg=red ctermbg=red
 match TrailingSpace /\s\+$/
 
 set smartindent
 set cindent
-
-" OSX clipboard & X11 clipboard
-set clipboard=unnamed
-set clipboard+=unnamedplus
 
 " REPL Like things
 function! REPLSend(lines)
