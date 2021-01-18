@@ -4,8 +4,6 @@ let g:purview_config_note_dir = $HOME . "/Desktop/zettles"
 let g:purview_config_git_remote = "ssh://root@git.idagalaxy.com:2222/taylor1791/zettle.git"
 
 source ~/.vim/purview.vim
-nnoremap <leader>s <esc>:source %<cr>
-nnoremap <leader>v <esc>:vsplit ~/.vim/vimrc
 
 call plug#begin('~/.vim/plugged')
   " Usability
@@ -199,12 +197,6 @@ nnoremap ; :
 " Treat long lines as break lines
 nnoremap j gj
 nnoremap k gk
-
-" Source the vimrc file after saving it
-augroup sourcing
-  autocmd!
-  autocmd bufwritepost init.vim source $MYVIMRC
-augroup END
 
 " Automaticall lint haskel files on save
 " augroup lint
