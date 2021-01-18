@@ -95,7 +95,6 @@ set fileencoding=utf8
 set showmode
 set showcmd
 set hidden
-set visualbell
 set ttyfast
 set whichwrap+=<,>,h,l
 set laststatus=2
