@@ -163,13 +163,6 @@ set relativenumber " Use relative line numbers
 set number         " Except for the current line
 
 set mouse=a
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-set hlsearch
-set magic
 
 set lazyredraw
 
