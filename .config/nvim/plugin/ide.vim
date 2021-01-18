@@ -1,3 +1,7 @@
+" Someday I will internalize hex colors, until then...
+Plug 'chrisbra/Colorizer'
+let g:colorizer_auto_filetype='css,html,js'
+
 " Fuzzy finder
 Plug 'lotabout/skim'
 Plug 'lotabout/skim.vim'

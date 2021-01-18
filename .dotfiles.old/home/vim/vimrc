@@ -8,11 +8,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'troydm/zoomwintab.vim' " Maxmize a buffer
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Load nerd tree whn
 
-  " Someday I will read hex colors the way I read english. Until then...
-  Plug 'chrisbra/Colorizer'
-  let g:colorizer_auto_filetype='css,html,js'
-  let g:colorizer_auto_color = 1
-
   " LSP 
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
