@@ -56,11 +56,5 @@ function up() {
   cd "${dir}"
 }
 
-# Verify the ssh agent has an identity.
-if ! ssh-add -l > /dev/null; then
-  warn "The agent has no identities. Please run:"
-  warn "  $ ssh-add"
-fi
-
 # Inform the user of required manual tasks.
 dotfiles status
