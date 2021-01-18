@@ -15,7 +15,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'troydm/zoomwintab.vim' " Maxmize a buffer
   Plug 'MarcWeber/vim-addon-local-vimrc' " local vimrc
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Load nerd tree whn
-  Plug 'PsychoLlama/alternaut.vim' " test and source swapping
 
   " Someday I will read hex colors the way I read english. Until then...
   Plug 'chrisbra/Colorizer'
@@ -93,17 +92,6 @@ call plug#end()
 " General Config
 let mapleader = " "
 
-" Plugin Config
-
-" PsychoLlama/alternaut.vim
-let alternaut#conventions = {}
-let alternaut#conventions['javascript'] = {
-  \   'directory_naming_conventions': ['__tests__', 'tests'],
-  \   'file_naming_conventions': ['{name}.test.{ext}', '{name}.spec.{ext}'],
-  \   'file_extensions': ['js', 'jsx'],
-  \ }
-
-nmap <leader>t <Plug>(alternaut-toggle)
 
 " Markdown specific settings
 autocmd BufRead,BufNewFile *.md,*.txt,*.tex setlocal nocindent
