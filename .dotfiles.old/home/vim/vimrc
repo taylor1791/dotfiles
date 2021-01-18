@@ -101,12 +101,6 @@ set nocompatible
 set modelines=0
 set background=dark
 
-set termguicolors
-set t_Co=256
-colorscheme RustDocDark
-
-set title
-set nowrap
 set smarttab
 set tabstop=2
 set shiftwidth=2
@@ -115,7 +109,6 @@ set expandtab
 set nojoinspaces
 
 set fileencoding=utf8
-set scrolloff=7
 set autoindent
 set smartindent
 set showmode
@@ -125,19 +118,11 @@ set wildmenu
 set wildmode=list:longest
 set visualbell
 set ttyfast
-set ruler
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 set laststatus=2
-set relativenumber " Use relative line numbers
-set number         " Except for the current line
 
 set mouse=a
-
-set lazyredraw
-
-syntax on
-set synmaxcol=256
 
 set wildignore+=*/tmp/*,*.sp,*.swp,*.zip,*node_modules*
 highlight TrailingSpace guibg=red ctermbg=red
