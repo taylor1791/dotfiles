@@ -19,7 +19,6 @@
 [core]
   # Use line endings as they are in the repository.
   autocrlf = input
-  editor = vim
 
 [difftool]
   prompt = false
