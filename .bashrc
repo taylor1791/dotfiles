@@ -58,3 +58,7 @@ function up() {
 
 # Inform the user of required manual tasks.
 dotfiles status
+
+# Source any "local," machine specific configuration.
+LOCAL_BASHRC="$HOME/.bashrc.local"
+[[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"

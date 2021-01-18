@@ -1,9 +1,5 @@
-LOCAL_BASHRC="$HOME/.bashrc.local"
-
 alias jpost="curl -X POST -H 'Content-Type: application/json' -d"
 alias jput="curl -X PUT -H 'Content-Type: application/json' -d"
-
-[[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
 
 # Dotfiles framework warnings
 if [[ $- == *i* ]]; then # In non-interactive shells $PS1 is not set
