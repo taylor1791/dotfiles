@@ -23,7 +23,6 @@ call plug#begin('~/.vim/plugged')
   " let g:ycm_key_list_previous_completion = ["<c-p>"]
 
   " Languages
-  Plug 'PsychoLlama/further.vim' " Better file resolution for js
   Plug 'raichoo/purescript-vim' " PureScript Syntax Highlighting
   Plug 'rust-lang/rust.vim' " Rust Syntax Highlighting
   " Plug 'lervag/vimtex' " See :help vimtex
