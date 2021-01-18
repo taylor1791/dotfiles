@@ -1,10 +1,5 @@
 filetype plugin indent on
 
-let g:purview_config_note_dir = $HOME . "/Desktop/zettles"
-let g:purview_config_git_remote = "ssh://root@git.idagalaxy.com:2222/taylor1791/zettle.git"
-
-source ~/.vim/purview.vim
-
 call plug#begin('~/.vim/plugged')
   " Usability
   Plug 'machakann/vim-swap' " Do not autocomplete files in gitignore

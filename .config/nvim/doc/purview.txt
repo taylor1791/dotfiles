@@ -1,0 +1,29 @@
+*purview.txt* taylor1791's personal note strategy
+
+==============================================================================
+1. Usage                                                        *PurviewUsage*
+
+This plugin is in development and little is decided. This is the unofficial
+public interface.
+
+
+------------------------------------------------------------------------------
+1.1 Initialize                                                  *Purview_init*
+
+Initialize a new repository and optionally associate a remote. There is no way
+to specify a remote after initialization. As a workaround, manually add the
+remote to the git repository. >
+
+    :call purview#init('git@github.com:taylor1791/dotfiles.git')
+
+==============================================================================
+2. Configuration                                        *PurviewConfiguration*
+
+These setting change the behavior of purview.
+
+------------------------------------------------------------------------------
+2.1 g:purview_config_note_dir                  *PurviewConfiguration_note_dir*
+
+The directory where notes are read and written. Defaults to: >
+
+    let g:purview_config_note_dir = $HOME . '/purview'
