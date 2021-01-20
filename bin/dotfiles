@@ -10,6 +10,7 @@ function status() {
   declare -a files=(
     "setup/nix.sh:setup/nix.sh"
     "setup/nix-profile.sh:default.nix"
+    "setup/secondary-app-install.sh:setup/secondary-app-install.sh"
     "setup/preferences.sh:setup/preferences.sh"
   )
 
