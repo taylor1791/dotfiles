@@ -6,7 +6,7 @@ jobs:
   installation_test:
     name: Installs
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 4
+    timeout-minutes: 8
 
     steps:
     - name: git checkout
@@ -32,7 +32,7 @@ jobs:
   dotfiles_test:
     name: "Script: dotfiles"
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 8
+    timeout-minutes: 16
 
     steps:
     - name: git checkout
