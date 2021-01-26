@@ -8,4 +8,4 @@ set pumheight=16          " Maximum number of pop-up items
 set ruler                 " Show cursor position
 set scrolloff=7           " Always show at least 7 lines around cursor
 set spell                 " Always enable spelling
-set synmaxcol=128         " Last column to syntax highlight
+set synmaxcol=256         " Last column to syntax highlight
