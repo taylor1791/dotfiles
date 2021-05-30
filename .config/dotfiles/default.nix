@@ -10,7 +10,7 @@ in
   inherit direnv lorri;
 
   # Development Tools
-  inherit httpie gnupg jq ripgrep neovim sc-im
+  inherit httpie gnupg jq ripgrep miniserve neovim sc-im
     skim tree watch watchexec wget zoxide;
 
   # Language Tools
