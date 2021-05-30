@@ -1,8 +1,8 @@
 -- All colors come from the OneDark theme. Values for --low, --normal, and
--- --high use light red, light yellow, and white depeninding on threshold
+-- --high use light red, light yellow, and white depending on threshold
 -- semantics.
 Config {
-    font = "xft:mononoki-13:bold"
+    font = "xft:mononoki-13:bold",
     bgColor = "#282C34",
     fgColor = "#ABB2BF",
 
@@ -12,16 +12,6 @@ Config {
         "--ppad", "2",
         "--High", "75",
         "--Low", "25",
-        "--low", "#ABB2BF",
-        "--normal", "#E5C07B",
-        "--high", "#E06C75"
-      ] 10,
-
-      Run Memory [
-        "--template", "Mem: <usedratio>%",
-        "--ppad", "2",
-        "--Low", "25",
-        "--High", "75",
         "--low", "#ABB2BF",
         "--normal", "#E5C07B",
         "--high", "#E06C75"
