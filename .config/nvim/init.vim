@@ -16,5 +16,8 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Allow files in ./plugin to register plugins.
 call plug#begin('~/.config/nvim/plugged')
+  for file in split(glob('~/.config/nvim/config/*.vim'), '\n')
+    execute 'source' file
+  endfor
+call plug#end()
