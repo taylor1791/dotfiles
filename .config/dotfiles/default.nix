@@ -10,10 +10,10 @@ in
   inherit direnv lorri;
 
   # Development Tools
-  inherit gnupg jq httpie neovim sc-im tree watch wget;
+  inherit gnupg jq neovim sc-im tree watch wget;
 
   # Next Gen Development tools
-  inherit ripgrep miniserve skim watchexec zoxide;
+  inherit ripgrep miniserve skim watchexec xh zoxide;
 
   # Language Tools
   inherit hadolint;             # Docker
