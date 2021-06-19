@@ -3,6 +3,9 @@
 # run for all interactive shells! Additionally, bash sources this file when
 # attached to a remote shell, e.g. ssh and rsh.
 
+# The default is 500 and is not enough for vast space in my head.
+export HISTSIZE=1000
+
 # Include the user's private bin directory, if they have one.
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
