@@ -13,7 +13,7 @@ in
   inherit gnupg jq neovim sc-im tree watch wget;
 
   # Next Gen Development tools
-  inherit ripgrep miniserve skim watchexec xh zoxide;
+  inherit dogdns ripgrep miniserve skim watchexec xh zoxide;
 
   # Language Tools
   inherit hadolint;             # Docker
