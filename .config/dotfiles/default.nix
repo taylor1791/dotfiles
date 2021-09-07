@@ -1,6 +1,9 @@
 with (import <nixpkgs> {});
 
 let
+  previous = import (fetchTarball https://nixos.org/channels/nixos-20.09/nixexprs.tar.xz) { };
+
+  sc-im = previous.sc-im;
   eslint = nodePackages.eslint;
   prettier = nodePackages.prettier;
   write-good = nodePackages.write-good;
