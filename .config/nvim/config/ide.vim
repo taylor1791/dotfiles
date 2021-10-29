@@ -6,6 +6,7 @@ let g:colorizer_auto_filetype='css,html,js'
 Plug 'lotabout/skim'
 Plug 'lotabout/skim.vim'
 nnoremap <leader>f <esc>:Files!<cr>
+nnoremap <leader>/ <esc>:Rg<cr>
 
 " Test and source file swapping
 Plug 'PsychoLlama/alternaut.vim'
