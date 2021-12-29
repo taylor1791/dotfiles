@@ -4,6 +4,7 @@
 
 [alias]
   ap = add --patch
+  ac = "!git add "$(git diff --name-only --relative --diff-filter=U)""
   ca = commit --amend
   cm = commit --message
   ds = diff --staged
