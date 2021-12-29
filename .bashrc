@@ -4,7 +4,7 @@
 # attached to a remote shell, e.g. ssh and rsh.
 
 # The default is 500 and is not enough for vast space in my head.
-export HISTSIZE=1000
+export HISTSIZE=5000
 
 # Include the user's private bin directory, if they have one.
 if [ -d "$HOME/bin" ]; then
