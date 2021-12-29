@@ -64,9 +64,10 @@ scrollbar {
   handle-color: @gutter-grey;
 }
 
-element {
-  border:  0;
+element-text {
   padding: 0.125em;
+  background-color: inherit;
+  text-color:       inherit;
 }
 
 element.alternate.normal,
