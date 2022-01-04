@@ -77,17 +77,17 @@ element.alternate.urgent {
 }
 
 // To test active states, run these commands:
-// $ 'a:b:c:d' | rofi -sep ':' -dmenu -a 2
-// $ 'a:b:c:d' | rofi -sep ':' -dmenu -a 3
+// $ echo 'a:b:c:d' | rofi -sep ':' -dmenu -a 2
+// $ echo 'a:b:c:d' | rofi -sep ':' -dmenu -a 3
 element.normal.active,
 element.alternate.active {
   text-color: @blue;
 }
 
 // To test active states, run this command:
-// $ 'a:b:c:d' | rofi -sep ':' -dmenu -u 2-3
+// $ echo 'a:b:c:d' | rofi -sep ':' -dmenu -u 2-3
 element.normal.urgent,
-element.alternate.urgent{
+element.alternate.urgent {
   text-color: @red;
 }
 
