@@ -49,6 +49,10 @@ xmonadConfig = def {
     ((controlMask .|. mod1Mask, xK_space), spawn "rofi -show emoji"),
 
     -- "F keys"
+    ((noModMask, xF86XK_AudioMute), spawn "amixer set Master toggle"),
+    ((noModMask, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-"),
+    ((noModMask, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+"),
+    ((noModMask, xF86XK_AudioMicMute), spawn "amixer set Capture toggle"),
     ((noModMask, xF86XK_MonBrightnessDown), spawn "brightnessctl s 10%-"),
     ((noModMask, xF86XK_MonBrightnessUp), spawn "brightnessctl s 10%+")
   ]
