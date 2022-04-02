@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig (additionalKeys, removeKeys)
+import Graphics.X11.ExtraTypes.XF86
 
 main :: IO ()
 main = do
@@ -45,5 +46,9 @@ xmonadConfig = def {
     ((shiftMask .|. mod1Mask, xK_p), spawn "rofi -show calc -display-calc 'QCalc: '"),
 
     -- Emoji picker
-    ((controlMask .|. mod1Mask, xK_space), spawn "rofi -show emoji")
-  ] 
+    ((controlMask .|. mod1Mask, xK_space), spawn "rofi -show emoji"),
+
+    -- "F keys"
+    ((noModMask, xF86XK_MonBrightnessDown), spawn "brightnessctl s 10%-"),
+    ((noModMask, xF86XK_MonBrightnessUp), spawn "brightnessctl s 10%+")
+  ]
