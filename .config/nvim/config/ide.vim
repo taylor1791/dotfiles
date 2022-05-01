@@ -18,6 +18,10 @@ let alternaut#conventions['javascript'] = {
   \ }
 nmap <leader>t <Plug>(alternaut-toggle)
 
+" Automated testing
+Plug 'vim-test/vim-test'
+nnoremap <leader>T <esc>:TestFile<cr>
+
 " Linting engines
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = v:true
