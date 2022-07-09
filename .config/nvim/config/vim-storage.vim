@@ -5,8 +5,10 @@ if exists('$SUDO_USER')
   set noundofile
   set shada="NONE"
 else
-  " neovim has good defaults for undodir, backupdir, and directory.
+  set backup " Save a backup before writing to a file.
+  set backupdir=~/.local/share/nvim/backup
 
+  " neovim has good defaults for undodir, and directory.
   set undofile " Save undo to disk
   set swapfile " Enable recovery/locking - I forget all the open terminals
 endif
