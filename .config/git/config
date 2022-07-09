@@ -8,6 +8,7 @@
   ca = commit --amend
   cm = commit --message
   ds = diff --staged
+  lg = log --all --decorate --oneline --graph
   r = restore
   ra = rebase --abort
   rc = rebase --continue
