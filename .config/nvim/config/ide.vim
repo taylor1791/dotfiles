@@ -25,3 +25,7 @@ nnoremap <leader>T <esc>:TestFile<cr>
 " Linting engines
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = v:true
+nmap <leader>ah <esc>:ALEHover<cr>
+nmap <leader>an <esc>:ALENext<cr>
+nmap <leader>ad <esc>:ALEDetail<cr>
+nmap <leader>aN <esc>:ALEPrevious<cr>
