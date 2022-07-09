@@ -1,5 +1,5 @@
 # Normally, bash sources this file if the shell is interactive and non-login.
-# However, .profile will look for this file and source it, effectivly making it
+# However, .profile will look for this file and source it, effectively making it
 # run for all interactive shells! Additionally, bash sources this file when
 # attached to a remote shell, e.g. ssh and rsh.
 
