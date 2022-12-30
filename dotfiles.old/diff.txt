@@ -1,0 +1,121 @@
+diff --git a/.bashrc b/.bashrc
+index 36e72f6..a61303a 100644
+--- a/.bashrc
++++ b/.bashrc
+@@ -41,6 +41,8 @@ if command -v zoxide > /dev/null; then
+   eval "$(zoxide init bash)"
+ fi
+ 
++export MANPAGER='nvim +Man!'
++
+ # Changes to the nth-parent directory, defaulting to 1.
+ function up() {
+   declare dir=""
+@@ -59,6 +61,11 @@ function up() {
+   cd "${dir}"
+ }
+ 
++function rand() {
++  local length="${1-256}"
++  tr -cd '[:alnum:]' < /dev/urandom | fold -w "${length}" | head -n 1 | tr -d '\n'
++}
++
+ # Inform the user of required manual tasks.
+ dotfiles status
+ 
+diff --git a/.config/alacritty/alacritty.yml b/.config/alacritty/alacritty.yml
+index 2aeed27..bf38c55 100644
+--- a/.config/alacritty/alacritty.yml
++++ b/.config/alacritty/alacritty.yml
+@@ -5,7 +5,7 @@ window:
+   dynamic_title: true
+ 
+ font:
+-  size: 11.0
++  size: 9.0
+   normal:
+     family: mononoki
+ 
+diff --git a/.config/dotfiles/default.nix b/.config/dotfiles/default.nix
+index 33387ee..a991a21 100644
+--- a/.config/dotfiles/default.nix
++++ b/.config/dotfiles/default.nix
+@@ -10,10 +10,10 @@ let
+ in
+ {
+   # Environment Management
+-  inherit direnv lorri;
++  inherit cachix direnv lorri;
+ 
+   # Development Tools
+-  inherit gnupg jq neovim sc-im tree watch wget zip;
++  inherit gnupg jo jq neovim sc-im tree watch wget zip;
+ 
+   # Next Gen Development tools
+   inherit dogdns ripgrep miniserve skim watchexec xh zoxide;
+@@ -30,7 +30,7 @@ in
+   inherit htop tcptraceroute;
+ 
+   # Command Line Tools
+-  inherit oathToolkit rage unzip;
++  inherit oathToolkit rage unzip wally-cli;
+ 
+   # Command Line Apps
+   inherit ranger;
+@@ -41,7 +41,7 @@ in
+   # The following packages do not support darwin.
+ 
+   # Investigation Tools
+-  inherit traceroute;
++  inherit iotop nethogs traceroute;
+ 
+   # Personal Tools
+   inherit sshfs;
+diff --git a/.config/git/config b/.config/git/config
+index 151c93c..dbe5114 100644
+--- a/.config/git/config
++++ b/.config/git/config
+@@ -35,4 +35,12 @@
+   defaultBranch = main
+ 
+ [pull]
++  default = simple
+   rebase = true
++  ff = only
++
++[fetch]
++  prune = true
++
++[merge]
++  ff = false
+diff --git a/.config/mimeapps.list b/.config/mimeapps.list
+index a9f1c64..ecde8f3 100644
+--- a/.config/mimeapps.list
++++ b/.config/mimeapps.list
+@@ -1,3 +1,25 @@
+-
+ [Default Applications]
+ application/pdf=org.pwmt.zathura.desktop
++x-scheme-handler/http=firefox.desktop
++x-scheme-handler/https=firefox.desktop
++x-scheme-handler/chrome=firefox.desktop
++text/html=firefox.desktop
++application/x-extension-htm=firefox.desktop
++application/x-extension-html=firefox.desktop
++application/x-extension-shtml=firefox.desktop
++application/xhtml+xml=firefox.desktop
++application/x-extension-xhtml=firefox.desktop
++application/x-extension-xht=firefox.desktop
++
++[Added Associations]
++x-scheme-handler/http=firefox.desktop;
++x-scheme-handler/https=firefox.desktop;
++x-scheme-handler/chrome=firefox.desktop;
++text/html=firefox.desktop;
++application/x-extension-htm=firefox.desktop;
++application/x-extension-html=firefox.desktop;
++application/x-extension-shtml=firefox.desktop;
++application/xhtml+xml=firefox.desktop;
++application/x-extension-xhtml=firefox.desktop;
++application/x-extension-xht=firefox.desktop;
++image/webp=firefox.desktop;

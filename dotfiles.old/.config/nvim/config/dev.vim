@@ -6,7 +6,7 @@ nnoremap <leader>v <esc>:vsplit ~/.config/nvim/plugin/dev.vim<cr>
 " Easy sourcing
 nnoremap <leader>s <esc>:source %<cr>
 
-" Display the token under the cursor. Useful for debuggin syntax highlighting.
+" Display the token under the cursor. Useful for debugging syntax highlighting.
 function dev#ShowToken()
   echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">"
     \ " trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">"
