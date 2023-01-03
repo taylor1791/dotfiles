@@ -1,0 +1,23 @@
+name: CI Suite
+
+on: [push]
+
+jobs:
+  build:
+    name: Build Korolev
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+    - name: Install nix
+      uses: cachix/install-nix-action@v18
+      with:
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+
+    - name: git checkout
+      uses: actions/checkout@v2
+
+    - name: nix build
+      run:
+        nix build -L '.#nixosConfigurations.korolev.config.system.build.toplevel'
