@@ -6,11 +6,11 @@
   };
 
   outputs = inputs: {
-      nixosConfigurations = {
-        korolev = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./hosts/korolev ];
-        };
+    nixosConfigurations = {
+      korolev = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/korolev ];
       };
     };
+  };
 }

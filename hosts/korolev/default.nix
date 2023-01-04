@@ -1,18 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-let
-  unstable = "unimplemented";
-  #import
-  #  (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/2f49e0bb89417e93394b43eb5e33aa1f3d2599e6)
-  #  # reuse the current configuration
-  #      { config = config.nixpkgs.config; };
-in
-{
+# Defines the system. For help, read the configuration.nix(5) man page.
+{ pkgs, ... }: {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -57,11 +47,11 @@ in
       hpkgs.xmonad-extras
     ];
   };
-  
+
   # Configure keymap in X11
   services.xserver.layout = "us";
   services.xserver.xkbOptions = "caps:escape";
-  services.xserver.autoRepeatDelay = 250; 
+  services.xserver.autoRepeatDelay = 250;
   services.xserver.autoRepeatInterval = 32;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -91,11 +81,12 @@ in
     # Development
     git
     vim
-    
+
     # Desktop 
     firefox
     (rofi.override { plugins = [ rofi-calc rofi-emoji ]; })
-    xclip xmobar
+    xclip
+    xmobar
   ];
 
   # List services that you want to enable:
