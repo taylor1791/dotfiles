@@ -21,3 +21,7 @@ jobs:
     - name: nix build
       run:
         nix build -L '.#nixosConfigurations.korolev.config.system.build.toplevel'
+
+    - name: nix shell
+      run:
+        nix develop --command 'true'
