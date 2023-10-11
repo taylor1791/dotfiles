@@ -18,8 +18,15 @@
     nixosConfigurations = {
       korolev = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./hosts/korolev ];
+        modules = (builtins.attrValues self.nixosModules) ++ [ ./hosts/korolev ];
       };
+    };
+
+    nixosModules = {
+      console = import ./nixos/services/console.nix;
+      development = import ./nixos/services/development.nix;
+      shell = import ./nixos/services/shell.nix;
+      windows = import ./nixos/services/windows.nix;
     };
   };
 }
