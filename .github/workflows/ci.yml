@@ -25,3 +25,7 @@ jobs:
     - name: nix shell
       run:
         nix develop --command 'true'
+
+    - name: home-manager
+      run:
+        nix build .#homeConfigurations.taylor1791_x86_64-linux.activationPackage
