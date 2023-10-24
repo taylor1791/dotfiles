@@ -9,14 +9,14 @@ jobs:
     timeout-minutes: 8
 
     steps:
+    - name: git checkout
+      uses: actions/checkout@v3
+
     - name: Install nix
-      uses: cachix/install-nix-action@v18
+      uses: cachix/install-nix-action@v23
       with:
         extra_nix_config: |
           experimental-features = nix-command flakes
-
-    - name: git checkout
-      uses: actions/checkout@v2
 
     - name: nix build
       run:
