@@ -4,6 +4,8 @@
   genericTaylor1791 = {
     presets.development = {
       enable = true;
+      email = "taylor1791@users.noreply.github.com";
+      name = "Taylor Everding";
     };
   };
 }

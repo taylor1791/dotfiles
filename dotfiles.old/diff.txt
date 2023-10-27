@@ -71,23 +71,6 @@ index 33387ee..a991a21 100644
  
    # Personal Tools
    inherit sshfs;
-diff --git a/.config/git/config b/.config/git/config
-index 151c93c..dbe5114 100644
---- a/.config/git/config
-+++ b/.config/git/config
-@@ -35,4 +35,12 @@
-   defaultBranch = main
- 
- [pull]
-+  default = simple
-   rebase = true
-+  ff = only
-+
-+[fetch]
-+  prune = true
-+
-+[merge]
-+  ff = false
 diff --git a/.config/mimeapps.list b/.config/mimeapps.list
 index a9f1c64..ecde8f3 100644
 --- a/.config/mimeapps.list
