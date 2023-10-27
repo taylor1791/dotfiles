@@ -9,14 +9,11 @@ let
   write-good = nodePackages.write-good;
 in
 {
-  # Environment Management
-  inherit direnv lorri;
-
   # Development Tools
   inherit gnupg jq neovim sc-im tree watch wget zip;
 
   # Next Gen Development tools
-  inherit dogdns ripgrep miniserve skim watchexec xh zoxide;
+  inherit dogdns miniserve watchexec xh;
 
   # Language Tools
   inherit hadolint;             # Docker
