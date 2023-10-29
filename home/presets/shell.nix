@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ config, lib, pkgs, ... }: let
   presetName = "shell";
   cfg = config.presets.${presetName};
 in {
@@ -11,5 +11,9 @@ in {
   config = lib.mkIf cfg.enable {
     taylor1791.programs.bash.enable = true;
     taylor1791.programs.readline.enable = true;
+
+    home.packages = with pkgs; [
+      taylor1791.mirror
+    ];
   };
 }
