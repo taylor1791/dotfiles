@@ -2,6 +2,7 @@
   nixosTaylor1791 = lib.recursiveUpdate genericTaylor1791 {};
 
   genericTaylor1791 = {
+    presets.display.enable = true;
     presets.shell.enable = true;
 
     presets.development = {
