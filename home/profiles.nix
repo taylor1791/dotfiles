@@ -1,5 +1,7 @@
 { lib }: rec {
-  nixosTaylor1791 = lib.recursiveUpdate genericTaylor1791 {};
+  nixosTaylor1791 = lib.recursiveUpdate genericTaylor1791 {
+    presets.window-manager.enable = true;
+  };
 
   genericTaylor1791 = {
     presets.display.enable = true;
