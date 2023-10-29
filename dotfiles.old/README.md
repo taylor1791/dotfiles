@@ -29,4 +29,4 @@ Theming
 -------
 Where possible, applications implement the
 [OneDark](https://github.com/joshdick/onedark.vim) theme. This includes:
-alacritty, neovim, rofi, xmonad, xmobar, and zathura.
+neovim, rofi, xmonad, xmobar, and zathura.

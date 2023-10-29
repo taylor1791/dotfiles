@@ -9,5 +9,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    taylor1791.programs.alacritty.enable = true;
   };
 }
