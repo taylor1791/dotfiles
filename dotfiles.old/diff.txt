@@ -40,11 +40,6 @@ diff --git a/.config/dotfiles/default.nix b/.config/dotfiles/default.nix
 index 33387ee..a991a21 100644
 --- a/.config/dotfiles/default.nix
 +++ b/.config/dotfiles/default.nix
-@@ -10,10 +10,10 @@ let
- in
- {
-   # Next Gen Development tools
-   inherit dogdns;
 @@ -30,7 +30,7 @@ in
    inherit htop tcptraceroute;
  
@@ -53,9 +48,3 @@ index 33387ee..a991a21 100644
  
    # Command Line Apps
    inherit ranger;
-@@ -41,7 +41,7 @@ in
-   # The following packages do not support darwin.
- 
-   # Investigation Tools
--  inherit traceroute;
-+  inherit iotop nethogs traceroute;

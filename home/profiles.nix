@@ -6,6 +6,7 @@
   genericTaylor1791 = {
     presets.display.enable = true;
     presets.shell.enable = true;
+    presets.troubleshooting.enable = true;
 
     presets.development = {
       enable = true;
