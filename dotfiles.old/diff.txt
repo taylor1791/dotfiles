@@ -43,22 +43,13 @@ index 33387ee..a991a21 100644
 @@ -10,10 +10,10 @@ let
  in
  {
-   # Environment Management
--  inherit direnv lorri;
-+  inherit cachix direnv lorri;
- 
-   # Development Tools
--  inherit gnupg jq neovim sc-im tree watch wget zip;
-+  inherit gnupg jo jq neovim sc-im tree watch wget zip;
- 
    # Next Gen Development tools
-   inherit dogdns ripgrep miniserve skim watchexec xh zoxide;
+   inherit dogdns;
 @@ -30,7 +30,7 @@ in
    inherit htop tcptraceroute;
  
    # Command Line Tools
--  inherit oathToolkit rage unzip;
-+  inherit oathToolkit rage unzip wally-cli;
++  inherit wally-cli;
  
    # Command Line Apps
    inherit ranger;
@@ -68,6 +59,3 @@ index 33387ee..a991a21 100644
    # Investigation Tools
 -  inherit traceroute;
 +  inherit iotop nethogs traceroute;
- 
-   # Personal Tools
-   inherit sshfs;

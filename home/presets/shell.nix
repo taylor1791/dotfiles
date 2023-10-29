@@ -13,7 +13,16 @@ in {
     taylor1791.programs.readline.enable = true;
 
     home.packages = with pkgs; [
+      minisign
+      oath-toolkit
+      rage
       taylor1791.mirror
+      tree
+      unzip
+      wget
+      zip
+    ] ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+      sshfs
     ];
   };
 }

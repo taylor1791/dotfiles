@@ -15,9 +15,14 @@ in {
 
     home.packages = with pkgs; [
       direnv
+      hyperfine
+      jq
+      miniserve
       ripgrep
       skim
       neovim
+      watchexec
+      xh
       zoxide
     ];
 

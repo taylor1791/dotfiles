@@ -9,11 +9,8 @@ let
   write-good = nodePackages.write-good;
 in
 {
-  # Development Tools
-  inherit gnupg jq neovim sc-im tree watch wget zip;
-
   # Next Gen Development tools
-  inherit dogdns miniserve watchexec xh;
+  inherit dogdns;
 
   # Language Tools
   inherit hadolint;             # Docker
@@ -27,21 +24,11 @@ in
   inherit htop tcptraceroute;
 
   # Command Line Tools
-  inherit oathToolkit rage unzip;
-
-  # Command Line Apps
-  inherit ranger;
-
-  # Desktop Apps
-  inherit alacritty zathura;
 } // (if !pkgs.stdenv.isDarwin then {
   # The following packages do not support darwin.
 
   # Investigation Tools
   inherit traceroute;
-
-  # Personal Tools
-  inherit sshfs;
 
   # Desktop Apps
   inherit firefox;
