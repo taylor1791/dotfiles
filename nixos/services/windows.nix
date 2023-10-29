@@ -30,7 +30,6 @@ in {
     environment.systemPackages = with pkgs; [
       brightnessctl
       firefox
-      (rofi.override { plugins = [ rofi-calc rofi-emoji ]; })
       xclip
       xmobar
     ];

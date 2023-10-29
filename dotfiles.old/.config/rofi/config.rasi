@@ -1,6 +1,0 @@
-configuration {
-  modi: "calc,drun,emoji";
-  terminal: "alacritty";
-}
-
-@theme "theme.rasi"
