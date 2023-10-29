@@ -11,6 +11,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    taylor1791.programs.ssh.enable = true;
+
     home.packages = with pkgs; [
       direnv
       ripgrep
