@@ -19,6 +19,9 @@
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
 
+    mkPkgs = nixpkgs: system:
+      nixpkgs.legacyPackages.${system}.extend self.overlays.default;
+
     modules = [
       ./home/modules/default.nix
       ./home/presets/default.nix
@@ -48,7 +51,7 @@
     };
 
     devShell = lib.genAttrs lib.systems.flakeExposed (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
+      let pkgs = mkPkgs nixpkgs system;
       in pkgs.mkShell {
         buildInputs = with pkgs; [ just nix-diff ];
       }
@@ -61,7 +64,7 @@
       mkHomeModules = { home, system }: {
         name = "${home.username}_${system}";
         value = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = mkPkgs nixpkgs system;
           modules = modules ++ [
             { home.homeDirectory = "/home/${home.username}"; }
             { home.stateVersion = "23.05"; }
@@ -93,7 +96,9 @@
     in {
       korolev = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = (builtins.attrValues self.nixosModules) ++
+        modules =
+          [ { nixpkgs.overlays = [ self.overlays.default ]; } ] ++
+          (builtins.attrValues self.nixosModules) ++
           [ ./hosts/korolev ] ++
           mkHomeModules
             "taylor1791"
@@ -107,5 +112,17 @@
       shell = import ./nixos/services/shell.nix;
       windows = import ./nixos/services/windows.nix;
     };
+
+
+    # Consumed by other flakes
+    overlays.default = final: prev: {
+      taylor1791 = {
+      };
+    };
+
+    # Executed by `nix build .#<name>`
+    packages = lib.genAttrs lib.systems.flakeExposed (system:
+      (nixpkgs.legacyPackages.${system}.extend self.overlays.default).taylor1791
+    );
   };
 }
