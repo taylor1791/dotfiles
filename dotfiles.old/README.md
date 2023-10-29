@@ -16,13 +16,11 @@ Usage
 These dotfiles come with a few things.
 
  * **bin/bopen** - `xdg-open`s lists and trickles.
- * **bin/colors** - Displays terminal colors combinations.
  * **bin/daily** - Opens daily tasks.
  * **bin/dot** - Manages dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
  * **bin/mirror** - Downloads a website using wget --recursive.
  * **bin/totp** - Encrypted TOTP authenticator.
- * **bin/truecolor** - Manually verifies terminal true color support.
  * **bin/warn** - Echos it arguments in color to stderr
 
 Theming

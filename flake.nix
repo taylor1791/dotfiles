@@ -117,6 +117,7 @@
     # Consumed by other flakes
     overlays.default = final: prev: {
       taylor1791 = {
+        color = final.callPackage ./pkgs/color {};
       };
     };
 
