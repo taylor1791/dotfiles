@@ -5,5 +5,6 @@
     ./git.nix
     ./readline.nix
     ./ssh.nix
+    ./zathura.nix
   ];
 }

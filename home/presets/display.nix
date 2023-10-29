@@ -10,5 +10,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     taylor1791.programs.alacritty.enable = true;
+    taylor1791.programs.zathura.enable = true;
   };
 }
