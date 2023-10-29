@@ -3,11 +3,12 @@
   cfg = config.presets.${presetName};
 in {
   options = {
-    presets.shell = {
+    presets.${presetName} = {
       enable = lib.mkEnableOption "Enable dotfiles for routine shell access";
     };
   };
 
   config = lib.mkIf cfg.enable {
+    taylor1791.programs.bash.enable = true;
   };
 }
