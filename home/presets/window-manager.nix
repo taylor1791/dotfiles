@@ -10,5 +10,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     taylor1791.programs.rofi.enable = true;
+    taylor1791.programs.xmobar.enable = true;
   };
 }

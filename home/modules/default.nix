@@ -6,6 +6,7 @@
     ./readline.nix
     ./rofi.nix
     ./ssh.nix
+    ./xmobar.nix
     ./zathura.nix
   ];
 }

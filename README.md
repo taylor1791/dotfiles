@@ -6,4 +6,4 @@ Theming
 -------
 Where possible, applications implement the
 [OneDark](https://github.com/joshdick/onedark.vim) theme. This includes: alacritty,
-rofi, and zathura.
+rofi, xmobar, and zathura.

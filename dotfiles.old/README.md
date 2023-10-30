@@ -26,4 +26,4 @@ Theming
 -------
 Where possible, applications implement the
 [OneDark](https://github.com/joshdick/onedark.vim) theme. This includes:
-neovim, xmonad, and xmobar.
+neovim, and xmonad.

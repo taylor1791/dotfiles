@@ -31,7 +31,6 @@ in {
       brightnessctl
       firefox
       xclip
-      xmobar
     ];
 
     services.xserver = {
