@@ -17,6 +17,7 @@ in {
       oath-toolkit
       rage
       taylor1791.mirror
+      taylor1791.rand
       tree
       unzip
       wget
