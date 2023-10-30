@@ -1,2 +1,0 @@
-highlight TrailingSpace guibg=red ctermbg=red
-match TrailingSpace /\s\+$/
