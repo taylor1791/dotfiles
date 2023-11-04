@@ -29,7 +29,9 @@
   in {
     darwinConfigurations = let
       mkDarwinModules = user: module: [
+        { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
+        { imports = [ ./darwin/presets/default.nix ]; }
         {
           users.users.${user} = {
             name = user;
@@ -38,15 +40,15 @@
 
           home-manager = {
             useGlobalPkgs = true;
-            users.${user} = { imports = modules; };
+            users.${user} = { imports = modules; } // module;
           };
         }
       ];
     in {
       iqqkqm = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
-        modules = [ ./hosts/iqqkqm ] ++
-          mkDarwinModules "teverding" profiles.genericTaylor1791;
+        modules = mkDarwinModules "teverding" profiles.genericTaylor1791 ++
+          [ { presets.darwin.enable = true; } ./hosts/iqqkqm ];
       };
     };
 

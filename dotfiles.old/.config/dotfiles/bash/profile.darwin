@@ -1,8 +1,0 @@
-# MacOS does not have a certificate bundle. Instead, they have a "Security
-# Framework" accessible through Keychain. Despite this, I found
-# /etc/ssl/cert.pem. It appears to be a certificate bundle. Additionally, it
-# has a similar mtime to other system files.
-#
-# Teach nix the location of SSL CAs. See
-# https://nixos.org/manual/nix/stable/#sec-nix-ssl-cert-file-with-nix-daemon-and-macos
-export NIX_SSL_CERT_FILE=/etc/ssl/cert.pem
