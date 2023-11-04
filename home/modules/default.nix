@@ -7,6 +7,7 @@
     ./rofi.nix
     ./ssh.nix
     ./xmobar.nix
+    ./xmonad.nix
     ./zathura.nix
   ];
 }
