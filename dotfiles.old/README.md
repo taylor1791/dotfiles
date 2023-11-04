@@ -20,7 +20,6 @@ These dotfiles come with a few things.
  * **bin/dot** - Manages dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
  * **bin/totp** - Encrypted TOTP authenticator.
- * **bin/warn** - Echos it arguments in color to stderr
 
 Theming
 -------

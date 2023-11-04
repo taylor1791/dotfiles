@@ -120,6 +120,7 @@
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
+        warn = final.callPackage ./pkgs/warn {};
       };
     };
 
