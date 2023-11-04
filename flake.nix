@@ -117,6 +117,7 @@
     # Consumed by other flakes
     overlays.default = final: prev: {
       taylor1791 = {
+        bopen = final.callPackage ./pkgs/bopen {};
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};

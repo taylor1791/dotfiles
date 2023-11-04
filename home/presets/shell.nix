@@ -16,6 +16,7 @@ in {
       minisign
       oath-toolkit
       rage
+      taylor1791.bopen
       taylor1791.mirror
       taylor1791.rand
       tree

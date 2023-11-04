@@ -15,8 +15,6 @@ Usage
 -----
 These dotfiles come with a few things.
 
- * **bin/bopen** - `xdg-open`s lists and trickles.
- * **bin/daily** - Opens daily tasks.
  * **bin/dot** - Manages dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
  * **bin/totp** - Encrypted TOTP authenticator.
