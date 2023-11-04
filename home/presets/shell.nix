@@ -14,11 +14,11 @@ in {
 
     home.packages = with pkgs; [
       minisign
-      oath-toolkit
       rage
       taylor1791.bopen
       taylor1791.mirror
       taylor1791.rand
+      taylor1791.totp
       tree
       unzip
       wget
