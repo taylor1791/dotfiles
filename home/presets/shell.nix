@@ -13,18 +13,7 @@ in {
     taylor1791.programs.readline.enable = true;
 
     home.packages = with pkgs; [
-      minisign
-      rage
-      taylor1791.bopen
-      taylor1791.mirror
-      taylor1791.rand
-      taylor1791.totp
       tree
-      unzip
-      wget
-      zip
-    ] ++ lib.optionals (!pkgs.stdenv.isDarwin) [
-      sshfs
     ];
   };
 }
