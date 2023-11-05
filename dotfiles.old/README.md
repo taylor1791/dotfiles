@@ -10,16 +10,9 @@ Ensure `awk`, `curl`, and  `git` are available, then run the following:
 ```bash
 curl https://raw.githubusercontent.com/taylor1791/dotfiles/master/bin/dot | bash`
 ```
-
 Usage
 -----
 These dotfiles come with a few things.
 
  * **bin/dot** - Manages dotfiles. It wraps `git`.
  * **bin/dotfiles** - Manages updates to dotfiles.
-
-Theming
--------
-Where possible, applications implement the
-[OneDark](https://github.com/joshdick/onedark.vim) theme. This includes:
-neovim.

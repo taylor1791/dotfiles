@@ -20,11 +20,15 @@ in {
       miniserve
       ripgrep
       skim
-      neovim
       watchexec
       xh
       zoxide
     ];
+
+    taylor1791.programs.neovim = {
+      enable = true;
+      ide = true;
+    };
 
     taylor1791.programs.git = {
       enable = true;

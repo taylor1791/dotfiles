@@ -23,10 +23,6 @@ in {
         # cannot happen.
         [[ $- != *i* ]] && return
 
-        # Many applications delegate to this when editing a file. Bash command line
-        # editing is one example.
-        export EDITOR="nvim";
-
         # Instructs man to use an alternate pager.
         export MANPAGER="nvim +Man!";
 
