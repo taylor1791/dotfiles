@@ -3,8 +3,8 @@ name: CI Suite
 on: [push]
 
 jobs:
-  build:
-    name: Build Korolev
+  korolev:
+    name: Build korolev
     runs-on: ubuntu-latest
     timeout-minutes: 8
 
@@ -29,3 +29,22 @@ jobs:
     - name: home-manager
       run:
         nix build .#homeConfigurations.taylor1791_x86_64-linux.activationPackage
+
+  iqqkqm:
+    name: Build iqqkqm
+    runs-on: macos-12
+    timeout-minutes: 8
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v3
+
+    - name: Install nix
+      uses: cachix/install-nix-action@v23
+      with:
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+
+    - name: nix build .#iqqkqm
+      run:
+        nix build .#darwinConfigurations.iqqkqm.config.system.build.toplevel

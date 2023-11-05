@@ -4,13 +4,18 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { home-manager, nixpkgs, self }: let
+  outputs = { darwin, home-manager, nixpkgs, self }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
 
@@ -19,6 +24,29 @@
       ./home/presets/default.nix
     ];
   in {
+    darwinConfigurations = let
+      mkDarwinModules = user: module: [
+        home-manager.darwinModules.home-manager
+        {
+          users.users.${user} = {
+            name = user;
+            home = "/Users/${user}";
+          };
+
+          home-manager = {
+            useGlobalPkgs = true;
+            users.${user} = { imports = modules; };
+          };
+        }
+      ];
+    in {
+      iqqkqm = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = [ ./hosts/iqqkqm ] ++
+          mkDarwinModules "teverding" profiles.genericTaylor1791;
+      };
+    };
+
     devShell = lib.genAttrs lib.systems.flakeExposed (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in pkgs.mkShell {
