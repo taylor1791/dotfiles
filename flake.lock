@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "alternaut-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1617264031,
+        "narHash": "sha256-Dj1qx+pTDo+CE4U7gB7F6F/WL+st40oufdHBRdyx1aA=",
+        "owner": "PsychoLlama",
+        "repo": "alternaut.vim",
+        "rev": "5cd92a74a78b1cfc111c8ef6de31e827ead81879",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PsychoLlama",
+        "repo": "alternaut.vim",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -60,6 +76,7 @@
     },
     "root": {
       "inputs": {
+        "alternaut-vim": "alternaut-vim",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
