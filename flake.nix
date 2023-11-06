@@ -140,5 +140,12 @@
     packages = lib.genAttrs lib.systems.flakeExposed (system:
       (nixpkgs.legacyPackages.${system}.extend self.overlays.default).taylor1791
     );
+
+    templates = {
+      devshell = {
+        description = "A template using direnv and nix to manage a project.";
+        path = ./templates/devshell;
+      };
+    };
   };
 }
