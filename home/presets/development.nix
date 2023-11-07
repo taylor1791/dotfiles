@@ -15,6 +15,7 @@ in {
 
     home.packages = with pkgs; [
       direnv
+      git
       hyperfine
       jq
       miniserve
@@ -23,6 +24,8 @@ in {
       watchexec
       xh
       zoxide
+    ] ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+      zsa-udev-rules
     ];
 
     taylor1791.programs.neovim = {

@@ -14,12 +14,6 @@ in {
       }
     ];
 
-    environment.systemPackages = with pkgs; [
-      git
-      hyperfine
-      zsa-udev-rules
-    ];
-
     users.users.${config.taylor1791.services.shell.user}.extraGroups = [ "docker" "keys" ];
     virtualisation.docker.enable = true;
   };
