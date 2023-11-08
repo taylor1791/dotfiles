@@ -9,6 +9,10 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
+    # To incorporate https://github.com/lotabout/skim.vim/commit/aa2a5c44a6640843868cc5c1444abc0093e90e5a
+    # Remove when :Files!<cr> works on stable.
+    unstableVimPlugins.url = "github:NixOS/nixpkgs/b330c08616236463b873e5712c63418a2b7657e4";
+
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +24,9 @@
     };
   };
 
-  outputs = { alternaut-vim, darwin, home-manager, nixpkgs, self }: let
+  outputs = {
+    alternaut-vim, darwin, home-manager, nixpkgs, unstableVimPlugins, self
+  }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
 
@@ -127,6 +133,8 @@
         alternaut-vim = final.callPackage ./pkgs/alternaut-vim {
           alternautSrc = alternaut-vim;
         };
+        skim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim;
+        skim-vim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim-vim;
         bopen = final.callPackage ./pkgs/bopen {};
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};

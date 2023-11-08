@@ -61,9 +61,9 @@ in {
             colorscheme onedark
           '';
         }
-        ++ optional cfg.ide { pkg = vimPlugins.skim; }
+        ++ optional cfg.ide { pkg = pkgs.taylor1791.skim; }
         ++ optional cfg.ide {
-          pkg = vimPlugins.skim-vim;
+          pkg = pkgs.taylor1791.skim-vim;
           config = ''
             nnoremap <leader>f <esc>:Files!<cr>
             nnoremap <leader>/ <esc>:Rg<cr>
