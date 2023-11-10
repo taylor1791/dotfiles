@@ -13,6 +13,10 @@
     # Remove when :Files!<cr> works on stable.
     unstableVimPlugins.url = "github:NixOS/nixpkgs/b330c08616236463b873e5712c63418a2b7657e4";
 
+    # The darwin borgBackups have been broken for some time. This is the last know
+    # working revision.
+    nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
+
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +29,7 @@
   };
 
   outputs = {
-    alternaut-vim, darwin, home-manager, nixpkgs, unstableVimPlugins, self
+    alternaut-vim, darwin, home-manager, nixpkgs, nixpkgsBorgBackup, unstableVimPlugins, self
   }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
@@ -136,6 +140,7 @@
         skim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim;
         skim-vim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim-vim;
         bopen = final.callPackage ./pkgs/bopen {};
+        borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};

@@ -74,12 +74,29 @@
         "type": "github"
       }
     },
+    "nixpkgsBorgBackup": {
+      "locked": {
+        "lastModified": 1694626585,
+        "narHash": "sha256-2S5fqTuYK9K8DGPydWENPrsuQ9B8X5HJK0bTz+sEJ6E=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5e22923b8928134fb019f28dafbf89bb9953acea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5e22923b8928134fb019f28dafbf89bb9953acea",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "alternaut-vim": "alternaut-vim",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgsBorgBackup": "nixpkgsBorgBackup",
         "unstableVimPlugins": "unstableVimPlugins"
       }
     },

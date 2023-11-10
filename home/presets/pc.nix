@@ -12,6 +12,7 @@ in {
     home.packages = with pkgs; [
       minisign
       rage
+      taylor1791.borgbackup
       taylor1791.bopen
       taylor1791.mirror
       taylor1791.rand
