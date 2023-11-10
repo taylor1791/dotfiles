@@ -4,6 +4,12 @@
 in {
   options.taylor1791.programs.${programName} = {
     enable = lib.mkEnableOption "Enable taylor1791's alacritty configuration";
+
+    fontSize = lib.mkOption {
+      type = lib.types.float;
+      default = 9.0;
+      description = "The size of the font.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -18,7 +24,7 @@ in {
         bell.color = colors.purple;
         cursor.style = "Block";
         draw_bold_text_with_bright_colors = false;
-        font.size = 9.0;
+        font.size = cfg.fontSize;
         font.normal.family = "mononoki";
         live_config_reload = true;
         scrolling.history = 10000;
