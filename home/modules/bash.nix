@@ -26,6 +26,9 @@ in {
         # Instructs man to use an alternate pager.
         export MANPAGER="nvim +Man!";
 
+        # Something better than the default.
+        export PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
+
         # Support the committed innovators.
         if command -v nvim > /dev/null; then
           alias vim=nvim
