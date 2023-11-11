@@ -46,7 +46,6 @@
       mkDarwinModules = user: module: [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
-        { imports = [ ./darwin/presets/default.nix ]; }
         {
           users.users.${user} = {
             name = user;
@@ -58,13 +57,17 @@
             users.${user} = { imports = modules; } // module;
           };
         }
-      ];
+      ] ++ (builtins.attrValues self.darwinModules);
     in {
       iqqkqm = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
         modules = mkDarwinModules "teverding" profiles.genericTaylor1791 ++
           [ { presets.darwin.enable = true; } ./hosts/iqqkqm ];
       };
+    };
+
+    darwinModules = {
+      darwin = import ./darwin/presets/darwin.nix;
     };
 
     devShell = lib.genAttrs lib.systems.flakeExposed (system:
