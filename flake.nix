@@ -57,17 +57,18 @@
             users.${user} = { imports = modules; } // module;
           };
         }
-      ] ++ (builtins.attrValues self.darwinModules);
+      ];
     in {
       iqqkqm = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
-        modules = mkDarwinModules "teverding" profiles.genericTaylor1791 ++
-          [ { presets.darwin.enable = true; } ./hosts/iqqkqm ];
+        modules = mkDarwinModules "teverding" profiles.genericTaylor1791
+        ++ (builtins.attrValues self.darwinModules)
+        ++ [ { taylor1791.presets.taylor1791DarwinSystem.enable = true; } ./hosts/iqqkqm ];
       };
     };
 
     darwinModules = {
-      darwin = import ./darwin/presets/darwin.nix;
+      taylor1791DarwinSystem = import ./darwin/presets/taylor1791-darwin-system.nix;
     };
 
     devShell = lib.genAttrs lib.systems.flakeExposed (system:

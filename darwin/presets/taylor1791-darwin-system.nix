@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: let
-  presetName = "darwin";
-  cfg = config.presets.${presetName};
+  presetName = "taylor1791DarwinSystem";
+  cfg = config.taylor1791.presets.${presetName};
 in {
   options = {
-    presets.${presetName} = {
+    taylor1791.presets.${presetName} = {
       enable = lib.mkEnableOption "Configure Darwin specific configuration";
     };
   };
