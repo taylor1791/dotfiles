@@ -1,15 +1,15 @@
 { config, lib, pkgs, ...}: let
   serviceName = "windows";
-  cfg = config.taylor1791.services.${serviceName};
+  cfg = config.taylor1791.presets.${serviceName};
 in {
-  options.taylor1791.services.${serviceName} = {
+  options.taylor1791.presets.${serviceName} = {
     enable = lib.mkEnableOption "Configures systems using a window manager.";
   };
 
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = config.taylor1791.services.shell.enable;
+        assertion = config.taylor1791.presets.shell.enable;
         message = "Display managers requires a shell. Set taylor1791.shell.enabled = true";
       }
     ];
@@ -62,7 +62,7 @@ in {
       };
     };
 
-    users.users.${config.taylor1791.services.shell.user}.extraGroups =
+    users.users.${config.taylor1791.presets.shell.user}.extraGroups =
       [ "networkmanager" "video" ];
   };
 }

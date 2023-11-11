@@ -28,7 +28,7 @@
     };
   };
 
-  taylor1791.services = {
+  taylor1791.presets = {
     console = { enable = true; };
     development = { enable = true; };
     shell = { enable = true; user = "taylor1791"; };

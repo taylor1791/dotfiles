@@ -1,8 +1,8 @@
 { config, lib, pkgs, ...}: let
   serviceName = "console";
-  cfg = config.taylor1791.services.${serviceName};
+  cfg = config.taylor1791.presets.${serviceName};
 in {
-  options.taylor1791.services.${serviceName} = {
+  options.taylor1791.presets.${serviceName} = {
     enable = lib.mkEnableOption "Configures systems with at least console access.";
   };
 

@@ -128,12 +128,11 @@
     };
 
     nixosModules = {
-      console = import ./nixos/services/console.nix;
-      development = import ./nixos/services/development.nix;
-      shell = import ./nixos/services/shell.nix;
-      windows = import ./nixos/services/windows.nix;
+      console = import ./nixos/presets/console.nix;
+      development = import ./nixos/presets/development.nix;
+      shell = import ./nixos/presets/shell.nix;
+      windows = import ./nixos/presets/windows.nix;
     };
-
 
     # Consumed by other flakes
     overlays.default = final: prev: {

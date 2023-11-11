@@ -1,8 +1,8 @@
 { config, lib, pkgs, ...}: let
   serviceName = "shell";
-  cfg = config.taylor1791.services.${serviceName};
+  cfg = config.taylor1791.presets.${serviceName};
 in {
-  options.taylor1791.services.${serviceName} = {
+  options.taylor1791.presets.${serviceName} = {
     enable = lib.mkEnableOption "Configures systems with at least shell access.";
 
     user = lib.mkOption {
@@ -15,7 +15,7 @@ in {
     nix.settings.trusted-users = [ cfg.user ];
     programs.ssh.startAgent = true;
     services.openssh.enable = true;
-    taylor1791.services.console.enable = true;
+    taylor1791.presets.console.enable = true;
 
     users.users.${cfg.user} = {
       isNormalUser = true;
