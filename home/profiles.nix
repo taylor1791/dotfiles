@@ -3,10 +3,9 @@
     presets.window-manager.enable = true;
   };
 
-  genericTaylor1791 = {
+  genericTaylor1791 = lib.recursiveUpdate shellTaylor1791 {
     presets.display.enable = true;
     presets.pc.enable = true;
-    presets.shell.enable = true;
     presets.troubleshooting.enable = true;
 
     presets.development = {
@@ -14,5 +13,9 @@
       email = "taylor1791@users.noreply.github.com";
       name = "Taylor Everding";
     };
+  };
+
+  shellTaylor1791 = {
+    presets.shell.enable = true;
   };
 }
