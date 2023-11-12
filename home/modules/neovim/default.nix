@@ -6,6 +6,7 @@ in {
     enable = lib.mkEnableOption "Enable taylor1791's neovim configuration";
 
     ide = lib.mkOption {
+      default = false;
       type = lib.types.bool;
       description = "Enhance vim to behave more like an ide.";
     };
