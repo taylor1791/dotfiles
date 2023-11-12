@@ -61,8 +61,5 @@ in {
         ];
       };
     };
-
-    users.users.${config.taylor1791.presets.shell.user}.extraGroups =
-      [ "networkmanager" "video" ];
   };
 }

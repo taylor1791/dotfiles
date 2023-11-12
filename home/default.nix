@@ -51,13 +51,23 @@ in {
       users = builtins.mapAttrs mkUser cfg.users;
     };
 
+    nix.settings.trusted-users = builtins.attrNames cfg.users;
+
     users.users = let
       mkDarwinUser = user: _: {
         name = user;
         home = "/Users/${user}";
       };
 
-      mkDarwinUsers = users: builtins.mapAttrs mkDarwinUser users;
-    in lib.optionalAttrs pkgs.stdenv.isDarwin (mkDarwinUsers cfg.users);
+      mkNixosUser = user: _: {
+        isNormalUser = true;
+        extraGroups = [ "keys" "wheel" ] ++
+          lib.optionals config.taylor1791.presets.development.enable ["docker"] ++
+          lib.optionals config.taylor1791.presets.windows.enable ["networkmanager" "video"]
+        ;
+      };
+
+      mkUser = if pkgs.stdenv.isDarwin then mkDarwinUser else mkNixosUser;
+    in builtins.mapAttrs mkUser cfg.users;
   };
 }
