@@ -7,7 +7,7 @@ in {
 
     fontSize = lib.mkOption {
       type = lib.types.float;
-      default = 9.0;
+      default = 8.0;
       description = "The size of the font.";
     };
   };
