@@ -1,19 +1,12 @@
 { config, lib, ... }: let
   programName = "git";
   cfg = config.taylor1791.programs.${programName};
+  presetOptions = import ../presets/options.nix { inherit lib; };
 in {
   options.taylor1791.programs.${programName} = {
     enable = lib.mkEnableOption "Enable taylor1791's git configuration";
-
-    email = lib.mkOption {
-      type = lib.types.str;
-      description = "The email git uses in the author and committer field of commit objects";
-    };
-
-    name = lib.mkOption {
-      type = lib.types.str;
-      description = "The name git uses in the author and committer field of commit objects";
-    };
+    email = presetOptions.development.email;
+    name = presetOptions.development.name;
   };
 
   config = lib.mkIf cfg.enable {

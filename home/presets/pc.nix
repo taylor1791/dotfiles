@@ -1,12 +1,9 @@
 { config, lib, pkgs, ... }: let
   presetName = "pc";
   cfg = config.presets.${presetName};
+  presetOptions = import ./options.nix { inherit lib; };
 in {
-  options = {
-    presets.${presetName} = {
-      enable = lib.mkEnableOption "Enable dotfiles for a single user personal computer";
-    };
-  };
+  options.presets.${presetName} = presetOptions.pc;
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

@@ -1,14 +1,9 @@
-{ config, lib, options, pkgs, ... }: let
+{ config, lib, pkgs, ... }: let
   presetName = "development";
   cfg = config.presets.${presetName};
+  presetOptions = import ./options.nix { inherit lib; };
 in {
-  options = {
-    presets.${presetName} = {
-      enable = lib.mkEnableOption "Enable developer tools";
-      email = options.taylor1791.programs.git.email;
-      name = options.taylor1791.programs.git.name;
-    };
-  };
+  options.presets.${presetName} = presetOptions.development;
 
   config = lib.mkIf cfg.enable {
     taylor1791.programs.ssh.enable = true;
