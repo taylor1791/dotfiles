@@ -43,27 +43,15 @@
     ];
   in {
     darwinConfigurations = let
-      mkDarwinModules = user: module: [
+      darwinModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
-        {
-          users.users.${user} = {
-            name = user;
-            home = "/Users/${user}";
-          };
-
-          home-manager = {
-            useGlobalPkgs = true;
-            users.${user} = { imports = modules; } // module;
-          };
-        }
-      ];
+        ./home/default.nix
+      ] ++ (builtins.attrValues self.darwinModules);
     in {
       iqqkqm = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
-        modules = mkDarwinModules "teverding" profiles.genericTaylor1791
-        ++ (builtins.attrValues self.darwinModules)
-        ++ [ { taylor1791.presets.taylor1791DarwinSystem.enable = true; } ./hosts/iqqkqm ];
+        modules = darwinModules ++ [ ./hosts/iqqkqm ];
       };
     };
 
@@ -79,25 +67,15 @@
     );
 
     nixosConfigurations = let
-      mkHomeModules = user: module : [
+      nixosModules = [
+        { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            users.${user} = { imports = modules; } // module;
-          };
-        }
-      ];
+        ./home/default.nix
+      ] ++ (builtins.attrValues self.nixosModules);
     in {
       korolev = lib.nixosSystem {
         system = "x86_64-linux";
-        modules =
-          [ { nixpkgs.overlays = [ self.overlays.default ]; } ] ++
-          (builtins.attrValues self.nixosModules) ++
-          [ ./hosts/korolev ] ++
-          mkHomeModules
-            "taylor1791"
-            (profiles.nixosTaylor1791 // { home.stateVersion = "23.05"; });
+        modules = nixosModules ++ [ ./hosts/korolev ];
       };
     };
 
