@@ -26,10 +26,6 @@ jobs:
       run:
         nix develop --command 'true'
 
-    - name: home-manager
-      run:
-        nix build .#homeConfigurations.taylor1791_x86_64-linux.activationPackage
-
   iqqkqm:
     name: Build iqqkqm
     runs-on: macos-12

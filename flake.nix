@@ -78,32 +78,6 @@
       }
     );
 
-    homeConfigurations = let
-      allSystems = lib.systems.flakeExposed;
-      systems = builtins.filter (lib.strings.hasSuffix "-linux") allSystems;
-
-      mkHomeModules = { home, system }: {
-        name = "${home.username}_${system}";
-        value = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs nixpkgs system;
-          modules = modules ++ [
-            { home.homeDirectory = "/home/${home.username}"; }
-            { home.stateVersion = "23.05"; }
-            { home.username = home.username; }
-            home.module
-          ];
-        };
-      };
-    in
-      builtins.listToAttrs (
-        builtins.map mkHomeModules (lib.cartesianProductOfSets {
-          home = [
-            { username = "taylor1791"; module = profiles.genericTaylor1791; }
-          ];
-          system = systems;
-        })
-      );
-
     nixosConfigurations = let
       mkHomeModules = user: module : [
         home-manager.nixosModules.home-manager
