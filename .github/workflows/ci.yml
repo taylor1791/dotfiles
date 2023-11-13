@@ -3,6 +3,25 @@ name: CI Suite
 on: [push]
 
 jobs:
+  apollo:
+    name: Build apollo
+    runs-on: macos-14
+    timeout-minutes: 8
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v3
+
+    - name: Install nix
+      uses: cachix/install-nix-action@v23
+      with:
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+
+    - name: nix build .#apollo
+      run:
+        nix build .#darwinConfigurations.apollo.config.system.build.toplevel
+
   korolev:
     name: Build korolev
     runs-on: ubuntu-latest
