@@ -10,6 +10,12 @@ in {
       default = 8.0;
       description = "The size of the font.";
     };
+
+    extraSettings = lib.mkOption {
+      type = lib.types.attrs;
+      default = {};
+      description = "Extra settings to add to the configuration.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
