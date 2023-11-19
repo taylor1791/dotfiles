@@ -44,7 +44,7 @@ in {
         
               Run Network "wlp0s20f3" [
                 "--template", "<rx>KB|<tx>KB",
-                "--width", "4",
+                "--width", "5",
                 "--Low", "250000",
                 "--High", "750000",
                 "--low", "${colors.text}",
