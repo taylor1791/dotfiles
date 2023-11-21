@@ -59,6 +59,9 @@ in {
         # Runtime configuration
         ".envrc"
         ".env"
+
+        # Cache for direnv
+        ".direnv"
       ];
     };
   };
