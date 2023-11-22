@@ -62,5 +62,45 @@ in {
 
     system.defaults.CustomUserPreferences = {
     };
+
+    system.activationScripts.extraUserActivation = {
+      enable = true;
+      text = let
+        keys = {
+           "118" = [ "49" "18" "524288" ];
+           "119" = [ "50" "19" "524288" ];
+           "120" = [ "51" "20" "524288" ];
+           "121" = [ "52" "21" "524288" ];
+           "122" = [ "53" "23" "524288" ];
+           "123" = [ "54" "22" "524288" ];
+           "124" = [ "55" "26" "524288" ];
+           "125" = [ "56" "28" "524288" ];
+           "126" = [ "57" "25" "524288" ];
+           "127" = [ "48" "29" "524288" ];
+         };
+
+        commands = lib.mapAttrsToList (key: keys: ''
+          defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add ${key} '
+            <dict>
+              <key>enabled</key>
+              <true/>
+              <key>value</key>
+              <dict>
+                <key>parameters</key>
+                <array>
+                  <integer>${builtins.toString (builtins.elemAt keys 0)}</integer>
+                  <integer>${builtins.toString (builtins.elemAt keys 1)}</integer>
+                  <integer>${builtins.toString (builtins.elemAt keys 2)}</integer>
+                </array>
+                <key>type</key>
+                <string>standard</string>
+              </dict>
+            </dict>'
+        '') keys;
+      in lib.mkForce ''
+        echo "configuring hotkeys..."
+        ${builtins.concatStringsSep "\n" commands}
+      '';
+    };
   };
 }
