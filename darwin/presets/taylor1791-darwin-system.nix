@@ -41,10 +41,22 @@ in {
     system.defaults.screensaver.askForPassword = true;
     system.defaults.screensaver.askForPasswordDelay = 60;
     system.keyboard.remapCapsLockToEscape = true;
+    system.defaults.spaces.spans-displays = true;
 
     system.defaults.CustomSystemPreferences = {
       "com.apple.Safari" = {
         "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
+      };
+
+      "com.apple.WindowManager" = {
+        AppWindowGroupingBehavior = 1;
+        AutoHide = 0;
+        EnableStandardClickToShowDesktop = 0;
+        HasDisplayedShowDesktopEducation = 1;
+        HideDesktop = 1;
+        StageManagerHideWidgets = 0;
+        StandardHideDesktopIcons = 0;
+        StandardHideWidgets = 0;
       };
     };
 
