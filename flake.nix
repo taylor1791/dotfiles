@@ -92,14 +92,14 @@
         alternaut-vim = final.callPackage ./pkgs/alternaut-vim {
           alternautSrc = alternaut-vim;
         };
-        skim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim;
-        skim-vim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim-vim;
         bopen = final.callPackage ./pkgs/bopen {};
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
         totp = final.callPackage ./pkgs/totp {};
+        skim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim;
+        skim-vim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim-vim;
         warn = final.callPackage ./pkgs/warn {};
       };
     };
