@@ -52,6 +52,25 @@ in {
         # Source any "local" machine specific configuration.
         LOCAL_BASHRC="$HOME/.bashrc.local"
         [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"
+
+        # Changes to the nth-parent directory, defaulting to 1. Observe this can't be
+        # implemented in an external process.
+        function up() {
+          declare dir=""
+
+          if [[ -z "''${1}" ]]; then
+            dir=".."
+          elif [[ "''${1}" =~ ^[0-9]+$ ]]; then
+            declare i=0
+
+            while [[ "''${i}" -lt ''${1:-1} ]]; do
+              dir+="../"
+              i="$(($i+1))"
+            done
+          fi
+
+          cd "''${dir}"
+        }
       '';
 
       # Do not save commands that start with space to history.
