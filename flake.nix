@@ -92,6 +92,7 @@
         alternaut-vim = final.callPackage ./pkgs/alternaut-vim {
           alternautSrc = alternaut-vim;
         };
+        backup = final.callPackage ./pkgs/backup {};
         bopen = final.callPackage ./pkgs/bopen {};
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
         color = final.callPackage ./pkgs/color {};
