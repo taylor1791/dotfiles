@@ -9,10 +9,10 @@
     { stateVersion = "23.05"; } //
     (import ../../home/profiles.nix { inherit lib; }).genericTaylor1791;
 
-  home-manager.users.teverding.taylor1791.programs.alacritty = {
-    fontSize = 17.0;
+  home-manager.users.teverding.taylor1791.programs.alacritty.extraSettings = {
+    font.size = 17.0;
 
-    extraSettings = {
+    shell = {
       program = "login";
       args = [ "-fp" "teverding" ];
     };

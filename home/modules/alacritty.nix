@@ -5,16 +5,10 @@ in {
   options.taylor1791.programs.${programName} = {
     enable = lib.mkEnableOption "Enable taylor1791's alacritty configuration";
 
-    fontSize = lib.mkOption {
-      type = lib.types.float;
-      default = 8.0;
-      description = "The size of the font.";
-    };
-
     extraSettings = lib.mkOption {
       type = lib.types.attrs;
       default = {};
-      description = "Extra settings to add to the configuration.";
+      description = "Extra settings to recursively merge into the configuration.";
     };
   };
 
@@ -24,13 +18,13 @@ in {
     in {
       enable = true;
 
-      settings = {
+      settings = lib.recursiveUpdate {
         bell.animation = "EaseOutExpo";
         bell.duration = 25;
         bell.color = colors.purple;
         cursor.style = "Block";
         draw_bold_text_with_bright_colors = false;
-        font.size = cfg.fontSize;
+        font.size = 8.0;
         font.normal.family = "mononoki";
         live_config_reload = true;
         scrolling.history = 10000;
@@ -65,7 +59,7 @@ in {
 
         # Allow terminal applications to change Alacritty's window title.
         window.dynamic_title = true;
-      };
+      } cfg.extraSettings;
     };
   };
 }
