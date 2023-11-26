@@ -23,15 +23,15 @@ in {
         # cannot happen.
         [[ $- != *i* ]] && return
 
-        # Instructs man to use an alternate pager.
-        export MANPAGER="nvim +Man!";
-
         # Something better than the default.
         export PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
 
-        # Support the committed innovators.
         if command -v nvim > /dev/null; then
+          # Support the committed innovators.
           alias vim=nvim
+
+          # Instructs man to use an alternate pager.
+          export MANPAGER="nvim +Man!";
         fi
 
         # Easier: `open`. Harder: `xdg-open`.
