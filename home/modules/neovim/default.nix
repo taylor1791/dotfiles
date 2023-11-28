@@ -54,6 +54,7 @@ in {
             let g:copilot_no_tab_map = v:true
           '';
         }
+        ++ optional cfg.ide { pkg = vimPlugins.kotlin-vim; }
         ++ optional cfg.ide {
           pkg = vimPlugins.onedark-vim;
           config = ''
