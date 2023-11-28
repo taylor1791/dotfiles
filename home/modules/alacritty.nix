@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ config, lib, pkgs, ... }: let
   programName = "alacritty";
   cfg = config.taylor1791.programs.${programName};
 in {
@@ -13,6 +13,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [ pkgs.mononoki ];
+
     programs.alacritty = let
       colors = import ../lib/theme.nix;
     in {

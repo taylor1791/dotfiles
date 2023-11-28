@@ -7,6 +7,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [ pkgs.mononoki ];
+
     programs.rofi = let
       colors = import ../lib/theme.nix;
     in {

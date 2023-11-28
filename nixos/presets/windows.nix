@@ -14,7 +14,6 @@ in {
       }
     ];
 
-    fonts.fonts = with pkgs; [ mononoki source-code-pro source-sans ];
     hardware.bluetooth.enable = true;
     hardware.pulseaudio.enable = true;
     networking.networkmanager.enable = true;

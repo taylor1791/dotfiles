@@ -1,4 +1,4 @@
-{ config, lib, ... }: let
+{ config, lib, pkgs, ... }: let
   programName = "zathura";
   cfg = config.taylor1791.programs.${programName};
 in {
@@ -7,6 +7,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [ pkgs.mononoki ];
+
     xdg.mimeApps.defaultApplications = {
       "application/pdf" = "org.pwmt.zathura.desktop";
     };
