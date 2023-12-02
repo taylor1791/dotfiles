@@ -115,6 +115,11 @@
         description = "A template using direnv and nix to manage a project.";
         path = ./templates/devshell;
       };
+
+      passhash = {
+        description = "A template for generating passwords.";
+        path = ./templates/passhash;
+      };
     };
   };
 }
