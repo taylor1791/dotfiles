@@ -56,6 +56,15 @@ in {
         }
         ++ optional cfg.ide { pkg = vimPlugins.kotlin-vim; }
         ++ optional cfg.ide {
+          pkg = vimPlugins.nvim-lspconfig;
+          config = ''
+            lua <<EOF
+              require('lspconfig').rust_analyzer.setup({})
+              require('lspconfig').vimls.setup({})
+            EOF
+          '';
+        }
+        ++ optional cfg.ide {
           pkg = vimPlugins.onedark-vim;
           config = ''
             set termguicolors " Enable 24-bit colors
