@@ -7,16 +7,6 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-
-    # To incorporate https://github.com/lotabout/skim.vim/commit/aa2a5c44a6640843868cc5c1444abc0093e90e5a
-    # Remove when :Files!<cr> works on stable.
-    unstableVimPlugins.url = "github:NixOS/nixpkgs/b330c08616236463b873e5712c63418a2b7657e4";
-
-    # The darwin borgBackups have been broken for some time. This is the last know
-    # working revision.
-    nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
-
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +16,16 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+
+    # The darwin borgBackups have been broken for some time. This is the last know
+    # working revision.
+    nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
+
+    # To incorporate https://github.com/lotabout/skim.vim/commit/aa2a5c44a6640843868cc5c1444abc0093e90e5a
+    # Remove when :Files!<cr> works on stable.
+    unstableVimPlugins.url = "github:NixOS/nixpkgs/b330c08616236463b873e5712c63418a2b7657e4";
   };
 
   outputs = {
