@@ -5,10 +5,16 @@ in {
   options.taylor1791.programs.${programName} = {
     enable = lib.mkEnableOption "Enable taylor1791's neovim configuration";
 
-    ide = lib.mkOption {
+    ai = lib.mkOption {
       default = false;
       type = lib.types.bool;
-      description = "Enhance vim to behave more like an ide.";
+      description = "Enable AI features.";
+    };
+
+    development = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "Enable features for writing software.";
     };
   };
 
@@ -21,11 +27,19 @@ in {
     };
 
     programs.neovim = let
-      optional = lib.lists.optional;
       vimPlugins = pkgs.vimPlugins;
 
-      plugins = []
-        ++ optional cfg.ide {
+      plugins = [
+        # Languages
+        { pkg = vimPlugins.kotlin-vim; }
+        { pkg = vimPlugins.vader-vim; }
+        { pkg = vimPlugins.vim-nix; }
+        { pkg = vimPlugins.yats-vim; }
+
+        # Tools
+        { pkg = vimPlugins.vim-addon-local-vimrc; }
+      ] ++ lib.lists.optionals cfg.development [
+        {
           pkg = vimPlugins.ale;
           config = ''
             let g:ale_fix_on_save = v:true
@@ -35,36 +49,8 @@ in {
             nmap <leader>aN <esc>:ALEPrevious<cr>
           '';
         }
-        ++ optional cfg.ide {
-          pkg = pkgs.taylor1791.alternaut-vim;
-          config = ''
-            let alternaut#conventions = {}
-            let alternaut#conventions['javascript'] = {
-              \   'directory_naming_conventions': ['__tests__', 'tests'],
-              \   'file_naming_conventions': ['{name}.test.{ext}', '{name}.spec.{ext}'],
-              \   'file_extensions': ['js', 'jsx'],
-              \ }
-            nmap <leader>t <Plug>(alternaut-toggle)
-          '';
-        }
-        ++ optional cfg.ide {
-          pkg = vimPlugins.copilot-vim;
-          config = ''
-            inoremap <silent><script><expr> <C-j> copilot#Accept("")
-            let g:copilot_no_tab_map = v:true
-          '';
-        }
-        ++ optional cfg.ide { pkg = vimPlugins.kotlin-vim; }
-        ++ optional cfg.ide {
-          pkg = vimPlugins.nvim-lspconfig;
-          config = ''
-            lua <<EOF
-              require('lspconfig').rust_analyzer.setup({})
-              require('lspconfig').vimls.setup({})
-            EOF
-          '';
-        }
-        ++ optional cfg.ide {
+
+        {
           pkg = vimPlugins.onedark-vim;
           config = ''
             set termguicolors " Enable 24-bit colors
@@ -72,15 +58,18 @@ in {
             colorscheme onedark
           '';
         }
-        ++ optional cfg.ide { pkg = pkgs.taylor1791.skim; }
-        ++ optional cfg.ide {
+
+        { pkg = vimPlugins.plenary-nvim; }
+        { pkg = pkgs.taylor1791.skim; }
+        {
           pkg = pkgs.taylor1791.skim-vim;
           config = ''
             nnoremap <leader>f <esc>:Files!<cr>
             nnoremap <leader>/ <esc>:Rg<cr>
           '';
         }
-        ++ optional cfg.ide {
+
+        {
           pkg = vimPlugins.ultisnips;
           config = ''
             let g:UltiSnipsEditSplit='vertical'
@@ -88,23 +77,31 @@ in {
             let g:UltiSnipsSnippetDirectories = ['${snipsDir}']
           '';
         }
-        ++ optional cfg.ide { pkg = vimPlugins.vader-vim; }
-        ++ optional cfg.ide { pkg = vimPlugins.vim-addon-local-vimrc; }
-        ++ optional cfg.ide { pkg = vimPlugins.vim-fugitive; }
-        ++ optional cfg.ide { pkg = vimPlugins.vim-nix; }
-        ++ optional cfg.ide {
+
+        { pkg = vimPlugins.vim-fugitive; }
+
+        {
           pkg = vimPlugins.vim-hexokinase;
           config = ''
             let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
           '';
         }
-        ++ optional cfg.ide {
+
+        {
           pkg = vimPlugins.vim-test;
           config = ''
             nnoremap <leader>T <esc>:TestFile<cr>
           '';
         }
-        ++ optional cfg.ide { pkg = vimPlugins.yats-vim; };
+      ] ++ lib.lists.optionals cfg.ai [
+        {
+          pkg = vimPlugins.copilot-vim;
+          config = ''
+            inoremap <silent><script><expr> <C-j> copilot#Accept("")
+            let g:copilot_no_tab_map = v:true
+          '';
+        }
+      ];
 
       pluginsWithExtraConfig = builtins.filter (builtins.hasAttr "config") plugins;
 

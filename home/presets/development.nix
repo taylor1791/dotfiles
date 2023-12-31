@@ -25,7 +25,8 @@ in {
 
     taylor1791.programs.neovim = {
       enable = true;
-      ide = true;
+      ai = true;
+      development = true;
     };
 
     taylor1791.programs.git = {

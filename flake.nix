@@ -2,11 +2,6 @@
   description = "NixOS derivations supporting Taylor1791.";
 
   inputs = {
-    alternaut-vim = {
-      url = "github:PsychoLlama/alternaut.vim";
-      flake = false;
-    };
-
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +24,7 @@
   };
 
   outputs = {
-    alternaut-vim, darwin, home-manager, nixpkgs, nixpkgsBorgBackup, unstableVimPlugins, self
+    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, unstableVimPlugins, self
   }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
@@ -89,9 +84,6 @@
     # Consumed by other flakes
     overlays.default = final: prev: {
       taylor1791 = {
-        alternaut-vim = final.callPackage ./pkgs/alternaut-vim {
-          alternautSrc = alternaut-vim;
-        };
         backup = final.callPackage ./pkgs/backup {};
         bopen = final.callPackage ./pkgs/bopen {};
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
