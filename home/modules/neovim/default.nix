@@ -187,7 +187,7 @@ in {
         endif
 
         " Mappings
-        nnoremap <exc> :nohlsearch<cr><esc>
+        nnoremap <esc> :nohlsearch<cr>
         nnoremap <leader>s <esc>:source %<cr>
         nnoremap Q <nop>
         nnoremap / /\v
