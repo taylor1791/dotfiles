@@ -77,6 +77,17 @@ in {
         }
 
         {
+          pkg = vimPlugins.nvim-lspconfig;
+          config = ''
+            nnoremap gd :lua vim.lsp.buf.definition()<cr>
+            nnoremap gy :lua vim.lsp.buf.type_definition()<cr>
+            nnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
+            vnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
+            nnoremap <leader>lh :lua vim.lsp.buf.hover()<cr>
+          '';
+        }
+
+        {
           pkg = vimPlugins.onedark-vim;
           config = ''
             set termguicolors " Enable 24-bit colors
@@ -92,6 +103,24 @@ in {
           config = ''
             nnoremap <leader>f <esc>:Files!<cr>
             nnoremap <leader>/ <esc>:Rg<cr>
+          '';
+        }
+
+        {
+          pkg = vimPlugins.typescript-tools-nvim;
+          config = ''
+            lua << EOF
+              require('typescript-tools').setup({
+                settings = {
+                  expose_as_code_action = "all",
+
+                  jsx_close_tag = {
+                    enable = false,
+                    filetypes = { "javascriptreact", "typescriptreact" },
+                  },
+                },
+              })
+            EOF
           '';
         }
 
