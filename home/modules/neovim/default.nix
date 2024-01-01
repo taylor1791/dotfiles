@@ -50,6 +50,32 @@ in {
           '';
         }
 
+        { pkg = vimPlugins.cmp-calc; }
+        { pkg = vimPlugins.cmp-nvim-lsp; }
+        { pkg = vimPlugins.cmp-nvim-lsp-signature-help; }
+
+        {
+          pkg = vimPlugins.nvim-cmp;
+          config = ''
+            lua << EOF
+              local cmp = require('cmp')
+
+              cmp.setup({
+                mapping = cmp.mapping.preset.insert({
+                  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                }),
+
+                sources = cmp.config.sources({
+                  { name = 'calc' },
+                  { name = 'nvim_lsp_signature_help' },
+                  { name = 'nvim_lsp' },
+                }),
+              })
+            EOF
+          '';
+        }
+
         {
           pkg = vimPlugins.onedark-vim;
           config = ''
