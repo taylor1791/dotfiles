@@ -187,15 +187,16 @@ in {
         set inccommand=nosplit " Live preview of :substitute
 
         " Display Options
-        set lazyredraw            " Don't update the screen while running macros.
-        set list listchars=tab:>- " Display tabs using
-        set nowrap                " Do not wrap lines
-        set number relativenumber " Use relative line numbers, except the current line
-        set pumheight=16          " Maximum number of pop-up items
-        set ruler                 " Show cursor position
-        set scrolloff=7           " Always show at least 7 lines around cursor
-        set spell                 " Always enable spelling
-        set synmaxcol=256         " Last column to syntax highlight
+        match errorMsg /\s\+$/                   " Highlight trailing whitespace
+        set lazyredraw                           " Don't update the screen while running macros.
+        set list listchars=trail:~,tab:>-,nbsp:␣ " Show tabs and trailing whitespace
+        set nowrap                               " Do not wrap lines
+        set number relativenumber                " Use relative line numbers, except the current line
+        set pumheight=16                         " Maximum number of pop-up items
+        set ruler                                " Show cursor position
+        set scrolloff=7                          " Always show at least 7 lines around cursor
+        set spell                                " Always enable spelling
+        set synmaxcol=256                        " Last column to syntax highlight
 
         " Indentation Options
         set expandtab     " Convert <TAB> to spaces
