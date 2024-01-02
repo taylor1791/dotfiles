@@ -147,12 +147,24 @@ in {
         }
 
         { pkg = vimPlugins.plenary-nvim; }
-        { pkg = pkgs.taylor1791.skim; }
+
+        { pkg = vimPlugins.telescope-fzf-native-nvim; }
         {
-          pkg = pkgs.taylor1791.skim-vim;
+          pkg = vimPlugins.telescope-nvim;
+
           config = ''
-            nnoremap <leader>f <esc>:Files!<cr>
-            nnoremap <leader>/ <esc>:Rg<cr>
+            lua << EOF
+              local telescope = require('telescope')
+
+              telescope.load_extension('fzf')
+              telescope.setup({})
+            EOF
+
+            nnoremap <leader>f :Telescope find_files<cr>
+            nnoremap <leader>/ :Telescope live_grep<cr>
+            nnoremap <leader>r :Telescope buffers<cr>
+            nnoremap <leader>li :Telescope lsp_incoming_calls<cr>
+            nnoremap <leader>lr :Telescope lsp_references<cr>
           '';
         }
 

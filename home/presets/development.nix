@@ -10,12 +10,13 @@ in {
 
     home.packages = with pkgs; [
       direnv
+      fd
+      fzf
       git
       hyperfine
       jq
       miniserve
       ripgrep
-      skim
       watchexec
       xh
       zoxide
