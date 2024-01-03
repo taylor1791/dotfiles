@@ -157,6 +157,7 @@ in {
               local telescope = require('telescope')
 
               telescope.load_extension('fzf')
+              telescope.load_extension('undo')
               telescope.setup({})
             EOF
 
@@ -165,8 +166,11 @@ in {
             nnoremap <leader>r :Telescope buffers<cr>
             nnoremap <leader>li :Telescope lsp_incoming_calls<cr>
             nnoremap <leader>lr :Telescope lsp_references<cr>
+            nnoremap <leader>u :Telescope undo<cr>
           '';
         }
+
+        { pkg = vimPlugins.telescope-undo-nvim; }
 
         {
           pkg = vimPlugins.typescript-tools-nvim;
