@@ -30,13 +30,6 @@ in {
       vimPlugins = pkgs.vimPlugins;
 
       plugins = [
-        # Languages
-        { pkg = vimPlugins.kotlin-vim; }
-        { pkg = vimPlugins.vader-vim; }
-        { pkg = vimPlugins.vim-nix; }
-        { pkg = vimPlugins.yats-vim; }
-
-        # Tools
         { pkg = vimPlugins.vim-addon-local-vimrc; }
       ] ++ lib.lists.optionals cfg.development [
         {
@@ -134,6 +127,18 @@ in {
             nnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
             vnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
             nnoremap <leader>lh :lua vim.lsp.buf.hover()<cr>
+          '';
+        }
+
+        {
+          pkg = vimPlugins.nvim-treesitter.withAllGrammars;
+          config = ''
+            lua << EOF
+              require('nvim-treesitter.configs').setup({
+                highlight = { enable = true, },
+                indent = { enable = true, },
+              })
+            EOF
           '';
         }
 
@@ -262,7 +267,6 @@ in {
         set ruler                                " Show cursor position
         set scrolloff=7                          " Always show at least 7 lines around cursor
         set spell                                " Always enable spelling
-        set synmaxcol=256                        " Last column to syntax highlight
 
         " Indentation Options
         set expandtab     " Convert <TAB> to spaces
@@ -311,13 +315,6 @@ in {
         nnoremap Q <nop>
         nnoremap / /\v
         nnoremap ? ?\v
-
-        " Display the token under the cursor. Useful for debugging syntax highlighting.
-        function ShowToken()
-          echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">"
-            \ " trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">"
-            \ " lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
-        endfunction
       '' + "\n" + builtins.concatStringsSep "\n" pluginExtraConfig;
     };
   };
