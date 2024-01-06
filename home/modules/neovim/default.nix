@@ -137,10 +137,33 @@ in {
               require('nvim-treesitter.configs').setup({
                 highlight = { enable = true, },
                 indent = { enable = true, },
+
+                textobjects = {
+                  select = {
+                    enable = true,
+                    lookahead = true,
+                    keymaps = {
+                      ["aa"] = { query = "@parameter.outer", desc = "outer arguments" },
+                      ["ia"] = { query = "@parameter.inner", desc = "innter arguments" },
+                      ["ac"] = { query = "@class.outer", desc = "outer class" },
+                      ["ic"] = { query = "@class.inner", desc = "inner class" },
+                      ["af"] = { query = "@function.outer", desc = "outer function" },
+                      ["if"] = { query = "@function.inner", desc = "inner function" },
+                      ["aj"] = { query = "@conditional.outer", desc = "outer conditional (judge)" },
+                      ["ij"] = { query = "@conditional.inner", desc = "inner conditional (judge)" },
+                      ["al"] = { query = "@loop.outer", desc = "outer loop" },
+                      ["il"] = { query = "@loop.inner", desc = "inner loop" },
+                    },
+
+                    include_surronding_whitespace = true,
+                  },
+                },
               })
             EOF
           '';
         }
+
+        { pkg = vimPlugins.nvim-treesitter-textobjects; }
 
         {
           pkg = vimPlugins.onedark-vim;
