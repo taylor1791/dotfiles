@@ -17,14 +17,10 @@
     # The darwin borgBackups have been broken for some time. This is the last know
     # working revision.
     nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
-
-    # To incorporate https://github.com/lotabout/skim.vim/commit/aa2a5c44a6640843868cc5c1444abc0093e90e5a
-    # Remove when :Files!<cr> works on stable.
-    unstableVimPlugins.url = "github:NixOS/nixpkgs/b330c08616236463b873e5712c63418a2b7657e4";
   };
 
   outputs = {
-    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, unstableVimPlugins, self
+    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, self
   }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
@@ -91,8 +87,6 @@
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
         totp = final.callPackage ./pkgs/totp {};
-        skim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim;
-        skim-vim = unstableVimPlugins.legacyPackages.${final.system}.vimPlugins.skim-vim;
         warn = final.callPackage ./pkgs/warn {};
       };
     };

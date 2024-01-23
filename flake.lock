@@ -79,24 +79,7 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgsBorgBackup": "nixpkgsBorgBackup",
-        "unstableVimPlugins": "unstableVimPlugins"
-      }
-    },
-    "unstableVimPlugins": {
-      "locked": {
-        "lastModified": 1685035594,
-        "narHash": "sha256-Vz+SZUyIhxDDJBMTroR6/ID0fmDQslFg7my7dpUSo9k=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b330c08616236463b873e5712c63418a2b7657e4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b330c08616236463b873e5712c63418a2b7657e4",
-        "type": "github"
+        "nixpkgsBorgBackup": "nixpkgsBorgBackup"
       }
     }
   },
