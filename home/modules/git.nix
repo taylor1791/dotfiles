@@ -57,7 +57,6 @@ in {
         ".vimrc"
 
         # Runtime configuration
-        ".envrc"
         ".env"
 
         # Cache for direnv
