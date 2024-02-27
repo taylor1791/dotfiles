@@ -5,7 +5,7 @@ on: [push]
 jobs:
   apollo:
     name: Build apollo
-    runs-on: macos-12
+    runs-on: macos-14
     timeout-minutes: 8
 
     steps:
