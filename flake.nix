@@ -17,10 +17,13 @@
     # The darwin borgBackups have been broken for some time. This is the last know
     # working revision.
     nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
+
+    # The jdt-language-server appears to be broken on nixos. This is a working version.
+    jdtunstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = {
-    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, self
+    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, jdtunstable, self
   }: let
     lib = nixpkgs.lib;
     profiles = import ./home/profiles.nix { inherit lib; };
@@ -84,6 +87,7 @@
         bopen = final.callPackage ./pkgs/bopen {};
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
         color = final.callPackage ./pkgs/color {};
+        jdt-language-server = jdtunstable.legacyPackages.${final.system}.jdt-language-server;
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
         totp = final.callPackage ./pkgs/totp {};

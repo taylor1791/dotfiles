@@ -26,6 +26,8 @@ in {
       recursive = true;
     };
 
+    home.packages = [ pkgs.taylor1791.jdt-language-server ];
+
     programs.neovim = let
       vimPlugins = pkgs.vimPlugins;
 
@@ -114,6 +116,34 @@ in {
                   { name = 'nvim_lsp_signature_help' },
                   { name = 'nvim_lsp' },
                 }),
+              })
+            EOF
+          '';
+        }
+
+        {
+          pkg = vimPlugins.nvim-jdtls;
+          config = ''
+            lua << EOF
+              local function setup_jdtls()
+                -- local java_cwd = vim.fn.fnamemodify(vim.fn.findfile(".git", ".;"), ":h")
+                local java_cwd = vim.fs.dirname(vim.fs.find({ ".git", "build.gradle.kts" }, { upward = true })[1])
+                local jdtls = require('jdtls')
+
+                local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+                jdtls.start_or_attach({
+                  cmd = { "${pkgs.jdt-language-server}/bin/jdt-language-server", "-data", java_cwd .. "/.jdtls"},
+                  root_dir = java_cwd,
+
+                  -- ????
+                  capabilities = capabilities,
+                })
+              end
+
+              vim.api.nvim_create_autocmd('FileType', {
+                pattern = {'java'},
+                callback = setup_jdtls,
               })
             EOF
           '';
