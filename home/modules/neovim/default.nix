@@ -109,6 +109,14 @@ in {
                   ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 }),
 
+                sorting = {
+                  priority_weight = 2,
+                  comparators = {
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.order,
+                  },
+                },
+
                 sources = cmp.config.sources({
                   { name = 'calc' },
                   { name = 'nvim_lsp_signature_help' },
