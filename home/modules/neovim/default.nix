@@ -38,10 +38,6 @@ in {
           pkg = vimPlugins.ale;
           config = ''
             let g:ale_fix_on_save = v:true
-            nmap <leader>ah <esc>:ALEHover<cr>
-            nmap <leader>an <esc>:ALENext<cr>
-            nmap <leader>ad <esc>:ALEDetail<cr>
-            nmap <leader>aN <esc>:ALEPrevious<cr>
           '';
         }
 
@@ -151,6 +147,7 @@ in {
 
                 jdtls.start_or_attach({
                   capabilities = capabilities,
+                  on_attach = lsp_attach,
                   root_dir = java_cwd,
 
                   cmd = {
@@ -180,11 +177,19 @@ in {
         {
           pkg = vimPlugins.nvim-lspconfig;
           config = ''
-            nnoremap gd :lua vim.lsp.buf.definition()<cr>
-            nnoremap gy :lua vim.lsp.buf.type_definition()<cr>
-            nnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
-            vnoremap <leader>la :lua vim.lsp.buf.code_action()<cr>
-            nnoremap <leader>lh :lua vim.lsp.buf.hover()<cr>
+            lua << EOF
+              function lsp_attach(client)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
+                vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+                vim.keymap.set("n", "<leader>dn", vim.lsp.diagnostic.goto_next, { buffer = 0 })
+                vim.keymap.set("n", "<leader>dN", vim.lsp.diagnostic.goto_prev, { buffer = 0 })
+                vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, { buffer = 0 })
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
+                vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
+              end
+            EOF
           '';
         }
 
@@ -253,6 +258,7 @@ in {
             nnoremap <leader>li :Telescope lsp_incoming_calls<cr>
             nnoremap <leader>lr :Telescope lsp_references<cr>
             nnoremap <leader>u :Telescope undo<cr>
+            nnoremap <leader>dl :Telescope diagnostic<cr>
           '';
         }
 
@@ -263,6 +269,8 @@ in {
           config = ''
             lua << EOF
               require('typescript-tools').setup({
+                on_attach = lsp_attach,
+
                 settings = {
                   expose_as_code_action = "all",
 
