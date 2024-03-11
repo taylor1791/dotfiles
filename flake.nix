@@ -26,8 +26,6 @@
     darwin, home-manager, nixpkgs, nixpkgsBorgBackup, jdtunstable, self
   }: let
     lib = nixpkgs.lib;
-    profiles = import ./home/profiles.nix { inherit lib; };
-
     mkPkgs = nixpkgs: system:
       nixpkgs.legacyPackages.${system}.extend self.overlays.default;
 
