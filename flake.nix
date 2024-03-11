@@ -28,11 +28,6 @@
     lib = nixpkgs.lib;
     mkPkgs = nixpkgs: system:
       nixpkgs.legacyPackages.${system}.extend self.overlays.default;
-
-    modules = [
-      ./home/modules/default.nix
-      ./home/presets/default.nix
-    ];
   in {
     darwinConfigurations = let
       darwinModules = [
