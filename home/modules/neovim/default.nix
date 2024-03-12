@@ -147,7 +147,6 @@ in {
 
                 jdtls.start_or_attach({
                   capabilities = capabilities,
-                  on_attach = lsp_attach,
                   root_dir = java_cwd,
 
                   cmd = {
@@ -178,17 +177,37 @@ in {
           pkg = vimPlugins.nvim-lspconfig;
           config = ''
             lua << EOF
-              function lsp_attach(client)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-                vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-                vim.keymap.set("n", "<leader>dn", vim.lsp.diagnostic.goto_next, { buffer = 0 })
-                vim.keymap.set("n", "<leader>dN", vim.lsp.diagnostic.goto_prev, { buffer = 0 })
-                vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, { buffer = 0 })
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
-                vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
-              end
+              vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                  local bufnr = args.buf
+
+                  vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { buffer = bufnr })
+                  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+                  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+                  vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = bufnr })
+                  vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = bufnr})
+                  vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev, { buffer = bufnr})
+                  vim.keymap.set("n", "<leader>af", vim.lsp.buf.format, { buffer = bufnr })
+                  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+                  vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+                end,
+              })
+
+              vim.api.nvim_create_autocmd("LspDetach", {
+                callback = function(args)
+                  local bufnr = args.buf
+
+                  vim.keymap.del("n", "<leader>k", { buffer = bufnr })
+                  vim.keymap.del("n", "gd", { buffer = bufnr })
+                  vim.keymap.del("n", "gi", { buffer = bufnr })
+                  vim.keymap.del("n", "gT", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>dn", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>dN", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>af", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>rn", { buffer = bufnr })
+                  vim.keymap.del({"n", "v"}, "<leader>ca", { buffer = bufnr })
+                end,
+              })
             EOF
           '';
         }
@@ -269,8 +288,6 @@ in {
           config = ''
             lua << EOF
               require('typescript-tools').setup({
-                on_attach = lsp_attach,
-
                 settings = {
                   expose_as_code_action = "all",
 
