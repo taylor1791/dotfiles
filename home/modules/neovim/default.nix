@@ -26,7 +26,7 @@ in {
       recursive = true;
     };
 
-    home.packages = [ pkgs.taylor1791.jdt-language-server ];
+    home.packages = [ pkgs.jdt-language-server pkgs.kotlin-language-server ];
 
     programs.neovim = let
       vimPlugins = pkgs.vimPlugins;
@@ -151,7 +151,7 @@ in {
                   root_dir = java_cwd,
 
                   cmd = {
-                    "${pkgs.jdt-language-server}/bin/jdt-language-server",
+                    "jdt-language-server",
                     "-data",
                     vim.env.HOME .. "/.cache/jdtls/" .. project_name,
                   },
