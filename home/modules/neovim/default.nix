@@ -177,6 +177,9 @@ in {
           pkg = vimPlugins.nvim-lspconfig;
           config = ''
             lua << EOF
+              -- Kotlin
+              require('lspconfig').kotlin_language_server.setup({})
+
               vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
                   local bufnr = args.buf
