@@ -8,7 +8,7 @@
 
   taylor1791.home.users.teverding =
     { stateVersion = "23.05"; } //
-    (import ../../home/profiles.nix { inherit lib; }).genericTaylor1791;
+    (import ../../nixos/home/profiles.nix { inherit lib; }).genericTaylor1791;
 
   home-manager.users.teverding.taylor1791.programs.alacritty.extraSettings = {
     font.size = 17.0;

@@ -30,7 +30,7 @@
 
   taylor1791.home.users.taylor1791 =
     { stateVersion = "23.05"; } //
-    (import ../../home/profiles.nix { inherit lib; }).nixosTaylor1791;
+    (import ../../nixos/home/profiles.nix { inherit lib; }).nixosTaylor1791;
 
   taylor1791.presets = {
     console = { enable = true; };

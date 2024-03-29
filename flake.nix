@@ -30,7 +30,6 @@
       darwinModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
-        ./home/default.nix
       ] ++ (builtins.attrValues self.darwinModules);
     in {
       apollo = darwin.lib.darwinSystem {
@@ -45,6 +44,7 @@
     };
 
     darwinModules = {
+      home = import ./nixos/home/default.nix;
       taylor1791DarwinSystem = import ./darwin/presets/taylor1791-darwin-system.nix;
     };
 
@@ -59,7 +59,6 @@
       nixosModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
-        ./home/default.nix
       ] ++ (builtins.attrValues self.nixosModules);
     in {
       korolev = lib.nixosSystem {
@@ -71,6 +70,7 @@
     nixosModules = {
       console = import ./nixos/presets/console.nix;
       development = import ./nixos/presets/development.nix;
+      home = import ./nixos/home/default.nix;
       shell = import ./nixos/presets/shell.nix;
       windows = import ./nixos/presets/windows.nix;
     };
