@@ -30,7 +30,7 @@
       darwinModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
-      ] ++ (builtins.attrValues self.darwinModules);
+      ] ++ (lib.attrsets.collect (v: !lib.isAttrs v) self.darwinModules);
     in {
       apollo = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -46,6 +46,7 @@
     darwinModules = {
       home = import ./nixos/home/default.nix;
       taylor1791DarwinSystem = import ./darwin/presets/taylor1791-darwin-system.nix;
+      users = import ./nixos/users/default.nix;
     };
 
     devShell = lib.genAttrs lib.systems.flakeExposed (system:
@@ -59,7 +60,7 @@
       nixosModules = [
         { nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
-      ] ++ (builtins.attrValues self.nixosModules);
+      ] ++ (lib.attrsets.collect (v: !lib.isAttrs v) self.nixosModules);
     in {
       korolev = lib.nixosSystem {
         system = "x86_64-linux";
@@ -72,6 +73,7 @@
       development = import ./nixos/presets/development.nix;
       home = import ./nixos/home/default.nix;
       shell = import ./nixos/presets/shell.nix;
+      users = import ./nixos/users/default.nix;
       windows = import ./nixos/presets/windows.nix;
     };
 
