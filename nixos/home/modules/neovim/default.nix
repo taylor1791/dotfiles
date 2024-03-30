@@ -261,6 +261,22 @@ in {
 
         { pkg = vimPlugins.plenary-nvim; }
 
+        {
+          pkg = vimPlugins.rustaceanvim;
+          config = ''
+            lua << EOF
+              vim.g.rustaceanvim = {
+                server = {
+                  on_attach = function(client, bufnr)
+                    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'J', '<cmd>RustLsp joinLines<cr>', { noremap = true, silent = true })
+                    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rm', '<cmd>RustLsp expandMacro<cr>', { noremap = true, silent = true })
+                  end,
+                }
+              }
+            EOF
+          '';
+        }
+
         { pkg = vimPlugins.telescope-fzf-native-nvim; }
         {
           pkg = vimPlugins.telescope-nvim;
