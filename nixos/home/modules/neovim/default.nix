@@ -190,9 +190,8 @@ in {
                   vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = bufnr })
                   vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = bufnr})
                   vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev, { buffer = bufnr})
-                  vim.keymap.set("n", "<leader>af", vim.lsp.buf.format, { buffer = bufnr })
-                  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-                  vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+                  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr })
+                  vim.keymap.set({"n", "v"}, "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr })
                 end,
               })
 
@@ -206,8 +205,7 @@ in {
                   vim.keymap.del("n", "gT", { buffer = bufnr })
                   vim.keymap.del("n", "<leader>dn", { buffer = bufnr })
                   vim.keymap.del("n", "<leader>dN", { buffer = bufnr })
-                  vim.keymap.del("n", "<leader>af", { buffer = bufnr })
-                  vim.keymap.del("n", "<leader>rn", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>lr", { buffer = bufnr })
                   vim.keymap.del({"n", "v"}, "<leader>ca", { buffer = bufnr })
                 end,
               })
