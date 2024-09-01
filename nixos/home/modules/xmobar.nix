@@ -31,7 +31,7 @@ in {
                 "--normal", "${colors.gold}",
                 "--high", "${colors.rose}"
               ] 10,
-        
+
               Run Memory [
                 "--template", "Mem: <usedratio>%",
                 "--ppad", "3",
@@ -41,7 +41,7 @@ in {
                 "--normal", "${colors.gold}",
                 "--high", "${colors.rose}"
               ] 10,
-        
+
               Run Network "wlp0s20f3" [
                 "--template", "<rx>KB|<tx>KB",
                 "--width", "5",
@@ -51,9 +51,9 @@ in {
                 "--normal", "${colors.gold}",
                 "--high", "${colors.rose}"
               ] 10,
-        
+
               Run Date "<fc=#61AFEF>%H:%M:%S</fc>" "time" 10,
-        
+
               Run Battery [
                "--template", "Batt: <left>%",
                 "--ppad", "3",
@@ -63,10 +63,10 @@ in {
                 "--normal", "${colors.gold}",
                 "--high", "${colors.text}"
               ] 10,
-        
+
               Run StdinReader
             ],
-        
+
             template = "%StdinReader% }{ %cpu% <fc=${colors.grey_dark}>:</fc> %memory% <fc=${colors.grey_dark}>:</fc> Net: %wlp0s20f3% <fc=${colors.grey_dark}>:</fc> %battery% <fc=${colors.grey_dark}>:</fc> %time%",
           }
       '';
