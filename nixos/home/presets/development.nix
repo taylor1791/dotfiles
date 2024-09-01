@@ -17,6 +17,7 @@ in {
       jq
       miniserve
       ripgrep
+      viddy
       watchexec
       xh
       zoxide
