@@ -7,7 +7,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.mononoki ];
+    home.packages = [ pkgs.victor-mono ];
 
     xdg.mimeApps.defaultApplications = {
       "application/pdf" = "org.pwmt.zathura.desktop";
@@ -20,7 +20,7 @@ in {
 
       # A configuration file for zathura. See `man zathurarc` for more details.
       options = {
-        font = "mononoki 13";
+        font = "Victor Mono 12";
 
         # Use clipboard instead of primary.
         selection-clipboard = "clipboard";

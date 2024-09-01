@@ -13,7 +13,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.mononoki ];
+    home.packages = [ pkgs.victor-mono ];
+
+    fonts.fontconfig.enable = true;
 
     programs.alacritty = let
       colors = import ../lib/theme.nix;
@@ -26,8 +28,8 @@ in {
         bell.color = colors.purple;
         cursor.style = "Block";
         draw_bold_text_with_bright_colors = false;
-        font.size = 8.0;
-        font.normal.family = "mononoki";
+        font.size = 7.0;
+        font.normal.family = "Victor Mono";
         live_config_reload = true;
         scrolling.history = 10000;
         selection.save_to_clipboard = true;

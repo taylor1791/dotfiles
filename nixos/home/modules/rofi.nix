@@ -7,7 +7,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.mononoki ];
+    home.packages = [ pkgs.victor-mono ];
 
     programs.rofi = let
       colors = import ../lib/theme.nix;
@@ -44,7 +44,7 @@ in {
           white10 = mkLiteral (colors.text + "0A");
 
           background-color = mkLiteral "@black";
-          font = "mononoki 16";
+          font = "Victor Mono 15";
           text-color = mkLiteral "@white";
         };
 

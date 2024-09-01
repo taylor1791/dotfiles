@@ -17,10 +17,10 @@ in {
         -- --high use light red, light yellow, and white depending on threshold
         -- semantics.
         Config {
-            font = "Mononoki Bold 13",
+            font = "Victor Mono Bold 14",
             bgColor = "${colors.background}",
             fgColor = "${colors.text}",
-        
+
             commands = [
               Run Cpu [
                 "--template", "Cpu: <total>%",
