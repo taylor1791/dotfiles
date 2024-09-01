@@ -96,6 +96,7 @@
       (nixpkgs.legacyPackages.${system}.extend self.overlays.default).taylor1791
     );
 
+    # Consumed by `nix flake init github:taylor1791/dotfiles#<name>`
     templates = {
       devshell = {
         description = "A template using direnv and nix to manage a project.";
