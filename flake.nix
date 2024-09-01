@@ -36,11 +36,6 @@
         system = "aarch64-darwin";
         modules = darwinModules ++ [ ./hosts/apollo ];
       };
-
-      iqqkqm = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
-        modules = darwinModules ++ [ ./hosts/iqqkqm ];
-      };
     };
 
     darwinModules = {

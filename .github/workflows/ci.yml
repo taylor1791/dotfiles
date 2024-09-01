@@ -44,22 +44,3 @@ jobs:
     - name: nix shell
       run:
         nix develop --command 'true'
-
-  iqqkqm:
-    name: Build iqqkqm
-    runs-on: macos-12
-    timeout-minutes: 8
-
-    steps:
-    - name: git checkout
-      uses: actions/checkout@v3
-
-    - name: Install nix
-      uses: cachix/install-nix-action@v23
-      with:
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-
-    - name: nix build .#iqqkqm
-      run:
-        nix build .#darwinConfigurations.iqqkqm.config.system.build.toplevel
