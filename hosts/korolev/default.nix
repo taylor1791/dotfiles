@@ -8,7 +8,7 @@
 
   networking.hostName = "korolev";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  services.xserver.libinput.touchpad.accelSpeed = "0.60";
+  services.libinput.touchpad.accelSpeed = "0.60";
   system.stateVersion = "20.09";
 
   fileSystems = {

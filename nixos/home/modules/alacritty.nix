@@ -27,7 +27,6 @@ in {
         bell.duration = 25;
         bell.color = colors.purple;
         cursor.style = "Block";
-        draw_bold_text_with_bright_colors = false;
         font.size = 7.0;
         font.normal.family = "Victor Mono";
         live_config_reload = true;
@@ -37,6 +36,7 @@ in {
         colors = {
           cursor.text = "CellBackground";
           cursor.cursor = "CellForeground";
+          draw_bold_text_with_bright_colors = false;
           primary.foreground = colors.text;
           primary.background = colors.background;
           footer_bar.background = colors.black;
@@ -57,9 +57,6 @@ in {
         # If this is `true`, the cursor will be rendered as a hollow box when the window
         # is not focused.
         cursor.unfocused_hollow = true;
-
-        # Thin stroke font rendering (macOS only). Recommenended for retina displays.
-        scrolling.use_thin_strokes = true;
 
         # Allow terminal applications to change Alacritty's window title.
         window.dynamic_title = true;

@@ -32,22 +32,28 @@ in {
       xclip
     ];
 
+    services.displayManager = {
+      defaultSession = "none+xmonad";
+    };
+
+    services.libinput = {
+      enable = true;
+      touchpad.accelProfile = "adaptive";
+    };
+
     services.xserver = {
       enable = true;
 
       autoRepeatDelay = 250;
       autoRepeatInterval = 32;
-      layout = "us";
-      xkbOptions = "caps:escape";
 
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "none+xmonad";
       };
 
-      libinput = {
-        enable = true;
-        touchpad.accelProfile = "adaptive";
+      xkb = {
+        options = "caps:escape";
+        layout = "us";
       };
 
       windowManager = {
