@@ -8,11 +8,11 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # The darwin borgBackups have been broken for some time. This is the last know
     # working revision.
@@ -23,12 +23,24 @@
     darwin, home-manager, nixpkgs, nixpkgsBorgBackup, self
   }: let
     lib = nixpkgs.lib;
-    mkPkgs = nixpkgs: system:
-      nixpkgs.legacyPackages.${system}.extend self.overlays.default;
+
+    nixpkgsConfig = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "copilot.vim"
+      ];
+    };
+
+    mkPkgs = nixpkgs: system: import nixpkgs {
+      inherit system;
+
+      overlays = [ self.overlays.default ];
+
+      config = nixpkgsConfig;
+    };
   in {
     darwinConfigurations = let
       darwinModules = [
-        { nixpkgs.overlays = [ self.overlays.default ]; }
+        { nixpkgs.config = nixpkgsConfig; nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.darwinModules.home-manager
       ] ++ (lib.attrsets.collect (v: !lib.isAttrs v) self.darwinModules);
     in {
@@ -53,7 +65,7 @@
 
     nixosConfigurations = let
       nixosModules = [
-        { nixpkgs.overlays = [ self.overlays.default ]; }
+        { nixpkgs.config = nixpkgsConfig; nixpkgs.overlays = [ self.overlays.default ]; }
         home-manager.nixosModules.home-manager
       ] ++ (lib.attrsets.collect (v: !lib.isAttrs v) self.nixosModules);
     in {
