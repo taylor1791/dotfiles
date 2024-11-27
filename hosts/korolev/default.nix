@@ -40,6 +40,35 @@
     windows = { enable = true; };
   };
 
+  services.borgbackup = {
+    jobs = {
+      korolev = {
+        repo = "korolev@prd-nas-000.idagalaxy.com:.";
+        startAt = "0:00";
+        group = "users";
+        persistentTimer = true;
+        user = "taylor1791";
+        preHook = ''
+          echo "Waiting for network to come up"
+          until ${pkgs.iputils}/bin/ping prd-nas-000.idagalaxy.com -c1 -q; do sleep 1; done
+          echo "Network is up"
+        '';
+        compression = "zstd";
+        paths = [ "/home/taylor1791" ];
+        exclude = [ "/home/taylor1791/.cache" "**/node_modules" "**/target" ];
+        prune.keep = { daily = 7; weekly = 4; monthly = 12; yearly = 10; };
+        encryption = {
+          mode = "repokey-blake2";
+          passCommand = "cat /run/keys/korolev_borg";
+        };
+        environment = {
+          BORG_RSH = "ssh -i /home/taylor1791/.ssh/borg";
+          BORG_RELOCATED_REPO_ACCESS_IS_OK="yes";
+        };
+      };
+    };
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/4abdec35-bad4-4c14-9004-3b62f958a8e4"; }
   ];

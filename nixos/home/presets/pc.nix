@@ -6,10 +6,6 @@ in {
   options.presets.${presetName} = presetOptions.pc;
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = {
-      BORG_REPO = "taylor1791@prd-nas-000.idagalaxy.com:/mnt/fire/home/taylor1791/borgbackup/\${HOSTNAME}";
-    };
-
     home.packages = with pkgs; [
       minisign
       rage
