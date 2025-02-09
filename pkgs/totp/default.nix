@@ -6,7 +6,7 @@
     # Make patterns without matches expand to the a null string. Not the glob.
     shopt -s nullglob
 
-    CONFIG_DIR="''${HOME}/.local/state/totp"
+    STATE_DIR="''${HOME}/.local/state/totp"
 
     function add() {
       if [[ "''${1}" == "" ]]; then
@@ -21,13 +21,13 @@
         help
       fi
 
-      if [[ -e "''${CONFIG_DIR}/''${1}" ]]; then
+      if [[ -e "''${STATE_DIR}/''${1}" ]]; then
         die "Profile ''${1} already exists. Use a new name or delete the existing profile."
       fi
 
       set_key_file
-      mkdir -p "''${CONFIG_DIR}"
-      echo "''${2}" | rage -r "$(<"''${KEY_FILE}")" > "''${CONFIG_DIR}/''${1}"
+      mkdir -p "''${STATE_DIR}"
+      echo "''${2}" | rage -r "$(<"''${KEY_FILE}")" > "''${STATE_DIR}/''${1}"
     }
 
     function get() {
@@ -37,7 +37,7 @@
         help
       fi
 
-      declare totp_private_key_file="''${CONFIG_DIR}/''${1}"
+      declare totp_private_key_file="''${STATE_DIR}/''${1}"
       if ! [[ -e "''${totp_private_key_file}" ]]; then
         die "Unknown profile: ''${1}"
       fi
