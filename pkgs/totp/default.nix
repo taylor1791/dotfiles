@@ -7,6 +7,7 @@
     shopt -s nullglob
 
     STATE_DIR="''${HOME}/.local/state/totp"
+    CONFIG_FILE="''${HOME}/.config/totp"
 
     function add() {
       if [[ "''${1}" == "" ]]; then
@@ -57,13 +58,28 @@
     }
 
     function set_key_file() {
-      declare -a public_keys=("''${HOME}"/.ssh/*.pub)
+      KEY_FILE=""
 
-      if [[ "''${#public_keys[@]}" != "1" ]]; then
-        die "totp expected one public key in ~/.ssh. Either hack it or make an MR."
+      if [[ -e "''${CONFIG_FILE}" ]]; then
+        declare -a lines
+        mapfile -t lines < "''${CONFIG_FILE}"
+        for line in "''${lines[@]}"; do
+          [[ "$line" == *'='* ]] || continue
+          name="''${line%%=*}"
+          value="''${line#*=}"
+          [[ "''$name" == @(ssh_public_key) ]] || continue
+          KEY_FILE="''${value}"
+        done
       fi
 
-      KEY_FILE="''${public_keys[0]}"
+      if [[ "''${KEY_FILE}" == "" ]]; then
+        declare -a public_keys=("''${HOME}"/.ssh/*.pub)
+        if [[ "''${#public_keys[@]}" != "1" ]]; then
+          die "totp expected one public key in ~/.ssh. Alternatively, set ssh_public_key in ~/.config/totp."
+        fi
+
+        KEY_FILE="''${public_keys[0]}"
+      fi
     }
 
     function help() {
