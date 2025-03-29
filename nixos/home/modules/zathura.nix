@@ -3,7 +3,7 @@
   cfg = config.taylor1791.programs.${programName};
 in {
   options.taylor1791.programs.${programName} = {
-    enable = lib.mkEnableOption "Enable taylor1791's alacritty configuration";
+    enable = lib.mkEnableOption "Enable taylor1791's zathura configuration";
   };
 
   config = lib.mkIf cfg.enable {
