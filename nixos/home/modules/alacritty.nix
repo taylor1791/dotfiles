@@ -29,7 +29,6 @@ in {
         cursor.style = "Block";
         font.size = 7.0;
         font.normal.family = "Victor Mono";
-        live_config_reload = true;
         scrolling.history = 10000;
         selection.save_to_clipboard = true;
 
@@ -52,6 +51,10 @@ in {
             white = colors.white;
             yellow = colors.orange;
           };
+        };
+
+        general = {
+          live_config_reload = true;
         };
 
         # If this is `true`, the cursor will be rendered as a hollow box when the window
