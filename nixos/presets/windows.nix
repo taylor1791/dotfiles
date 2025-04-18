@@ -20,13 +20,14 @@ in {
     programs.light.enable = true;
     services.devmon.enable = true;
     services.hardware.bolt.enable = true;
-    sound.enable = true;
+    services.pipewire.enable = false;
     time.timeZone = "America/Denver";
 
     # Allow emulating aarch64-linux for cross-compiling raspberry pi images.
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
     environment.systemPackages = with pkgs; [
+      alsa-utils
       brightnessctl
       firefox
       xclip
