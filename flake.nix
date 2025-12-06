@@ -17,15 +17,18 @@
     # The darwin borgBackups have been broken for some time. This is the last know
     # working revision.
     nixpkgsBorgBackup.url = "github:NixOS/nixpkgs/5e22923b8928134fb019f28dafbf89bb9953acea";
+
+    ustable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = {
-    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, self
+    darwin, home-manager, nixpkgs, nixpkgsBorgBackup, self, ustable
   }: let
     lib = nixpkgs.lib;
 
     nixpkgsConfig = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "claude-code"
         "copilot.vim"
       ];
     };
@@ -85,11 +88,14 @@
     };
 
     # Consumed by other flakes
-    overlays.default = final: prev: {
+    overlays.default = final: prev: let
+      upkgs = mkPkgs ustable final.system;
+    in {
       taylor1791 = {
         backup = final.callPackage ./pkgs/backup {};
         bopen = final.callPackage ./pkgs/bopen {};
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
+        claude-code = upkgs.claude-code;
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};

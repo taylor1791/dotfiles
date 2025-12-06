@@ -10,6 +10,7 @@ in {
 
     home.packages = with pkgs; [
       direnv
+      pkgs.taylor1791.claude-code
       fd
       fzf
       git
