@@ -212,8 +212,8 @@ in {
                   vim.keymap.del("n", "gT", { buffer = bufnr })
                   vim.keymap.del("n", "<leader>dn", { buffer = bufnr })
                   vim.keymap.del("n", "<leader>dN", { buffer = bufnr })
-                  vim.keymap.del("n", "<leader>nr", { buffer = bufnr })
-                  vim.keymap.del({"n", "v"}, "<leader>ca", { buffer = bufnr })
+                  vim.keymap.del("n", "<leader>ln", { buffer = bufnr })
+                  vim.keymap.del({"n", "v"}, "<leader>la", { buffer = bufnr })
                 end,
               })
             EOF
