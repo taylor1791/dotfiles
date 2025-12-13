@@ -15,12 +15,12 @@ in {
     ];
 
     hardware.bluetooth.enable = true;
-    hardware.pulseaudio.enable = true;
     networking.networkmanager.enable = true;
     programs.light.enable = true;
     services.devmon.enable = true;
     services.hardware.bolt.enable = true;
     services.pipewire.enable = false;
+    services.pulseaudio.enable = true;
     time.timeZone = "America/Denver";
 
     # Allow emulating aarch64-linux for cross-compiling raspberry pi images.
