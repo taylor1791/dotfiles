@@ -49,6 +49,11 @@ in {
           eval "$(zoxide init bash)"
         fi
 
+        # Turn on unotify for terminal notifications.
+        if command -v unotify > /dev/null; then
+          eval "$(unotify hook bash)"
+        fi
+
         # Source any "local" machine specific configuration.
         LOCAL_BASHRC="$HOME/.bashrc.local"
         [[ -f "$LOCAL_BASHRC" ]] && source "$LOCAL_BASHRC"

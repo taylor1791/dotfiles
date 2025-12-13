@@ -100,6 +100,7 @@
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
         totp = final.callPackage ./pkgs/totp {};
+        unotify = final.callPackage ./pkgs/unotify {};
         warn = final.callPackage ./pkgs/warn {};
       };
     };

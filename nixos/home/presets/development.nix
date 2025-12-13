@@ -18,6 +18,7 @@ in {
       jq
       miniserve
       ripgrep
+      taylor1791.unotify
       viddy
       watchexec
       xh

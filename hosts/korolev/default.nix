@@ -49,6 +49,10 @@
         persistentTimer = true;
         user = "taylor1791";
         preHook = ''
+          if [ ! -f /run/keys/borg ]; then
+            ${pkgs.taylor1791.unotify}/bin/unotify add "Backup key not available. Run 'secrets pull'." -s backup -k backup-key-missing -p
+            exit 1
+          fi
           echo "Waiting for network to come up"
           until ${pkgs.iputils}/bin/ping prd-nas-000.idagalaxy.com -c1 -q; do sleep 1; done
           echo "Network is up"
