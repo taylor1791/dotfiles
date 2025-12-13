@@ -180,7 +180,12 @@ in {
           config = ''
             lua << EOF
               -- Kotlin
-              require('lspconfig').kotlin_language_server.setup({})
+              vim.lsp.config.kotlin_language_server = {
+                cmd = { 'kotlin-language-server' },
+                filetypes = { 'kotlin' },
+                root_markers = { 'settings.gradle', 'settings.gradle.kts', 'build.gradle', 'build.gradle.kts', '.git' },
+              }
+              vim.lsp.enable('kotlin_language_server')
 
               vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
