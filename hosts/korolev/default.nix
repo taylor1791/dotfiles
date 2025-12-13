@@ -63,7 +63,7 @@
         prune.keep = { daily = 7; weekly = 4; monthly = 12; yearly = 10; };
         encryption = {
           mode = "repokey-blake2";
-          passCommand = "cat /run/keys/korolev_borg";
+          passCommand = "cat /run/keys/borg";
         };
         environment = {
           BORG_RSH = "ssh -i /home/taylor1791/.ssh/borg";

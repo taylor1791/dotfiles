@@ -30,6 +30,7 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "claude-code"
         "copilot.vim"
+        "vault-bin"
       ];
     };
 
@@ -99,6 +100,7 @@
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
+        secrets = final.callPackage ./pkgs/secrets {};
         totp = final.callPackage ./pkgs/totp {};
         unotify = final.callPackage ./pkgs/unotify {};
         warn = final.callPackage ./pkgs/warn {};
