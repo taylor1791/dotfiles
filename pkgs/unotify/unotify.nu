@@ -5,7 +5,7 @@
 
 # Get the base directory for unotify data
 def get-base-dir [] {
-  let xdg = ($env | get -i XDG_DATA_HOME | default "")
+  let xdg = ($env | get -o XDG_DATA_HOME | default "")
   if $xdg == "" {
     $env.HOME | path join ".local/share/unotify"
   } else {
@@ -69,7 +69,7 @@ def ansi-reset [] { "\e[0m" }
 # Format a notification for display
 def format-notification [notif: record] {
   let indicator = if $notif.persist { $"(ansi-yellow-bold)●(ansi-reset)" } else { $"(ansi-cyan-dim)○(ansi-reset)" }
-  let source = ($notif | get -i source | default "unotify")
+  let source = ($notif | get -o source | default "unotify")
   let time = (format-relative-time $notif.timestamp)
   let msg = $notif.message
 
@@ -170,13 +170,13 @@ def "main show" [] {
 
   # Deduplicate by key (keep oldest)
   let deduped = ($sorted | reduce -f [] { |notif, acc|
-    let key = ($notif | get -i key)
+    let key = ($notif | get -o key)
     if $key == null {
       # No key, always include
       $acc | append $notif
     } else {
       # Check if key already exists
-      let exists = ($acc | any { |n| ($n | get -i key) == $key })
+      let exists = ($acc | any { |n| ($n | get -o key) == $key })
       if $exists {
         $acc
       } else {
