@@ -90,12 +90,12 @@
 
     # Consumed by other flakes
     overlays.default = final: prev: let
-      upkgs = mkPkgs ustable final.system;
+      upkgs = mkPkgs ustable final.stdenv.hostPlatform.system;
     in {
       taylor1791 = {
         backup = final.callPackage ./pkgs/backup {};
         bopen = final.callPackage ./pkgs/bopen {};
-        borgbackup = nixpkgsBorgBackup.legacyPackages.${final.system}.borgbackup;
+        borgbackup = nixpkgsBorgBackup.legacyPackages.${final.stdenv.hostPlatform.system}.borgbackup;
         claude-code = upkgs.claude-code;
         color = final.callPackage ./pkgs/color {};
         mirror = final.callPackage ./pkgs/mirror {};
