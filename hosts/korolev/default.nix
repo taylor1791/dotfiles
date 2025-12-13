@@ -76,4 +76,50 @@
   swapDevices = [
     { device = "/dev/disk/by-uuid/4abdec35-bad4-4c14-9004-3b62f958a8e4"; }
   ];
+
+  systemd.services.idagalaxy-cert-check = {
+    description = "Check SSL certificate expiration for vault.idagalaxy.com";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "taylor1791";
+      Group = "users";
+    };
+    script = ''
+      DOMAIN="vault.idagalaxy.com"
+      PORT=443
+      WARN_DAYS=13
+
+      EXPIRY=$(${pkgs.openssl}/bin/openssl s_client \
+        -connect "$DOMAIN:$PORT" \
+        -servername "$DOMAIN" \
+        </dev/null 2>/dev/null \
+        | ${pkgs.openssl}/bin/openssl x509 -noout -enddate \
+        | cut -d= -f2)
+
+      if [ -z "$EXPIRY" ]; then
+        ${pkgs.taylor1791.unotify}/bin/unotify add "Could not retrieve SSL certificate" \
+          -s vault-cert -k vault-cert-error -p
+        exit 1
+      fi
+
+      EXPIRY_EPOCH=$(${pkgs.coreutils}/bin/date -d "$EXPIRY" +%s)
+      NOW_EPOCH=$(${pkgs.coreutils}/bin/date +%s)
+      DAYS_LEFT=$(( (EXPIRY_EPOCH - NOW_EPOCH) / 86400 ))
+
+      if [ "$DAYS_LEFT" -le "$WARN_DAYS" ]; then
+        ${pkgs.taylor1791.unotify}/bin/unotify add "SSL cert expires in $DAYS_LEFT days" \
+          -s vault-cert -k vault-cert-expiry -p
+      fi
+    '';
+  };
+
+  systemd.timers.idagalaxy-cert-check = {
+    description = "Timer for SSL certificate expiration check";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "1h";
+    };
+  };
 }
