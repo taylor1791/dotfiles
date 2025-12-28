@@ -20,8 +20,8 @@
     echo "    bits    coin     3d4     3d6     3d8     3d10     3d12  2d20   2d100"
     echo "$BITS$COIN$D4$D6$D8$D10$D12$D20$D100"
     echo ""
-    openssl rand 160 -hex | fold -w 80
+    ${pkgs.libressl}/bin/openssl rand 160 -hex | fold -w 80
     echo ""
-    openssl rand 144 -base64
+    ${pkgs.libressl}/bin/openssl rand 144 -base64
   '';
 }
