@@ -38,6 +38,7 @@ in {
 
         core.autocrlf = "input";
         difftool.prompt = false;
+        interactive.singleKey = true;
         help.autocorrect = 20;
         init.defaultBranch = "main";
         fetch.prune = true;
