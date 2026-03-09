@@ -10,7 +10,7 @@ in {
     xsession.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = haskellPackages: [ haskellPackages.X11 ];
+      extraPackages = haskellPackages: [ haskellPackages.X11 haskellPackages.directory ];
 
       config = let
         colors = import ../lib/theme.nix;
@@ -19,6 +19,9 @@ in {
         import XMonad.Hooks.DynamicLog
         import XMonad.Util.EZConfig (additionalKeys, removeKeys)
         import Graphics.X11.ExtraTypes.XF86
+        import System.Directory (listDirectory)
+        import Data.List (find, isPrefixOf)
+        import Control.Exception (try, SomeException)
         
         main :: IO ()
         main = do
@@ -38,8 +41,40 @@ in {
         -- Keybinding to toggle XMonad covering the status bar.
         toggleKey :: XConfig Layout -> (KeyMask, KeySym)
         toggleKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
-        
-        
+
+
+        -- Read battery level from /sys/class/power_supply, returns 100 if no battery.
+        getBatteryLevel :: IO Int
+        getBatteryLevel = do
+          let dir = "/sys/class/power_supply"
+          result <- try $ do
+            entries <- listDirectory dir
+            case find ("BAT" `isPrefixOf`) entries of
+              Just bat -> read . filter (/= '\n') <$> readFile (dir ++ "/" ++ bat ++ "/capacity")
+              Nothing -> return 100
+          return $ either (\(_ :: SomeException) -> 100) id result
+
+
+        -- Select border color based on battery level.
+        batteryBorderColor :: Int -> String
+        batteryBorderColor level
+          | level < 5  = "${colors.red}"
+          | level < 15 = "${colors.orange}"
+          | otherwise  = "${colors.purple}"
+
+
+        -- Update focused window border based on battery level.
+        batteryLogHook :: X ()
+        batteryLogHook = do
+          level <- liftIO getBatteryLevel
+          let color = batteryBorderColor level
+          dpy <- asks display
+          colorPixel <- liftIO $ initColor dpy color
+          case colorPixel of
+            Just pixel -> withFocused $ \w -> liftIO $ setWindowBorder dpy w pixel
+            Nothing -> return ()
+
+
         -- The configuration for xmonad. Normally I would write the type signature, but
         -- the signature encodes all of the layouts. Neat, I think....
         xmonadConfig = def {
@@ -51,7 +86,10 @@ in {
         
             -- OneDark Theme
             focusedBorderColor = "${colors.purple}",
-            normalBorderColor  = "${colors.black}"
+            normalBorderColor  = "${colors.black}",
+
+            -- Update border color based on battery level
+            logHook = batteryLogHook
           } `removeKeys` [
               (mod1Mask, xK_p) -- Remove dmenu for rofi
             , (shiftMask .|. mod1Mask, xK_p) -- Remove dmrun for rofi-calc
