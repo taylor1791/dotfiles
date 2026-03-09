@@ -28,8 +28,8 @@
 
     nixpkgsConfig = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "claude-code"
         "copilot.vim"
+        "claude-code"
         "vault-bin"
       ];
     };
