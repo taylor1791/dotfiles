@@ -89,6 +89,10 @@
       PORT=443
       WARN_DAYS=13
 
+      echo "Waiting for network to come up"
+      until ${pkgs.iputils}/bin/ping "$DOMAIN" -c1 -q; do sleep 1; done
+      echo "Network is up"
+
       EXPIRY=$(${pkgs.openssl}/bin/openssl s_client \
         -connect "$DOMAIN:$PORT" \
         -servername "$DOMAIN" \
