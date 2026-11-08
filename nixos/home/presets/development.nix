@@ -11,6 +11,8 @@ in {
     home.packages = with pkgs; [
       direnv
       pkgs.taylor1791.claude-code
+      pkgs.taylor1791.fire
+      pkgs.taylor1791.fireconnect
       fd
       fzf
       git

@@ -98,6 +98,8 @@
         borgbackup = nixpkgsBorgBackup.legacyPackages.${final.stdenv.hostPlatform.system}.borgbackup;
         claude-code = upkgs.claude-code;
         color = final.callPackage ./pkgs/color {};
+        fire = final.callPackage ./pkgs/fire {};
+        fireconnect = final.callPackage ./pkgs/fireconnect {};
         mirror = final.callPackage ./pkgs/mirror {};
         rand = final.callPackage ./pkgs/rand {};
         secrets = final.callPackage ./pkgs/secrets {};
